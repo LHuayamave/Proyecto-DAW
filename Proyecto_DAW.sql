@@ -150,7 +150,7 @@ CREATE TABLE `tipo_servicio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- √çndices para tablas volcadas
+-- √?ndices para tablas volcadas
 --
 
 --
@@ -228,7 +228,7 @@ ALTER TABLE `cotizacion`
 --
 ALTER TABLE `producto`
   ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_tipo`) REFERENCES `tipo_producto` (`id_tipo`),
-  ADD CONSTRAINT `producto_ibfk_2` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`),
+  ADD CONSTRAINT `producto_ibfk_2` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`);
 
 --
 -- Filtros para la tabla `proveedor`

@@ -16,6 +16,6 @@ define("VCATEGORIAS", "view/categorias/categorias.");
 
 
 // conexion bb
-define("DBNAME","mvc");
+define("DBNAME","proyecto_daw");
 define("DBUSER","root");
 define("DBPASSWORD","");
