@@ -50,7 +50,7 @@ CREATE TABLE `cotizacion` (
 
 CREATE TABLE `medio_pago` (
   `id_medio_pago` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL
+  `nombre_medio` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -150,7 +150,7 @@ CREATE TABLE `tipo_servicio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Ã?ndices para tablas volcadas
+-- ï¿½?ndices para tablas volcadas
 --
 
 --
