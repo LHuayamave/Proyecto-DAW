@@ -1,6 +1,6 @@
 <?php
 //controlador y funcion predefinida
-define("CONTROLADOR_PRINCIPAL","productos");
+define("CONTROLADOR_PRINCIPAL", "productos");
 define("FUNCION_PRINCIPAL", "index");
 
 //ruta de templates
@@ -13,6 +13,6 @@ define("VPROVEEDORES", "view/proveedores/proveedores.");
 
 
 // conexion bb
-define("DBNAME","proyecto_daw");
-define("DBUSER","root");
-define("DBPASSWORD","");
+define("DBNAME", "proyecto_daw");
+define("DBUSER", "root");
+define("DBPASSWORD", "");
