@@ -3,19 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-09-2022 a las 05:45:44
+-- Tiempo de generación: 08-09-2022 a las 02:39:04
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `proyecto_daw`
@@ -53,6 +47,14 @@ CREATE TABLE `medio_pago` (
   `nombre_medio` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `medio_pago`
+--
+
+INSERT INTO `medio_pago` (`id_medio_pago`, `nombre_medio`) VALUES
+(1, 'Tarjeta de Credito'),
+(2, 'Pago en Efectivo');
+
 -- --------------------------------------------------------
 
 --
@@ -76,10 +78,17 @@ CREATE TABLE `producto` (
   `descripcion` varchar(100) NOT NULL,
   `stock_inicial` int(11) NOT NULL,
   `fecha_ingreso` date NOT NULL,
-  `total` int(11) NOT NULL,
+  `total` float NOT NULL,
   `id_tipo` int(11) NOT NULL,
   `id_proveedor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `stock_inicial`, `fecha_ingreso`, `total`, `id_tipo`, `id_proveedor`) VALUES
+(1, 'Rueda', 'Ruedas de Repuesto', 8, '2022-09-06', 60, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -89,12 +98,20 @@ CREATE TABLE `producto` (
 
 CREATE TABLE `proveedor` (
   `id_proveedor` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
+  `nombre_proveedor` varchar(50) NOT NULL,
   `direccion` varchar(200) NOT NULL,
   `telefono` varchar(10) NOT NULL,
   `fecha_contrato` date NOT NULL,
   `id_medio_pago` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `proveedor`
+--
+
+INSERT INTO `proveedor` (`id_proveedor`, `nombre_proveedor`, `direccion`, `telefono`, `fecha_contrato`, `id_medio_pago`) VALUES
+(1, 'Distribuidora de Repuestos Guayaquil', 'Velez 1706, Entre Los Rios y Esmeraldas\r\n', ' Velez 170', '2022-09-02', 1),
+(2, 'Cojopan', 'Avenida Machala 1004 entre Hurtado y Velez', '232-6262', '2022-09-06', 2);
 
 -- --------------------------------------------------------
 
@@ -136,8 +153,17 @@ CREATE TABLE `solicitud_tecnico` (
 
 CREATE TABLE `tipo_producto` (
   `id_tipo` int(11) NOT NULL,
-  `nombre` varchar(30) NOT NULL
+  `tipo_producto` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tipo_producto`
+--
+
+INSERT INTO `tipo_producto` (`id_tipo`, `tipo_producto`) VALUES
+(1, 'Pieza de Recambio'),
+(2, 'Repuestos Originales'),
+(3, 'Repuestos alternativos');
 
 -- --------------------------------------------------------
 
@@ -151,7 +177,7 @@ CREATE TABLE `tipo_servicio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- �?ndices para tablas volcadas
+-- Índices para tablas volcadas
 --
 
 --
@@ -249,7 +275,3 @@ ALTER TABLE `solicitud_servicio`
 ALTER TABLE `solicitud_tecnico`
   ADD CONSTRAINT `solicitud_tecnico_ibfk_2` FOREIGN KEY (`id_problemas`) REFERENCES `problemas` (`id_problemas`);
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
