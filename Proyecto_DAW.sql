@@ -53,7 +53,9 @@ CREATE TABLE `medio_pago` (
 
 INSERT INTO `medio_pago` (`id_medio_pago`, `nombre_medio`) VALUES
 (1, 'Tarjeta de Credito'),
-(2, 'Pago en Efectivo');
+(2, 'Pago en Efectivo'),
+(3, 'Transferencia Bancaria'),
+(4, 'Tarjeta de Debito');
 
 -- --------------------------------------------------------
 
@@ -88,7 +90,7 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `stock_inicial`, `fecha_ingreso`, `total`, `id_tipo`, `id_proveedor`) VALUES
-(1, 'Rueda', 'Ruedas de Repuesto', 8, '2022-09-06', 60, 1, 2);
+(1, 'Rueda', 'Ruedas de Repuesto', 8, '2022-09-06', 60, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -110,8 +112,11 @@ CREATE TABLE `proveedor` (
 --
 
 INSERT INTO `proveedor` (`id_proveedor`, `nombre_proveedor`, `direccion`, `telefono`, `fecha_contrato`, `id_medio_pago`) VALUES
-(1, 'Distribuidora de Repuestos Guayaquil', 'Velez 1706, Entre Los Rios y Esmeraldas\r\n', ' Velez 170', '2022-09-02', 1),
-(2, 'Cojopan', 'Avenida Machala 1004 entre Hurtado y Velez', '232-6262', '2022-09-06', 2);
+(1, 'Distribuidora de Repuestos Guayaquil', 'Velez 1706, Entre Los Rios y Esmeraldas\r\n', '2578017', '2022-09-02', 1),
+(100, 'Chevrolet', 'La Alborada', '2576195', '2022-09-01', 4),
+(101, 'Mercedes', 'Las Americas', '2578929', '2022-05-09', 3),
+(102, 'Marca Anonima', 'Norte', '0987765267', '2022-07-01', 4),
+(104, 'Ferrari', 'Av. Francisco de Orellana', '2554395', '2021-09-02', 3);
 
 -- --------------------------------------------------------
 

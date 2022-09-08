@@ -79,7 +79,7 @@ class ProveedoresController {
             $msj = 'Producto eliminado exitosamente';
                 $color = 'primary';
                 if (!$exito) {
-                    $msj = "No se pudo eliminar la actualizacion";
+                    $msj = "No se pudo eliminar a este proveedor";
                     $color = "danger";
                 }
                 if(!isset($_SESSION)){ session_start();};

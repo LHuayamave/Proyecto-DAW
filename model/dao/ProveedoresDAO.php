@@ -12,7 +12,7 @@ class ProveedoresDAO {
     public function selectAllFiltro($parametro) {
         // sql de la sentencia
         $sql = "SELECT * FROM proveedor p , medio_pago m  where p.id_medio_pago = m.id_medio_pago and 
-        (p.nombre like :b1 or m.nombre_medio like :b2)";
+        (p.nombre_proveedor like :b1 or m.nombre_medio like :b2)";
         $stmt = $this->con->prepare($sql);
         // preparar la sentencia
         $conlike = '%' . $parametro . '%';
@@ -54,7 +54,7 @@ class ProveedoresDAO {
     public function insert($prov){
         try{
         //sentencia sql
-        $sql = "INSERT INTO proveedor (id_proveedor, nombre, direccion, telefono, fecha_contrato, 
+        $sql = "INSERT INTO proveedor (id_proveedor, nombre_proveedor, direccion, telefono, fecha_contrato, 
         id_medio_pago) VALUES 
         (:idPro, :nom, :dir, :telf, :fcontrato, :idMedio)";
 
@@ -84,7 +84,7 @@ class ProveedoresDAO {
     public function update($prov){
 
         try{
-            $sql = "UPDATE `proveedor` SET `nombre`=:nom,`direccion`=:dir," .
+            $sql = "UPDATE `proveedor` SET `nombre_proveedor`=:nom,`direccion`=:dir," .
                     "`telefono`=:telf,`fecha_contrato`=:fcontrato,`id_medio_pago`=:idMedio WHERE id_proveedor=:idPro";
         
             $sentencia = $this->con->prepare($sql);

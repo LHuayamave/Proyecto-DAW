@@ -35,7 +35,7 @@ require_once HEADER;?>
                 ?>
                     <tr>
                         <td><?php echo $fila['id_proveedor']; ?></td>
-                        <td><?php echo $fila['nombre']; ?></td>
+                        <td><?php echo $fila['nombre_proveedor']; ?></td>
                         <td><?php echo $fila['direccion']; ?></td>
                         <td><?php echo $fila['telefono']; ?></td>
                         <td><?php echo $fila['fecha_contrato']; ?></td>

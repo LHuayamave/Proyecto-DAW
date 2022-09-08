@@ -12,7 +12,7 @@ require_once HEADER; ?>
                 </div>  
                 <div class="form-group col-sm-6">
                     <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre" value="<?php echo $prov['nombre']; ?>" class=" " placeholder="nombre proveedor" required>
+                    <input type="text" name="nombre" id="nombre" value="<?php echo $prov['nombre_proveedor']; ?>" class=" " placeholder="nombre proveedor" required>
                 </div>
                 <div class="form-group col-sm-6">
                     <label for="direccion">Direcci&oacute;n</label>
