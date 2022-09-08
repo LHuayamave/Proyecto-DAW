@@ -1,5 +1,5 @@
 <?php
-// dao data access object
+// autor:Nieves Pincay Kenia
 require_once 'config/conexion.php';
 
 class ProveedoresDAO {
@@ -25,21 +25,6 @@ class ProveedoresDAO {
         return $resultados;
     }
 
-    public function selectAll() {
-        // sql de la sentencia
-        $sql = "select * from proveedor";
-        //preparacion de la sentencia
-        $stmt = $this->con->prepare($sql);
-        //ejecucion de la sentencia
-        $stmt->execute();
-        //recuperacion de resultados
-        $resultados = $stmt->fetchAll(PDO::FETCH_OBJ);
-        // retorna cada fila como un objeto de una clase anonima
-        // cuyos nombres de atributos son iguales a los nombres de las columnas retornadas
-        // retorna datos para el controlador
-        return $resultados;
-    }
-
     public function selectAllMetodosPago() {
         // sql de la sentencia
         $sql = "select * from medio_pago";
@@ -49,13 +34,10 @@ class ProveedoresDAO {
         $stmt->execute();
         //recuperacion de resultados
         $resultados = $stmt->fetchAll(PDO::FETCH_OBJ);
-        // retorna cada fila como un objeto de una clase anonima
-        // cuyos nombres de atributos son iguales a los nombres de las columnas retornadas
-        // retorna datos para el controlador
         return $resultados;
     }
 
-    public function selectOne($id) { // buscar un producto por su id
+    public function selectOne($id) { // buscar un proveedor por su id
         $sql = "select * from proveedor where ".
         "id_proveedor=:id";
         // preparar la sentencia
@@ -63,7 +45,7 @@ class ProveedoresDAO {
         $data = ['id' => $id];
         // ejecutar la sentencia
         $stmt->execute($data);
-        // recuperar los datos (en caso de select)
+        // recuperar los datos
         $proveedor = $stmt->fetch(PDO::FETCH_ASSOC);// fetch retorna el primer registro
         // retornar resultados
         return $proveedor;
@@ -90,7 +72,6 @@ class ProveedoresDAO {
         $sentencia->execute($data);
         //retornar resultados, 
         if ($sentencia->rowCount() <= 0) {// verificar si se inserto 
-        //rowCount permite obtner el numero de filas afectadas
             return false;
         }
     }catch(Exception $e){
@@ -103,10 +84,9 @@ class ProveedoresDAO {
     public function update($prov){
 
         try{
-            //prepare
             $sql = "UPDATE `proveedor` SET `nombre`=:nom,`direccion`=:dir," .
                     "`telefono`=:telf,`fecha_contrato`=:fcontrato,`id_medio_pago`=:idMedio WHERE id_proveedor=:idPro";
-           //bind parameters
+        
             $sentencia = $this->con->prepare($sql);
             $data = [
                 'nom' =>  $prov->getNombre(),
@@ -116,11 +96,10 @@ class ProveedoresDAO {
                 'idMedio' =>  $prov->getIdmedioPago(),
                 'idPro' =>  $prov->getIdProveedor()
             ];
-            //execute
+            
             $sentencia->execute($data);
-            //retornar resultados, 
-            if ($sentencia->rowCount() <= 0) {// verificar si se inserto 
-                //rowCount permite obtner el numero de filas afectadas
+            
+            if ($sentencia->rowCount() <= 0) {
                 return false;
             }
         }catch(Exception $e){
@@ -132,18 +111,13 @@ class ProveedoresDAO {
 
     public function delete($prov){
         try{
-            //prepare
             $sql = "DELETE FROM `proveedor` WHERE id_proveedor =:id";
-            //bind parameters
             $sentencia = $this->con->prepare($sql);
             $data = [
                 'id' =>  $prov->getIdProveedor()
             ];
-            //execute
-            $sentencia->execute($data);
-            //retornar resultados, 
-            if ($sentencia->rowCount() <= 0) {// verificar si se inserto 
-            //rowCount permite obtner el numero de filas afectadas
+            $sentencia->execute($data); 
+            if ($sentencia->rowCount() <= 0) {
             return false;
             }
         }catch(Exception $e){

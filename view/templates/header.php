@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">   
 		<!-- Bootstrap CSS -->  
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="assets/css/estilos.css"/>
+        <link href="assets/css/estilos.css" rel="stylesheet">     
         <!-- FONT AWESOME -->
         <link rel="stylesheet" 
         href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" 
@@ -15,11 +15,11 @@
 		
         <title>Automotriz</title>
     </head> 
-<div style="margin-bottom: 20px">
+        <div style="margin-bottom: 20px">
 	<header>
 		<a href=""><img src="assets/imagenes/logo3.png" alt="logo"/></a>
 	</header> 
-    <nav>
+    <nav style="margin-bottom: 40px">
 		<div id="navegador">
 			<ul>
 				<li><a href="">Inicio</a></li>
@@ -31,7 +31,7 @@
 			</ul>
 		</div>
 	</nav>
-	<h1>
+	<h1 style="text-align:center">
         <?php echo isset($titulo)?$titulo:""; ?>
     </h1>
 </div>

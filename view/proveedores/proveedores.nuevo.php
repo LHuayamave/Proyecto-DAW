@@ -1,5 +1,6 @@
 <!--autor: Nieves Pincay Kenia-->
-<?php require_once HEADER; ?>
+<?php $titulo = "Ingresar Proveedor";
+require_once HEADER; ?>
 
 <div class="container">
     <div class="card card-body">
@@ -54,5 +55,4 @@
     </div>
 </div>
 
-<!-- incluimos  pie de pagina -->
 <?php require_once FOOTER; ?>

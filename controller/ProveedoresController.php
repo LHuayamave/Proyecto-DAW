@@ -1,12 +1,12 @@
-<!--autora : Nieves Pincay Kenia-->
 <?php
+// autor:Nieves Pincay Kenia
 require_once 'model/dao/ProveedoresDAO.php';
 require_once 'model/dto/Proveedor.php';
 
 class ProveedoresController {
     private $model;
     
-    public function __construct() {// constructor
+    public function __construct() {
         $this->model = new ProveedoresDAO();
     }
 
@@ -15,9 +15,7 @@ class ProveedoresController {
         //comunica con el modelo (enviar datos o obtener datos)
         $resultados = $this->model->selectAllFiltro("");
         // comunicarnos a la vista
-        // require_once HEADERADICIONAL;
         require_once VPROVEEDORES.'list.php';
-        // require_once FOOTER ;
     }
 
     public function search(){
@@ -40,14 +38,11 @@ class ProveedoresController {
 
     }
 
-    // lee datos del formulario de nuevo producto y lo inserta en la bdd (llamando al modelo)
+    // lee datos del formulario de nuevo proveedor y lo inserta en la bdd (llamando al modelo)
     public function new() {
       //cuando la solicitud es por post
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {// insertar el producto
-            // considerar verificaciones
-            //if(!isset($_POST['codigo'])){ header('');}
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {// insertar el proveedor
             $prov = new Proveedor();
-            // lectura de parametros
             $prov->setIdMedioPago(htmlentities($_POST['medioPago']));
             $prov->setIdProveedor(htmlentities($_POST['id']));
             $prov->setNombre(htmlentities($_POST['nombre']));
@@ -55,8 +50,6 @@ class ProveedoresController {
             $prov->setTelefono(htmlentities($_POST['telefono']));
             $prov->setFechaContrato(htmlentities($_POST['fecha']));
             
-
-
             //comunicar con el modelo
             $exito = $this->model->insert($prov);
 
@@ -97,27 +90,22 @@ class ProveedoresController {
     }
 
 
-   // muestra el formulario de editar producto
+   // muestra el formulario de editar proveedor
     public function view_edit(){
         //leer parametro
-        $id= $_REQUEST['id']; // verificar, limpiar
-        //comunicarse con el modelo de productos
+        $id= $_REQUEST['id']; 
         $prov = $this->model->selectOne($id);
-        //comunicarse con el modelo de categorias
         $modeloProv = new ProveedoresDAO();
         $prove = $modeloProv->selectAllMetodosPago();
         
-
         // comunicarse con la vista
         require_once VPROVEEDORES.'edit.php';
     }
 
-   // lee datos del formulario de editar producto y lo actualiza en la bdd (llamando al modelo)
+   // lee datos del formulario de editar proveedor y lo actualiza en la bdd (llamando al modelo)
     public function edit(){
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {// actualizar
-            // verificaciones
-            //if(!isset($_POST['codigo'])){ header('');}
-            // leer parametros
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
             $prov = new Proveedor();
             $prov->setIdProveedor(htmlentities($_POST['id']));
             $prov->setNombre(htmlentities($_POST['nombre']));

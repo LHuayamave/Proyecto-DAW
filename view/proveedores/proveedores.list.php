@@ -1,5 +1,6 @@
 <!--autor: Nieves Pincay Kenia-->
-<?php require_once HEADER; ?>
+<?php $titulo = "Lista de Proveedores";
+require_once HEADER;?>
 
 <div class="container">
     <div class="row">

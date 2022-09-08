@@ -1,5 +1,5 @@
 <?php
-
+// autor:Nieves Pincay Kenia
 class Proveedor
 {
     private $idProveedor, $nombre, $direccion, $telefono, $fechaContrato, $idMedioPago;
