@@ -1,3 +1,4 @@
+<!--autor: Sellan Fajardo Leonardo-->
 <?php require_once HEADER; ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,17 +19,6 @@
                 <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i>Buscar</button>
             </form>     
 
-        <?php
-        $titulo="Lista de solicitudes de tecnicos";
-        include_once '../plantillas/encabezado.php';
- 
-    require_once '../conexion.php';
-
-    $sql = "select * from solicitud_tecnico ";
-    $stmt = $pdo->prepare($sql); // preparar la sentencia
-    $stmt->execute(); // ejecutar la sentencia
-    ?>
-
     <div>
         <table>
             <thead id="cabecera">
@@ -43,15 +33,16 @@
             </thead>
             <tbody>
                 <?php
-                $filas = $stmt->fetchAll(PDO::FETCH_ASSOC); // recuperar resultados
-                foreach ($filas as $fila) {
+            
+                foreach ($resultados as $fila) {
                 ?>
                     <tr>
-                        <td><?php echo $fila['id'] ?></td>
-                        <td><?php echo $fila['nombres'] ?></td>
+                        <td><?php echo $fila['id_solicitud'] ?></td>
+                        <td><?php echo $fila['nombre'] ?></td>
                         <td><?php echo $fila['apellido'] ?></td>
-                        <td><?php echo $fila['problema_presentado'] ?></td>
-                        <td><?php echo $fila['recibir_correo'] ?></td>
+                        <td><?php echo $fila['correo'] ?></td>
+                        <td><?php echo $fila['fecha_solicitud'] ?></td>
+                        <td><?php echo $fila['id_problemas'] ?></td>
                         <td>
                             <a href="eliminar.php?id=<?php echo $fila['id'] ?>">
                                 <img src="../imagenes/eliminar.png" width="20px" height="20px" alt="eliminar"></a>
