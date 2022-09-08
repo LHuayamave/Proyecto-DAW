@@ -1,6 +1,8 @@
 <?php
-class Conexion {
-    public static function getConexion() {
+class Conexion
+{
+    public static function getConexion()
+    {
         $dsn = 'mysql:host=localhost;port=3306;dbname=' . DBNAME;
         $conexion = null;
         try {
@@ -9,8 +11,7 @@ class Conexion {
         } catch (Exception $e) {
             echo $e;
             die("error " . $e->getMessage());
-        }      
+        }
         return $conexion;
     }
-
 }

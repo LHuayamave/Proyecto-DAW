@@ -72,6 +72,7 @@ CREATE TABLE `problemas` (
 
 CREATE TABLE `producto` (
   `id_producto` int(11) NOT NULL,
+  `nombre` varchar(20) NOT NULL,
   `descripcion` varchar(100) NOT NULL,
   `stock_inicial` int(11) NOT NULL,
   `fecha_ingreso` date NOT NULL,
