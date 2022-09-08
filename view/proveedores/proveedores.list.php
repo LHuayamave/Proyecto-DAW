@@ -27,6 +27,7 @@ require_once HEADER;?>
                 <th>Tel&eacute;fono</th>
                 <th>Fecha contrato</th>
                 <th>Medio de Pago</th>
+                <th>Editar / Borrar</th>
             </thead>
             <tbody class="tabladatos">
                 <?php
