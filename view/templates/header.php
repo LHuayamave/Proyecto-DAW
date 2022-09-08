@@ -3,18 +3,21 @@
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">     
+        <meta name="viewport" content="width=device-width, initial-scale=1">   
+		<!-- Bootstrap CSS -->  
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="assets/css/estilos.css"/>
         <!-- FONT AWESOME -->
         <link rel="stylesheet" 
         href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" 
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" 
         crossorigin="anonymous">
-
+		
         <title>Automotriz</title>
     </head> 
 <div style="margin-bottom: 20px">
 	<header>
-		<a href="../index.html"><img src="../imagenes/logo3.png" alt="logo"/></a>
+		<a href=""><img src="assets/imagenes/logo3.png" alt="logo"/></a>
 	</header> 
     <nav>
 		<div id="navegador">

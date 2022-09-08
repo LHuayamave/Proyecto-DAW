@@ -1,0 +1,111 @@
+body{
+    margin: 0;
+    background-color: #fff;
+}
+header{
+    background-color: #2C4A64;
+    background-size: cover;
+    height:100px;
+    width: 100%;
+    overflow: hidden;
+}
+header img{
+    width: 400px;
+    height: 100px;
+    text-align: left;
+}
+#navegador ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+#navegador li {
+    float: left;
+    position: relative;
+}
+
+#navegador li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#navegador .active {
+    background-color: #2D7EC4;
+}
+
+#navegador li a:hover {
+    background-color: #111;
+}
+#navegador li ul{
+    display: none;
+    position: absolute;
+    min-width: 135px;
+}
+#navegador li:hover > ul{
+    display: block;
+}
+
+#formulario {
+    background-color: #98ECF8;
+    margin: 0px 30px 0px 400px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 40px;
+    padding-left: 40px;
+    width: 500px;
+    border-radius: 10px;
+    border-style: groove;
+}
+
+input[type=text]{
+    border-radius: 8px;
+}
+
+#razonSolicitud {
+    width: 450px;
+    height: 100px;
+}
+
+input[type=submit],
+input[type=reset] {
+    background-color: #2C4A64;
+    color: white;
+    border-radius: 7px;
+    width: 100px;
+    height: 35px;
+    text-align: center;
+}
+
+#boton {
+    text-align: center;
+}
+
+
+table{
+    margin-top:30px;
+}
+table, td, th {
+    padding: 7px;
+    margin-left:7px;
+    border: #7E7E83 1px solid;
+    border-collapse: collapse;
+}
+.cabecera{
+    background-color:#98ECF8;
+}
+tbody{
+    background-color:white;
+}
+.agregar{
+    margin-left:7px;
+    background-color: #2C4A64;
+    color: white;
+    padding: 7px;
+    border-radius: 3px;
+}

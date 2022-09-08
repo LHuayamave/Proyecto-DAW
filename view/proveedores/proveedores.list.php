@@ -6,12 +6,12 @@
         <div class="col-sm-6">
             <form action="index.php?c=productos&f=search" method="POST">
                 <input type="text" name="b" id="busqueda" placeholder="buscar..." />
-                <button type="submit" class="btn btn-primary"><i class="fa-light fa-magnifying-glass"></i>Buscar</button>
+                <button type="submit" class=" "><i class="fa-light fa-magnifying-glass"></i>Buscar</button>
             </form>
         </div>
         <div class="">
             <a href="index.php?c=productos&f=view_new">
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="agregar">
                     <i class="fa-light fa-plus"></i>
                     Nuevo</button>
 
@@ -20,7 +20,7 @@
     </div>
     <div class=" ">
         <table class=" ">
-            <thead class=" ">
+            <thead class="cabecera">
                 <th>Id Proveedor</th>
                 <th>Nombre</th>
                 <th>Direcci&oacute;n</th>

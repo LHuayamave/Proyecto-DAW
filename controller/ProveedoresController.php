@@ -1,10 +1,10 @@
-//autora : Nieves Pincay Kenia
+<!--autora : Nieves Pincay Kenia-->
 <?php
 require_once 'model/dao/ProveedoresDAO.php';
 //require_once 'model/dao/CategoriasDAO.php';
 require_once 'model/dto/Proveedor.php';
 
-class ProveeedoresController {
+class ProveedoresController {
     private $model;
     
     public function __construct() {// constructor
@@ -118,7 +118,7 @@ class ProveeedoresController {
     }
 
    // lee datos del formulario de editar producto y lo actualiza en la bdd (llamando al modelo)
-   public function edit(){
+    public function edit(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {// actualizar
             // verificaciones
             //if(!isset($_POST['codigo'])){ header('');}

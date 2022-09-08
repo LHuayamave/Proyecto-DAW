@@ -11,7 +11,7 @@ class ProveedoresDAO {
 
     public function selectAll($parametro) {
         // sql de la sentencia
-        $sql = "SELECT * FROM proveedpr p , medio_pago m  where p.id_medio_pago = m.id_medio_pago and 
+        $sql = "SELECT * FROM proveedor p , medio_pago m  where p.id_medio_pago = m.id_medio_pago and 
         (p.nombre like :b1 or m.nombre_medio like :b2)";
         $stmt = $this->con->prepare($sql);
         // preparar la sentencia
