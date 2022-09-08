@@ -1,6 +1,6 @@
 <?php
 //controlador y funcion predefinida
-define("CONTROLADOR_PRINCIPAL", "productos");
+define("CONTROLADOR_PRINCIPAL", "proveedores");
 define("FUNCION_PRINCIPAL", "index");
 
 //ruta de templates
