@@ -27,7 +27,7 @@
 				<li><a href="">Inventario</a></li>
 				<li><a href="">Solicitudes de Servicio</a></li>
 				<li><a href="">Tecnicos</a></li>
-				<li><a href="index.php?c=Provedores&f=index">Proveedores</a></li>
+				<li><a href="index.php?c=Proveedores&f=index">Proveedores</a></li>
 			</ul>
 		</div>
 	</nav>

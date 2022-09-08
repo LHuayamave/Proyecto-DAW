@@ -9,7 +9,7 @@ class ProveedoresDAO {
         $this->con = Conexion::getConexion();
     }
 
-    public function selectAll($parametro) {
+    public function selectAllFiltro($parametro) {
         // sql de la sentencia
         $sql = "SELECT * FROM proveedor p , medio_pago m  where p.id_medio_pago = m.id_medio_pago and 
         (p.nombre like :b1 or m.nombre_medio like :b2)";
@@ -22,6 +22,21 @@ class ProveedoresDAO {
         //recuperar  resultados
         $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
         //retornar resultados
+        return $resultados;
+    }
+
+    public function selectAll() {
+        // sql de la sentencia
+        $sql = "select * from proveedor";
+        //preparacion de la sentencia
+        $stmt = $this->con->prepare($sql);
+        //ejecucion de la sentencia
+        $stmt->execute();
+        //recuperacion de resultados
+        $resultados = $stmt->fetchAll(PDO::FETCH_OBJ);
+        // retorna cada fila como un objeto de una clase anonima
+        // cuyos nombres de atributos son iguales a los nombres de las columnas retornadas
+        // retorna datos para el controlador
         return $resultados;
     }
 

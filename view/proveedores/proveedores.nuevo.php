@@ -22,7 +22,7 @@
                     <input type="text" name="telefono" id="telefono" class="form-control" placeholder="telefono proveedor" required>
                 </div>
                 <div>
-                    <label>Fecha de Nacimiento:</label>
+                    <label>Fecha de Contrato:</label>
                     <input type="date" name="fecha" id="fecha" class=" " />
                 </div>
                 <div class=" ">
@@ -40,11 +40,11 @@
 
                     </select>
                 </div>
-                <div class="form-group col-sm-12">
+                <!--<div class="form-group col-sm-12">
                     <input type="checkbox" id="estado" name="estado" >
                     <label for="estado">Activo</label>
-                </div>
-                <div class=" ">
+                </div>*/
+                <div class=" "-->
                     <button type="submit" class="btn btn-primary">Guardar</button>
 
                     <a href="index.php?c=proveedores&f=index" class="btn btn-primary">

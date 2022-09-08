@@ -14,7 +14,7 @@ class ProveedoresController {
     // funciones del controlador
     public function index() {
         //comunica con el modelo (enviar datos o obtener datos)
-        $resultados = $this->model->selectAll("");
+        $resultados = $this->model->selectAllFiltro("");
         // comunicarnos a la vista
         // require_once HEADERADICIONAL;
         require_once VPROVEEDORES.'list.php';
@@ -25,7 +25,7 @@ class ProveedoresController {
         // lectura de parametros enviados
         $parametro = (!empty($_POST["b"]))?htmlentities($_POST["b"]):"";
         //comunica con el modelo (enviar datos o obtener datos)
-        $resultados = $this->model->selectAll($parametro);
+        $resultados = $this->model->selectAllFiltro($parametro);
         // comunicarnos a la vista
         require_once VPROVEEDORES.'list.php';
     }
@@ -51,12 +51,12 @@ class ProveedoresController {
             // lectura de parametros
             $prov->setIdProveedor(htmlentities($_POST['id_proveedor']));
             $prov->setNombre(htmlentities($_POST['nombre']));
-            $prov->setDireccion(htmlentities($_POST['descripcion']));
-            $prov->setTelefono(htmlentities($_POST['precio']));
-            $prov->setFechaContrato(htmlentities($_POST['fecha_contrato'])->format('Y-m-d H:i:s'));
+            $prov->setDireccion(htmlentities($_POST['direccion']));
+            $prov->setTelefono(htmlentities($_POST['telefono']));
+            $prov->setFechaContrato(htmlentities($_POST['fecha_contrato']));
             $prov->setIdMedioPago(htmlentities($_POST['id_medio_pago']));
-            $estado = (isset($_POST['estado'])) ? 1 : 0; // ejemplo de dato no obligatorio
-            $prov->setEstado($estado);
+            /*$estado = (isset($_POST['estado'])) ? 1 : 0; // ejemplo de dato no obligatorio
+            $prov->setEstado($estado);*/
             /*
             $prov->setUsuario('usuario'); //$_SESSION['usuario'];
             $fechaActual = new DateTime('NOW');

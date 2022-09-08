@@ -4,23 +4,22 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
-            <form action="index.php?c=productos&f=search" method="POST">
+            <form action="index.php?c=proveedores&f=search" method="POST">
                 <input type="text" name="b" id="busqueda" placeholder="buscar..." />
-                <button type="submit" class=" "><i class="fa-light fa-magnifying-glass"></i>Buscar</button>
+                <button type="submit" class="btn btn-primary"><i class="fa-light fa-magnifying-glass"></i>Buscar</button>
             </form>
         </div>
-        <div class="">
-            <a href="index.php?c=productos&f=view_new">
-                <button type="button" class="agregar">
+        <div class="col-sm-6 d-flex flex-column align-items-end">
+            <a href="index.php?c=proveedores&f=view_new">
+                <button type="button" class="btn btn-primary">
                     <i class="fa-light fa-plus"></i>
                     Nuevo</button>
-
             </a>
         </div>
     </div>
-    <div class=" ">
-        <table class=" ">
-            <thead class="cabecera">
+    <div class="table-responsive mt-2">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
                 <th>Id Proveedor</th>
                 <th>Nombre</th>
                 <th>Direcci&oacute;n</th>
@@ -40,10 +39,10 @@
                         <td><?php echo $fila['fecha_contrato']; ?></td>
                         <td><?php echo $fila['nombre_medio']; ?></td>
                         <td>
-                            <a class=" " href="index.php?c=proveedores&f=view_edit&id=<?php echo  $fila['id_proveedor']; ?>">
+                            <a class="btn btn-primary" href="index.php?c=proveedores&f=view_edit&id=<?php echo  $fila['id_proveedor']; ?>">
                                 <i class="fa-light fa-pen-to-square"></i>
                             </a>
-                            <a class=" " onclick="if(!confirm('Esta seguro de eliminar a este proveedor?'))return false;" href="index.php?c=proveedores&f=delete&id=<?php echo  $fila['id_proveedor']; ?>">
+                            <a class="btn btn-danger" onclick="if(!confirm('Esta seguro de eliminar a este proveedor?'))return false;" href="index.php?c=proveedores&f=delete&id=<?php echo  $fila['id_proveedor']; ?>">
                                 <i class="fa-light fa-trash"></i>
                             </a>
                         </td>
