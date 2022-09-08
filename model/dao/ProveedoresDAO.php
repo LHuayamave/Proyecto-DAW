@@ -133,11 +133,11 @@ class ProveedoresDAO {
     public function delete($prov){
         try{
             //prepare
-            $sql = "DELETE `proveedor` WHERE id_proveedor=:idPro";
+            $sql = "DELETE FROM `proveedor` WHERE id_proveedor =:id";
             //bind parameters
             $sentencia = $this->con->prepare($sql);
             $data = [
-                'idPro' =>  $prov->getIdProveedor()
+                'id' =>  $prov->getIdProveedor()
             ];
             //execute
             $sentencia->execute($data);
