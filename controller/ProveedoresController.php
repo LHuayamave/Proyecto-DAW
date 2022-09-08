@@ -1,7 +1,7 @@
 <!--autora : Nieves Pincay Kenia-->
 <?php
 require_once 'model/dao/ProveedoresDAO.php';
-//require_once 'model/dao/CategoriasDAO.php';
+//require_once 'model/dao/MetodosPagoDAO.php';
 require_once 'model/dto/Proveedor.php';
 
 class ProveedoresController {
@@ -34,7 +34,7 @@ class ProveedoresController {
     public function view_new(){
         //comunicarse con el modelo
         $modeloProv = new ProveedoresDAO();
-        $proveedores = $modeloProv->selectAll();
+        $prove = $modeloProv->selectAllMetodosPago();
 
         // comunicarse con la vista
         require_once VPROVEEDORES.'nuevo.php';
@@ -55,15 +55,9 @@ class ProveedoresController {
             $prov->setTelefono(htmlentities($_POST['telefono']));
             $prov->setFechaContrato(htmlentities($_POST['fecha_contrato']));
             $prov->setIdMedioPago(htmlentities($_POST['id_medio_pago']));
-            /*$estado = (isset($_POST['estado'])) ? 1 : 0; // ejemplo de dato no obligatorio
-            $prov->setEstado($estado);*/
-            /*
-            $prov->setUsuario('usuario'); //$_SESSION['usuario'];
-            $fechaActual = new DateTime('NOW');
-            $prod->setFechaActualizacion($fechaActual->format('Y-m-d H:i:s'));*/
             
             //comunicar con el modelo
-            $exito = $this->model->insert($prod);
+            $exito = $this->model->insert($prov);
 
             $msj = 'Producto guardado exitosamente';
             $color = 'primary';
@@ -130,8 +124,8 @@ class ProveedoresController {
             $prov->setTelefono(htmlentities($_POST['precio']));
             $prov->setFechaContrato(htmlentities($_POST['fecha_contrato'])->format('Y-m-d H:i:s'));
             $prov->setIdMedioPago(htmlentities($_POST['id_medio_pago']));
-            $estado = (isset($_POST['estado'])) ? 1 : 0; // ejemplo de dato no obligatorio
-            $prov->setEstado($estado);
+            /*$estado = (isset($_POST['estado'])) ? 1 : 0; // ejemplo de dato no obligatorio
+            $prov->setEstado($estado);*/
             
             //llamar al modelo
             $exito = $this->model->update($prov);
