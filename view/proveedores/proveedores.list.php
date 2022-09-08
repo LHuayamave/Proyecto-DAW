@@ -12,7 +12,7 @@
         <div class="col-sm-6 d-flex flex-column align-items-end">
             <a href="index.php?c=proveedores&f=view_new">
                 <button type="button" class="btn btn-primary">
-                    <i class="fa-light fa-plus"></i>
+                <i class="fas fa-plus"></i>
                     Nuevo</button>
             </a>
         </div>
@@ -40,10 +40,10 @@
                         <td><?php echo $fila['nombre_medio']; ?></td>
                         <td>
                             <a class="btn btn-primary" href="index.php?c=proveedores&f=view_edit&id=<?php echo  $fila['id_proveedor']; ?>">
-                                <i class="fa-light fa-pen-to-square"></i>
+                                <i class="fas fa-marker"></i></a>
                             </a>
                             <a class="btn btn-danger" onclick="if(!confirm('Esta seguro de eliminar a este proveedor?'))return false;" href="index.php?c=proveedores&f=delete&id=<?php echo  $fila['id_proveedor']; ?>">
-                                <i class="fa-light fa-trash"></i>
+                                <i class="fas fa-trash-alt"></i></a>
                             </a>
                         </td>
                     </tr>

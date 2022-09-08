@@ -1,6 +1,6 @@
 <?php
 // dao data access object
-require_once 'config/Conexion.php';
+require_once 'config/conexion.php';
 
 class ProveedoresDAO {
     private $con;
@@ -64,9 +64,9 @@ class ProveedoresDAO {
         // ejecutar la sentencia
         $stmt->execute($data);
         // recuperar los datos (en caso de select)
-        $producto = $stmt->fetch(PDO::FETCH_ASSOC);// fetch retorna el primer registro
+        $proveedor = $stmt->fetch(PDO::FETCH_ASSOC);// fetch retorna el primer registro
         // retornar resultados
-        return $producto;
+        return $proveedor;
     }
 
     public function insert($prov){

@@ -35,3 +35,19 @@
         <?php echo isset($titulo)?$titulo:""; ?>
     </h1>
 </div>
+
+<?php
+        if (!isset($_SESSION)) {
+            session_start();
+        };
+        if (!empty($_SESSION['mensaje'])) {
+            ?>
+            <div class="mt-2 alert alert-<?php echo $_SESSION['color']; ?>
+					alert-dismissible fade show" role="alert">
+					<?php echo $_SESSION['mensaje']; ?>  
+            </div>
+            <?php
+            unset($_SESSION['mensaje']);
+            unset($_SESSION['color']);
+        }//end if 
+        ?>

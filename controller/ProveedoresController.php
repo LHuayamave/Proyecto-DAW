@@ -1,7 +1,6 @@
 <!--autora : Nieves Pincay Kenia-->
 <?php
 require_once 'model/dao/ProveedoresDAO.php';
-//require_once 'model/dao/MetodosPagoDAO.php';
 require_once 'model/dto/Proveedor.php';
 
 class ProveedoresController {
@@ -49,13 +48,15 @@ class ProveedoresController {
             //if(!isset($_POST['codigo'])){ header('');}
             $prov = new Proveedor();
             // lectura de parametros
-            $prov->setIdProveedor(htmlentities($_POST['id_proveedor']));
+            $prov->setIdMedioPago(htmlentities($_POST['medioPago']));
+            $prov->setIdProveedor(htmlentities($_POST['id']));
             $prov->setNombre(htmlentities($_POST['nombre']));
             $prov->setDireccion(htmlentities($_POST['direccion']));
             $prov->setTelefono(htmlentities($_POST['telefono']));
-            $prov->setFechaContrato(htmlentities($_POST['fecha_contrato']));
-            $prov->setIdMedioPago(htmlentities($_POST['id_medio_pago']));
+            $prov->setFechaContrato(htmlentities($_POST['fecha']));
             
+
+
             //comunicar con el modelo
             $exito = $this->model->insert($prov);
 
@@ -78,7 +79,7 @@ class ProveedoresController {
     public function delete(){
         //leeer parametros
         $prov = new Proveedor();
-        $prov->setIdProveedor(htmlentities($_REQUEST['id_proveedor']));
+        $prov->setIdProveedor(htmlentities($_REQUEST['id']));
             
             //comunicando con el modelo
             $exito = $this->model->delete($prov);
@@ -99,12 +100,12 @@ class ProveedoresController {
    // muestra el formulario de editar producto
     public function view_edit(){
         //leer parametro
-        $id= $_REQUEST['id_proveedor']; // verificar, limpiar
+        $id= $_REQUEST['id']; // verificar, limpiar
         //comunicarse con el modelo de productos
         $prov = $this->model->selectOne($id);
         //comunicarse con el modelo de categorias
         $modeloProv = new ProveedoresDAO();
-        $proveedores = $modeloProv->selectAll();
+        $prove = $modeloProv->selectAllMetodosPago();
         
 
         // comunicarse con la vista
@@ -118,19 +119,17 @@ class ProveedoresController {
             //if(!isset($_POST['codigo'])){ header('');}
             // leer parametros
             $prov = new Proveedor();
-            $prov->setIdProveedor(htmlentities($_POST['id_proveedor']));
+            $prov->setIdProveedor(htmlentities($_POST['id']));
             $prov->setNombre(htmlentities($_POST['nombre']));
-            $prov->setDireccion(htmlentities($_POST['descripcion']));
-            $prov->setTelefono(htmlentities($_POST['precio']));
-            $prov->setFechaContrato(htmlentities($_POST['fecha_contrato'])->format('Y-m-d H:i:s'));
-            $prov->setIdMedioPago(htmlentities($_POST['id_medio_pago']));
-            /*$estado = (isset($_POST['estado'])) ? 1 : 0; // ejemplo de dato no obligatorio
-            $prov->setEstado($estado);*/
+            $prov->setDireccion(htmlentities($_POST['direccion']));
+            $prov->setTelefono(htmlentities($_POST['telefono']));
+            $prov->setFechaContrato(htmlentities($_POST['fecha']));
+            $prov->setIdMedioPago(htmlentities($_POST['medioPago']));
             
             //llamar al modelo
             $exito = $this->model->update($prov);
             
-            $msj = 'Producto actualizado exitosamente';
+            $msj = 'Proveedor actualizado exitosamente';
             $color = 'primary';
             if (!$exito) {
                 $msj = "No se pudo realizar la actualizacion";
@@ -140,7 +139,7 @@ class ProveedoresController {
             $_SESSION['mensaje'] = $msj;
             $_SESSION['color'] = $color;
         //llamar a la vista
-        // header('Location:index.php?c=productos&f=index');
+        header('Location:index.php?c=Proveedores&f=index');
             
         } 
     }
