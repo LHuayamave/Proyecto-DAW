@@ -28,7 +28,7 @@
                 <div class=" ">
                     <label for="medioPago">Medio de Pago</label>
                     <select id="medioPago" name="medioPago" class=" ">
-                        <?php foreach ($medioPago as $medio) {
+                        <?php foreach ($prove as $medio) {
                             ?>
                             <option value="<?php echo $medio->id_medio_pago ?>">
                             <?php echo $medio->nombre_medio; ?>
@@ -40,11 +40,6 @@
 
                     </select>
                 </div>
-                <!--<div class="form-group col-sm-12">
-                    <input type="checkbox" id="estado" name="estado" >
-                    <label for="estado">Activo</label>
-                </div>*/
-                <div class=" "-->
                     <button type="submit" class="btn btn-primary">Guardar</button>
 
                     <a href="index.php?c=proveedores&f=index" class="btn btn-primary">

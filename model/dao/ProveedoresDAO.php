@@ -40,6 +40,21 @@ class ProveedoresDAO {
         return $resultados;
     }
 
+    public function selectAllMetodosPago() {
+        // sql de la sentencia
+        $sql = "select * from medio_pago";
+        //preparacion de la sentencia
+        $stmt = $this->con->prepare($sql);
+        //ejecucion de la sentencia
+        $stmt->execute();
+        //recuperacion de resultados
+        $resultados = $stmt->fetchAll(PDO::FETCH_OBJ);
+        // retorna cada fila como un objeto de una clase anonima
+        // cuyos nombres de atributos son iguales a los nombres de las columnas retornadas
+        // retorna datos para el controlador
+        return $resultados;
+    }
+
     public function selectOne($id) { // buscar un producto por su id
         $sql = "select * from proveedor where ".
         "id_proveedor=:id";
@@ -57,7 +72,7 @@ class ProveedoresDAO {
     public function insert($prov){
         try{
         //sentencia sql
-        $sql = "INSERT INTO proveedor (id_proveedor, nombre, direccion, telefono, fecha_contratp, 
+        $sql = "INSERT INTO proveedor (id_proveedor, nombre, direccion, telefono, fecha_contrato, 
         id_medio_pago) VALUES 
         (:idPro, :nom, :dir, :telf, :fcontrato, :idMedio)";
 
@@ -118,8 +133,7 @@ class ProveedoresDAO {
     public function delete($prov){
         try{
             //prepare
-            $sql = "UPDATE `proveedor` SET `estado`=0 WHERE id_proveedor=:idPro";
-            //now());
+            $sql = "DELETE `proveedor` WHERE id_proveedor=:idPro";
             //bind parameters
             $sentencia = $this->con->prepare($sql);
             $data = [
