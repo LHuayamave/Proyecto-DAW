@@ -11,7 +11,7 @@ class SolicitudTecnicoDAO {
 
     public function selectAll($parametro) {
         // sql de la sentencia
-      $sql = "SELECT * FROM solicitud_tecnico, problemas  where id_solicitud = id_problemas and 
+      $sql = "SELECT * FROM solicitud_tecnico s, problemas p  where s.id_problemas = p.id_problemas and 
       (nombre like :b1 or nombre_problema like :b2)";
       $stmt = $this->con->prepare($sql);
       // preparar la sentencia
