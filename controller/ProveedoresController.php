@@ -77,7 +77,7 @@ class ProveeedoresController {
             $_SESSION['mensaje'] = $msj;
             $_SESSION['color'] = $color;
             //llamar a la vista
-            header('Location:index.php?c=Productos&f=index');
+            header('Location:index.php?c=proveedores&f=index');
         } 
     }
 
@@ -98,7 +98,7 @@ class ProveeedoresController {
                 $_SESSION['mensaje'] = $msj;
                 $_SESSION['color'] = $color;
             //llamar a la vista
-            header('Location:index.php?c=productos&f=index');
+            header('Location:index.php?c=proveedores&f=index');
     }
 
 

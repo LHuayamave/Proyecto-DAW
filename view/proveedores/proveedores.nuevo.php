@@ -3,7 +3,7 @@
 
 <div class="container">
     <div class=" ">
-        <form action="index.php?c=productos&f=new" method="POST" name="formProvNuevo" id="formProvNuevo">
+        <form action="index.php?c=proveedores&f=new" method="POST" name="formProvNuevo" id="formProvNuevo">
             <div class="form-row">
                 <div class=" ">
                     <label for="codigo">Id</label>
@@ -47,7 +47,7 @@
                 <div class=" ">
                     <button type="submit" class="btn btn-primary">Guardar</button>
 
-                    <a href="index.php?c=productos&f=index" class="btn btn-primary">
+                    <a href="index.php?c=proveedores&f=index" class="btn btn-primary">
                         Cancelar</a>
                 </div>
             </div>  

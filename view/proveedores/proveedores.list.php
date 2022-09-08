@@ -40,10 +40,10 @@
                         <td><?php echo $fila['fecha_contrato']; ?></td>
                         <td><?php echo $fila['nombre_medio']; ?></td>
                         <td>
-                            <a class=" " href="index.php?c=productos&f=view_edit&id=<?php echo  $fila['id_proveedor']; ?>">
+                            <a class=" " href="index.php?c=proveedores&f=view_edit&id=<?php echo  $fila['id_proveedor']; ?>">
                                 <i class="fa-light fa-pen-to-square"></i>
                             </a>
-                            <a class=" " onclick="if(!confirm('Esta seguro de eliminar a este proveedor?'))return false;" href="index.php?c=productos&f=delete&id=<?php echo  $fila['id_proveedor']; ?>">
+                            <a class=" " onclick="if(!confirm('Esta seguro de eliminar a este proveedor?'))return false;" href="index.php?c=proveedores&f=delete&id=<?php echo  $fila['id_proveedor']; ?>">
                                 <i class="fa-light fa-trash"></i>
                             </a>
                         </td>

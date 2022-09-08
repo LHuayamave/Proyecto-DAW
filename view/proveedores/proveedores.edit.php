@@ -3,7 +3,7 @@
 
 <div class="container">
     <div class=" ">
-        <form action="index.php?c=productos&f=edit" method="POST" name="formProvNuevo" id="formProvNuevo">
+        <form action="index.php?c=proveedores&f=edit" method="POST" name="formProvNuevo" id="formProvNuevo">
         
         <input type="hidden" name="id" id="id" value="<?php echo $prod['id_proveedor']; ?>"/>
             <div class=" ">
@@ -51,7 +51,7 @@
                 <div class="form-group mx-auto">
                     <button type="submit" class="btn btn-primary"
                         onclick="if (!confirm('Esta seguro de modificar el producto?')) return false;" >Guardar</button>
-                    <a href="index.php?c=productos&f=index" class="btn btn-primary">Cancelar</a>
+                    <a href="index.php?c=proveedores&f=index" class="btn btn-primary">Cancelar</a>
                 </div>
                     
             </div>  
