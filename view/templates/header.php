@@ -22,7 +22,7 @@
             <ul>
                 <li><a href="">Inicio</a></li>
                 <li><a href="">Cotizaci&oacute;n</a></li>
-                <li><a href="index.php?c=Productos&f=index">Inventario</a></li>
+                <li><a href="index.php?c=Productos&f=index">Productos</a></li>
                 <li><a href="">Solicitudes de Servicio</a></li>
                 <li><a href="index.php?c=SolicitudTecnico&f=index">Tecnicos</a></li>
                 <li><a href="index.php?c=Proveedores&f=index">Proveedores</a></li>

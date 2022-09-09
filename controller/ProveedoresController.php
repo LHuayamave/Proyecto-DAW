@@ -58,7 +58,7 @@ class ProveedoresController
             //comunicar con el modelo
             $exito = $this->model->insert($prov);
 
-            $msj = 'Producto guardado exitosamente';
+            $msj = 'Proveedor guardado exitosamente';
             $color = 'primary';
             if (!$exito) {
                 $msj = "No se pudo realizar el guardado";
@@ -82,7 +82,7 @@ class ProveedoresController
 
         //comunicando con el modelo
         $exito = $this->model->delete($prov);
-        $msj = 'Producto eliminado exitosamente';
+        $msj = 'Proveedor eliminado exitosamente';
         $color = 'primary';
         if (!$exito) {
             $msj = "No se pudo eliminar a este proveedor";

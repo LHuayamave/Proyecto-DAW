@@ -246,8 +246,17 @@ ALTER TABLE `tipo_servicio`
   ADD PRIMARY KEY (`id_tipo`);
 
 --
+-- AUTO_INCREMENT de la tabla `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+
+--
+
+--
 -- Restricciones para tablas volcadas
 --
+
 
 --
 -- Filtros para la tabla `cotizacion`

@@ -1,5 +1,6 @@
 <?php
 require_once 'model/dao/ProductosDAO.php';
+require_once 'model/dao/ProveedoresDAO.php';
 require_once 'model/dto/Producto.php';
 
 class ProductosController
@@ -26,8 +27,11 @@ class ProductosController
 
     public function view_new()
     {
-        $modeloProd = new ProductosDAO();
-        $prod = $modeloProd->selectTipoProducto();
+        $modeloProv = new ProveedoresDAO();
+        $prov = $modeloProv->selectAll();
+
+        $modeloTipo = new ProductosDAO();
+        $tipo = $modeloTipo->selectTipoProducto();
         require_once VPRODUCTOS . 'nuevo.php';
     }
 
@@ -35,13 +39,13 @@ class ProductosController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $prod = new Producto();
-            $prod->setIdTipo(htmlentities($_POST['tipo_producto']));
-            $prod->setIdProveedor(htmlentities($_POST['proveedor']));
             $prod->setNombre(htmlentities($_POST['nombre']));
             $prod->setDescripcion(htmlentities($_POST['descripcion']));
             $prod->setStockInicial(htmlentities($_POST['stock_inicial']));
             $prod->setFechaIngreso(htmlentities($_POST['fecha_ingreso']));
             $prod->setTotal(htmlentities($_POST['total']));
+            $prod->setIdTipo(htmlentities($_POST['tipo_producto']));
+            $prod->setIdProveedor(htmlentities($_POST['nombre_proveedor']));
 
             $exito = $this->model->insert($prod);
             $msj = 'Se ha guardado el producto de manera existe';

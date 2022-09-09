@@ -34,14 +34,14 @@ class ProductosDAO
         return $resultados;
     }
 
-    public function selectProveedor()
+    /*public function selectProveedor() ELIMINA ESTE MÉTODO, OBTIENES AL PROVEEDOR DESDE MI CLASE PROVEEDORES DAO
     {
         $sql = "select * from proveedor";
         $stmt = $this->con->prepare($sql);
         $stmt->execute();
         $resultados = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $resultados;
-    }
+    }*/
 
     public function selectOne($id)
     {
@@ -58,14 +58,14 @@ class ProductosDAO
     public function insert($prod)
     {
         try {
-            $sql = "INSERT INTO producto (id_producto, nombre_producto, descripcion, stock_inicial, fecha_ingreso, total,
+            $sql = "INSERT INTO producto (id_producto, nombre, descripcion, stock_inicial, fecha_ingreso, total,
             id_tipo, id_proveedor) VALUES
-            (:null, :nom, :desc, :stock, :fecha, :total, :idTipo, :idProveedor)";
+            (null, :nom, :descr, :stock, :fecha, :total, :idTipo, :idProveedor)";
 
             $stmt = $this->con->prepare($sql);
             $data = [
                 'nom' => $prod->getNombre(),
-                'desc' => $prod->getDescripcion(),
+                'descr' => $prod->getDescripcion(),
                 'stock' => $prod->getStockInicial(),
                 'fecha' => $prod->getFecha_ingreso(),
                 'total' => $prod->getTotal(),

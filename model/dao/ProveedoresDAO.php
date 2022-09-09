@@ -28,6 +28,19 @@ class ProveedoresDAO
         return $resultados;
     }
 
+    public function selectAll()
+    {
+        // sql de la sentencia
+        $sql = "select * from proveedor";
+        //preparacion de la sentencia
+        $stmt = $this->con->prepare($sql);
+        //ejecucion de la sentencia
+        $stmt->execute();
+        //recuperacion de resultados
+        $resultados = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $resultados;
+    }
+
     public function selectAllMetodosPago()
     {
         // sql de la sentencia

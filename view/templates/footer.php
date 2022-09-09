@@ -1,7 +1,7 @@
 <footer class="p-3 mb-2 bg-dark text-white" style="margin-top:30px">
     <div class="row">
         <div class="col-sm-4 d-flex flex-column">
-            <a href="" >Nosotros</a>
+            <a href="index.php?c=Productos&f=index" >Productos</a>
             <a href="" >Cat&aacute;logo</a>
             <a href="index.php?c=SolicitudTecnico&f=index" >T&eacute;cnicos</a>
             <a href="index.php?c=Proveedores&f=index" >Proveedores</a>

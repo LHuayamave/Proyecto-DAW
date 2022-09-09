@@ -46,7 +46,7 @@ require_once HEADER; ?>
                 </div>
                 <div class="form-group mx-auto">
                     <button type="submit" class="btn btn-primary"
-                        onclick="if (!confirm('Esta seguro de modificar el producto?')) return false;" >Guardar</button>
+                        onclick="if (!confirm('Esta seguro de modificar el proveedor?')) return false;" >Guardar</button>
                     <a href="index.php?c=proveedores&f=index" class="btn btn-primary">Cancelar</a>
                 </div>
                     
