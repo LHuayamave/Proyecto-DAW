@@ -8,7 +8,7 @@ require_once HEADER; ?>
             <div class="form-row">
                 <div class="form-group col-sm-6">
                     <label for="id">Id</label>
-                    <input type="text"  name="id" id="id" class="form-control" placeholder="codigo del proveedor" autofocus="" required/>
+                    <input type="text" name="id" id="id" class="form-control" placeholder="codigo del proveedor" autofocus="" required />
                 </div>
                 <div class="form-group col-sm-6">
                     <label for="nombre">Nombre</label>
@@ -30,14 +30,14 @@ require_once HEADER; ?>
                     <label for="medioPago">Medio de Pago</label>
                     <select id="medioPago" name="medioPago" class=" ">
                         <?php foreach ($prove as $medio) {
-                            ?>
+                        ?>
                             <option value="<?php echo $medio->id_medio_pago ?>">
-                            <?php echo $medio->nombre_medio; ?>
+                                <?php echo $medio->nombre_medio; ?>
                             </option>
 
                         <?php
                         }
-                        ?>   
+                        ?>
 
                     </select>
                 </div>
@@ -47,8 +47,8 @@ require_once HEADER; ?>
                     <a href="index.php?c=proveedores&f=index" class="btn btn-primary">
                         Cancelar</a>
                 </div>
-                    
-            </div>  
+
+            </div>
         </form>
 
 

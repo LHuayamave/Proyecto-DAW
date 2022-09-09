@@ -1,6 +1,6 @@
 <!--autor: Nieves Pincay Kenia-->
 <?php $titulo = "Lista de Proveedores";
-require_once HEADER;?>
+require_once HEADER; ?>
 
 <div class="container">
     <div class="row">
@@ -13,7 +13,7 @@ require_once HEADER;?>
         <div class="col-sm-6 d-flex flex-column align-items-end">
             <a href="index.php?c=proveedores&f=view_new">
                 <button type="button" class="btn btn-primary">
-                <i class="fas fa-plus"></i>
+                    <i class="fas fa-plus"></i>
                     Nuevo</button>
             </a>
         </div>

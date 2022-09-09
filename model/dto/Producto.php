@@ -73,6 +73,11 @@ class Producto
         $this->fecha_ingreso = $fecha_ingreso;
     }
 
+    function setTotal($total)
+    {
+        $this->total = $total;
+    }
+
     function setIdTipo($id_tipo)
     {
         $this->id_tipo = $id_tipo;
