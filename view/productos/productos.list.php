@@ -41,7 +41,7 @@
                         <td><?php echo $fila['descripcion']; ?></td>
                         <td><?php echo $fila['stock_inicial']; ?></td>
                         <td><?php echo $fila['fecha_ingreso']; ?></td>
-                        <td><?php echo $fila['total']; ?></td>
+                        <td><?php echo '$' . $fila['total']; ?></td>
                         <td><?php echo $fila['tipo_producto']; ?></td>
                         <td><?php echo $fila['nombre_proveedor']; ?></td>
 

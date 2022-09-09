@@ -43,11 +43,11 @@ require_once HEADER; ?>
                 <div class="form-group col-sm-6">
                     <label>Proveedor: </label>
                     </select>
-                    <select name="proveedor" id="proveedor" class="">
-                        <?php foreach ($prod as $prov) {
+                    <select name="nombre_proveedor" id="nombre_proveedor" class="">
+                        <?php foreach ($prod2 as $prov) {
                         ?>
-                            <option value="<?php echo $prov->id_proveedor ?>">
-                                <?php echo $prov->$nombre_proveedor; ?>
+                            <option value="<?php echo $prov->id_proveedor  ?>">
+                                <?php echo $prov->nombre_proveedor; ?>
                             </option>
 
                         <?php

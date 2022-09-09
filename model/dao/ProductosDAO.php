@@ -25,9 +25,18 @@ class ProductosDAO
         return $resultados;
     }
 
-    public function selectAllProductos()
+    public function selectTipoProducto()
     {
-        $sql = "select * from producto";
+        $sql = "select * from tipo_producto";
+        $stmt = $this->con->prepare($sql);
+        $stmt->execute();
+        $resultados = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $resultados;
+    }
+
+    public function selectProveedor()
+    {
+        $sql = "select * from proveedor";
         $stmt = $this->con->prepare($sql);
         $stmt->execute();
         $resultados = $stmt->fetchAll(PDO::FETCH_OBJ);

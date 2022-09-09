@@ -27,7 +27,7 @@ class ProductosController
     public function view_new()
     {
         $modeloProd = new ProductosDAO();
-        $prod = $modeloProd->selectAllProductos();
+        $prod = $modeloProd->selectTipoProducto();
         require_once VPRODUCTOS . 'nuevo.php';
     }
 
