@@ -36,6 +36,15 @@ CREATE TABLE `cotizacion` (
   `id_tipo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `cotizacion`
+--
+
+INSERT INTO `cotizacion` (`id_cotizacion`, `nombre`, `correo`, `telefono`, `direccion`, `descripcion`, `presupuesto`, `fecha_cotizacion`, `id_tipo`) VALUES
+(1, 'alcachofa', 'jose@gmail.com', '323232', 'portete', 'quiero comprar', 9123, '2022-09-04', 2),
+(2, 'jefferson', 'jefferson@gmail.com', '123445678', 'isla trinitaria', 'necesito consultas sobre unos respuestos originales', 321, '2022-09-06', 3),
+(3, 'manolo', 'manoloea2@gmail.com', '31212', 'el batallon', 'necesito unos respuesto', 32, '2022-09-09', 1);
+
 -- --------------------------------------------------------
 
 --
