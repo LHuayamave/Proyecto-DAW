@@ -77,4 +77,33 @@ class SolicitudServicio
     {
         $this->descripcion = $descripcion;
     }
+
+    function setFechaSolicitud($fecha_solicitud)
+    {
+        $this->fecha_solicitud = $fecha_solicitud;
+    }
+
+    function setIdTipo($id_tipo)
+    {
+        $this->id_tipo = $id_tipo;
+    }
+
+    public function __set($nombre, $valor)
+    {
+        if (property_exists('SolicitudServicio', $nombre)) {
+            $this->$nombre = $valor;
+        } else {
+            echo $nombre . "No existe.";
+        }
+    }
+
+
+    public function __get($nombre)
+    {
+        if (property_exists('SolicitudServicio', $nombre)) {
+            return $this->$nombre;
+        }
+
+        return NULL;
+    }
 }
