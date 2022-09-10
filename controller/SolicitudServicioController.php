@@ -61,4 +61,23 @@ class SolicitudServicioController
             header('Location:index.php?c=SolicitudServicio&f=index');
         }
     }
+
+    public function delete()
+    {
+        $soli = new SolicitudServicio();
+        $soli->setIdSolicitud(htmlentities($_REQUEST['id']));
+        $exito = $this->model->delete($soli);
+        $msj = 'Solicitud eliminada exitosamente';
+        $color = 'primary';
+        if (!$exito) {
+            $msj = "No se pudo eliminada la solicitud";
+            $color = "danger";
+        }
+        if (!isset($_SESSION)) {
+            session_start();
+        };
+        $_SESSION['mensaje'] = $msj;
+        $_SESSION['color'] = $color;
+        header('Location:index.php?c=SolicitudServicio&f=index');
+    }
 }

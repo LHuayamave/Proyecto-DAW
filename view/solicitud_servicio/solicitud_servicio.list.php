@@ -47,7 +47,7 @@
                         <td>
                             <a class="btn btn-primary" href="index.php?c=SolicitudServicio&f=view_edit&id=<?php echo  $fila['id_solicitud']; ?>">
                                 <i class="fas fa-marker"></i></a>
-                            <a class="btn btn-danger" onclick="if(!confirm('Esta seguro de eliminar el producto?'))return false;" href="index.php?c=SolicitudServicio&f=delete&id=<?php echo  $fila['id_solicitud']; ?>">
+                            <a class="btn btn-danger" onclick="if(!confirm('¿Esta seguro de que desea eliminar esta solicitud?'))return false;" href="index.php?c=SolicitudServicio&f=delete&id=<?php echo  $fila['id_solicitud']; ?>">
                                 <i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>

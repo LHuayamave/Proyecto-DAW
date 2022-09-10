@@ -14,7 +14,8 @@ class SolicitudServicioDAO
     public function selectAllFiltro($parametro)
     {
         $sql = "SELECT * FROM solicitud_servicio s, tipo_servicio t WHERE s.id_tipo = t.id_tipo and
-        (s.nombre like :b1 or t.tipo_servicio like :b2)";
+        (s.nombre like :b1 or t.tipo_servicio like :b2)
+        ORDER BY s.id_solicitud";
         $stmt = $this->con->prepare($sql);
         $conlike = '%' . $parametro . '%';
         $data = array('b1' => $conlike, 'b2' => $conlike);
@@ -69,6 +70,26 @@ class SolicitudServicioDAO
             echo $e->getMessage();
             return false;
         }
+        return true;
+    }
+
+    public function delete($soli)
+    {
+        try {
+            $sql = "DELETE FROM `solicitud_servicio` WHERE id_solicitud =:id";
+            $sentencia = $this->con->prepare($sql);
+            $data = [
+                'id' =>  $soli->getIdSolicitud()
+            ];
+            $sentencia->execute($data);
+            if ($sentencia->rowCount() <= 0) {
+                return false;
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            return false;
+        }
+
         return true;
     }
 }
