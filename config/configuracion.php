@@ -1,6 +1,6 @@
 <?php
 //controlador y funcion predefinida
-define("CONTROLADOR_PRINCIPAL", "proveedores");
+define("CONTROLADOR_PRINCIPAL", "cotizacion");
 define("FUNCION_PRINCIPAL", "index");
 
 //ruta de templates
@@ -12,7 +12,16 @@ define("FOOTER", 'view/templates/footer.php');
 define("VPROVEEDORES", "view/proveedores/proveedores.");
 define("VPRODUCTOS", "view/productos/productos.");
 define("VSOLICITUDTECNICO", "view/solicitud_tecnico/solicitud.");
+<<<<<<< HEAD
 define("VSOLICITUDSERVICIO", "view/solicitud_servicio/solicitud.");
+=======
+define("VCOTIZACION", "view/cotizacion/cotizacion.");
+
+>>>>>>> fa6e1965b2ea660689bc81f0aa726234afba731a
+
+define("VSOLICITUDSERVICIO", "view/solicitud_servicio/solicitud.");
+define("VCOTIZACION", "view/cotizacion/cotizacion.");
+
 
 // conexion bb
 define("DBNAME", "proyecto_daw");
