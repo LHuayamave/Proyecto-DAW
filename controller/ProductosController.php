@@ -39,7 +39,7 @@ class ProductosController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $prod = new Producto();
-            $prod->setNombre(htmlentities($_POST['nombre']));
+            $prod->setNombreProducto(htmlentities($_POST['nombre_producto']));
             $prod->setDescripcion(htmlentities($_POST['descripcion']));
             $prod->setStockInicial(htmlentities($_POST['stock_inicial']));
             $prod->setFechaIngreso(htmlentities($_POST['fecha_ingreso']));
@@ -61,5 +61,24 @@ class ProductosController
             $_SESSION['color'] = $color;
             header('Location:index.php?c=productos&f=index');
         }
+    }
+
+    public function delete()
+    {
+        $prod = new Producto();
+        $prod->setIdProducto(htmlentities($_REQUEST['id']));
+        $exito = $this->model->delete($prod);
+        $msj = 'Producto eliminado exitosamente';
+        $color = 'primary';
+        if (!$exito) {
+            $msj = "No se pudo eliminar este Producto";
+            $color = "danger";
+        }
+        if (!isset($_SESSION)) {
+            session_start();
+        };
+        $_SESSION['mensaje'] = $msj;
+        $_SESSION['color'] = $color;
+        header('Location:index.php?c=productos&f=index');
     }
 }

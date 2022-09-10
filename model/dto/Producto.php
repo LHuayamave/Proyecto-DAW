@@ -1,21 +1,21 @@
 <?php
 class Producto
 {
-    private $id, $nombre, $descripcion, $stock_inicial, $fecha_ingreso,
+    private $id_producto, $nombre_producto, $descripcion, $stock_inicial, $fecha_ingreso,
         $total, $id_tipo, $id_proveedor;
 
     function __construct()
     {
     }
 
-    function getId()
+    function getIdProducto()
     {
-        return $this->id;
+        return $this->id_producto;
     }
 
-    function getNombre()
+    function getNombreProducto()
     {
-        return $this->nombre;
+        return $this->nombre_producto;
     }
 
     function getDescripcion()
@@ -48,14 +48,14 @@ class Producto
         return $this->id_proveedor;
     }
 
-    function setId($id)
+    function setIdProducto($id_producto)
     {
-        $this->id = $id;
+        $this->id_producto = $id_producto;
     }
 
-    function setNombre($nombre)
+    function setNombreProducto($nombre_producto)
     {
-        $this->nombre = $nombre;
+        $this->nombre_producto = $nombre_producto;
     }
 
     function setDescripcion($descripcion)

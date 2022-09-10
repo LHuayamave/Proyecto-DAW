@@ -8,11 +8,11 @@ require_once HEADER; ?>
             <div class="form-row">
                 <div class="form-group col-sm-6">
                     <label>Nombre del producto</label>
-                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="nombre proveedor" required>
+                    <input type="text" name="nombre_producto" id="nombre_producto" class="form-control" placeholder="Nombre Producto" required>
                 </div>
                 <div class="form-group col-sm-6">
                     <label>Descripci&oacute;n</label>
-                    <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="descripcion del producto" required>
+                    <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Descripcion del Producto" required>
                 </div>
                 <div class="form-group col-sm-6">
                     <label>Stock Inicial</label>
@@ -39,7 +39,7 @@ require_once HEADER; ?>
                         <?php
                         }
                         ?>
-                    </select>    
+                    </select>
                 </div>
                 <div class="form-group col-sm-12">
                     <label>Proveedor: </label>
@@ -55,7 +55,7 @@ require_once HEADER; ?>
                         ?>
                     </select>
                 </div>
-              
+
                 <div class="form-group mx-auto">
                     <button type="submit" class="btn btn-primary">Guardar</button>
 

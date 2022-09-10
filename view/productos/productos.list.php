@@ -37,7 +37,7 @@
                 ?>
                     <tr>
                         <td><?php echo $fila['id_producto']; ?></td>
-                        <td><?php echo $fila['nombre']; ?></td>
+                        <td><?php echo $fila['nombre_producto']; ?></td>
                         <td><?php echo $fila['descripcion']; ?></td>
                         <td><?php echo $fila['stock_inicial']; ?></td>
                         <td><?php echo $fila['fecha_ingreso']; ?></td>
