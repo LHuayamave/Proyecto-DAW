@@ -27,7 +27,9 @@
                 <th>Tel&eacute;fono </th>
                 <th>Direcci&oacute;n </th>
                 <th>Fecha de la Solicitud</th>
+                <th>Descripci&oacute;n</th>
                 <th>Tipo de Servicio</th>
+                <th>Editar / Eliminar</th>
             </thead>
             <tbody class="tabladatos">
                 <?php
@@ -39,9 +41,9 @@
                         <td><?php echo $fila['correo']; ?></td>
                         <td><?php echo $fila['telefono']; ?></td>
                         <td><?php echo $fila['direccion']; ?></td>
-                        <td><?php echo $fila['descripcion']; ?></td>
                         <td><?php echo $fila['fecha_solicitud']; ?></td>
-                        <td><?php echo $fila['id_tipo']; ?></td>
+                        <td><?php echo $fila['descripcion']; ?></td>
+                        <td><?php echo $fila['tipo_servicio']; ?></td>
                         <td>
                             <a class="btn btn-primary" href="index.php?c=solicitud_servicio&f=view_edit&id=<?php echo  $fila['id_solicitud']; ?>">
                                 <i class="fas fa-marker"></i></a>

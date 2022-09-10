@@ -12,7 +12,7 @@ define("FOOTER", 'view/templates/footer.php');
 define("VPROVEEDORES", "view/proveedores/proveedores.");
 define("VPRODUCTOS", "view/productos/productos.");
 define("VSOLICITUDTECNICO", "view/solicitud_tecnico/solicitud.");
-define("VSOLICITUDSERVICIO", "view/solicitud_servicio/solicitud.");
+define("VSOLICITUDSERVICIO", "view/solicitud_servicio/solicitud_servicio.");
 define("VCOTIZACION", "view/cotizacion/cotizacion.");
 
 
