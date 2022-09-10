@@ -81,4 +81,46 @@ class ProductosController
         $_SESSION['color'] = $color;
         header('Location:index.php?c=productos&f=index');
     }
+
+    public function view_edit()
+    {
+        $id = $_REQUEST['id'];
+        $prod = $this->model->selectOne($id);
+
+        $modeloProv = new ProveedoresDAO();
+        $prov = $modeloProv->selectAll();
+
+        $modeloTipo = new ProductosDAO();
+        $tipo = $modeloTipo->selectTipoProducto();
+
+        require_once VPRODUCTOS . 'edit.php';
+    }
+
+    public function edit()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $prod = new Producto();
+            $prod->setNombreProducto(htmlentities($_POST['nombre_producto']));
+            $prod->setDescripcion(htmlentities($_POST['descripcion']));
+            $prod->setStockInicial(htmlentities($_POST['stock_inicial']));
+            $prod->setFechaIngreso(htmlentities($_POST['fecha_ingreso']));
+            $prod->setTotal(htmlentities($_POST['total']));
+            $prod->setIdProveedor(htmlentities($_POST['nombre_proveedor']));
+            $prod->setIdTipo(htmlentities($_POST['tipo_producto']));
+
+            $exito = $this->model->update($prod);
+            $msj = 'Producto actualizado de manera exitosa';
+            $color = 'primary';
+            if (!$exito) {
+                $msj = "No se pudo actualizar el producto";
+                $color = "danger";
+            }
+            if (!isset($_SESSION)) {
+                session_start();
+            };
+            $_SESSION['mensaje'] = $msj;
+            $_SESSION['color'] = $color;
+            header('Location:index.php?c=Productos&f=index');
+        }
+    }
 }

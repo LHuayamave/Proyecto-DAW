@@ -37,8 +37,7 @@ class ProductosDAO
 
     public function selectOne($id)
     {
-        $sql = "SELECT * from producto where" .
-            "id_producto=:id";
+        $sql = "SELECT * from producto where id_producto=:id";
         $stmt = $this->con->prepare($sql);
         $data = ['id' => $id];
         $stmt->execute($data);
@@ -56,6 +55,7 @@ class ProductosDAO
 
             $stmt = $this->con->prepare($sql);
             $data = [
+                'id' => $prod->getIdProducto(),
                 'nom' => $prod->getNombreProducto(),
                 'descr' => $prod->getDescripcion(),
                 'stock' => $prod->getStockInicial(),
@@ -65,6 +65,35 @@ class ProductosDAO
                 'idProveedor' => $prod->getId_proveedor()
             ];
             $stmt->execute($data);
+            if ($stmt->rowCount() <= 0) {
+                return false;
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            return false;
+        }
+        return true;
+    }
+
+    public function update($prod)
+    {
+        try {
+            $sql = "UPDATE `producto` SET `nombre_producto`=:nom,`descripcion`=:desc,
+            `stock_inicial`=:stck,`fecha_ingreso`=:fecha,`total`=:total,`id_tipo`='idTipo',
+            `id_proveedor`='idProveedor' WHERE id_producto = :id";
+            $stmt = $this->con->prepare($sql);
+            $data = [
+                'id' => $prod->getIdProducto(),
+                'nom' => $prod->getNombreProducto(),
+                'desc' =>  $prod->getDescripcion(),
+                'stck' => $prod->getStockInicial(),
+                'fecha' =>  $prod->getFecha_ingreso(),
+                'total' =>  $prod->getTotal(),
+                'idTipo' =>  $prod->getId_Tipo(),
+                'idProveedor' =>  $prod->getId_proveedor()
+            ];
+            $stmt->execute($data);
+
             if ($stmt->rowCount() <= 0) {
                 return false;
             }

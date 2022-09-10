@@ -4,7 +4,7 @@ require_once HEADER; ?>
 
 <div class="container">
     <div class="card card-body">
-        <form action="index.php?c=productos&f=new" method="POST" name="formProvNuevo" id="formProvNuevo">
+        <form action="index.php?c=productos&f=new" method="POST" name="formProdNuevo" id="formProdNuevo">
             <div class="form-row">
                 <div class="form-group col-sm-6">
                     <label>Nombre del producto</label>

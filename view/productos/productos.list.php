@@ -44,9 +44,6 @@
                         <td><?php echo '$' . $fila['total']; ?></td>
                         <td><?php echo $fila['tipo_producto']; ?></td>
                         <td><?php echo $fila['nombre_proveedor']; ?></td>
-
-
-
                         <td>
                             <a class="btn btn-primary" href="index.php?c=productos&f=view_edit&id=<?php echo  $fila['id_producto']; ?>">
                                 <i class="fas fa-marker"></i></a>
