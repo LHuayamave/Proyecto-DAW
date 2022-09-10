@@ -34,8 +34,8 @@ class SolicitudTecnicoController {
     // muestra el formulario de nuevo producto
     public function view_new(){
           //comunicarse con el modelo
-          $modeloCat = new CategoriasDAO();
-          $categorias = $modeloCat->selectAll();
+          $modeloSolicitud = new SolicitudTecnicoDAO();
+          $problemas = $modeloSolicitud->selectAllProblems();
 
           // comunicarse con la vista
           require_once VSOLICITUDTECNICO.'nuevo.php';

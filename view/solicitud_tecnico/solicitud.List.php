@@ -11,7 +11,7 @@ require_once HEADER; ?>
             </form>     
         </div>
         <div class="col-sm-6 d-flex flex-column align-items-end">
-            <a href="index.php?c=proveedores&f=view_new">
+            <a href="index.php?c=solicitudtecnico&f=view_new">
                 <button type="button" class="btn btn-primary">
                     <i class="fas fa-plus"></i>Nuevo
                 </button>

@@ -39,6 +39,19 @@ class SolicitudTecnicoDAO {
         return $producto;
     }
 
+    public function selectAllProblems()
+    {
+        // sql de la sentencia
+        $sql = "select * from problemas";
+        //preparacion de la sentencia
+        $stmt = $this->con->prepare($sql);
+        //ejecucion de la sentencia
+        $stmt->execute();
+        //recuperacion de resultados
+        $resultados = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $resultados;
+    }
+
 
     
 }
