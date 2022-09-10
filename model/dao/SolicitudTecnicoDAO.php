@@ -83,6 +83,26 @@ class SolicitudTecnicoDAO {
         return true;
     }
 
+    public function delete($soli)
+    {
+        try {
+            $sql = "DELETE FROM solicitud_tecnico WHERE id_solicitud =:id";
+            $sentencia = $this->con->prepare($sql);
+            $data = [
+                'id' =>  $soli->getIdSolicitud()
+            ];
+            $sentencia->execute($data);
+            if ($sentencia->rowCount() <= 0) {
+                return false;
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            return false;
+        }
+
+        return true;
+    }
+
 
     
 }

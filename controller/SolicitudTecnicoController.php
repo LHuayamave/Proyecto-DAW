@@ -42,12 +42,11 @@ class SolicitudTecnicoController {
 
     }
 
-    // lee datos del formulario de nuevo producto y lo inserta en la bdd (llamando al modelo)
+    // lee datos del formulario de una nueva solictud y lo inserta en la bdd (llamando al modelo)
     public function new() {
       //cuando la solicitud es por post
-      if ($_SERVER['REQUEST_METHOD'] == 'POST') {// insertar el producto
-          // considerar verificaciones
-          //if(!isset($_POST['codigo'])){ header('');}
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {// insertar solicitud
+          
           $soli = new SolicitudTecnico();
           // lectura de parametros
           $soli->setNombre(htmlentities($_POST['nombre']));
@@ -59,7 +58,7 @@ class SolicitudTecnicoController {
           //comunicar con el modelo
           $exito = $this->model->insert($soli);
 
-          $msj = 'Producto guardado exitosamente';
+          $msj = 'Solicitud fue guardada con rotundo exito :)';
           $color = 'primary';
           if (!$exito) {
               $msj = "No se pudo realizar el guardado";
@@ -73,5 +72,28 @@ class SolicitudTecnicoController {
           //llamar a la vista
           header('Location:index.php?c=solicitudtecnico&f=index');
       } 
+  }
+
+  public function delete()
+  {
+      //leeer parametros
+      $soli = new SolicitudTecnico();
+      $soli->setIdSolicitud(htmlentities($_REQUEST['id']));
+
+      //comunicando con el modelo
+      $exito = $this->model->delete($soli);
+      $msj = 'Solicitud eliminada con exito';
+      $color = 'primary';
+      if (!$exito) {
+          $msj = "No se pudo eliminar la solicitud";
+          $color = "danger";
+      }
+      if (!isset($_SESSION)) {
+          session_start();
+      };
+      $_SESSION['mensaje'] = $msj;
+      $_SESSION['color'] = $color;
+      //llamar a la vista
+      header('Location:index.php?c=solicitudtecnico&f=index');
   }
 }
