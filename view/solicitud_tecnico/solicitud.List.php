@@ -1,27 +1,27 @@
 <!--autor: Sellan Fajardo Leonardo-->
-<?php require_once HEADER; ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="../css/estilos.css"/>
-        <meta name="author" content="Sellan Fajardo Leonardo">
-        <title>Consultar solicitudes tecnicos</title>
-        <style>
-            
-        </style>
-    </head>
-    <body>
+<?php $titulo = "Lista de Solicitudes tecnicos";
+require_once HEADER; ?>
 
-        <form action="index.php?c=productos&f=search" method="POST">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <form action="index.php?c=solicitudtecnico&f=search" method="POST">
                 <input type="text" name="b" id="busqueda"  placeholder="buscar..."/>
                 <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i>Buscar</button>
             </form>     
+        </div>
+        <div class="col-sm-6 d-flex flex-column align-items-end">
+            <a href="index.php?c=proveedores&f=view_new">
+                <button type="button" class="btn btn-primary">
+                    <i class="fas fa-plus"></i>Nuevo
+                </button>
+            </a>
+        </div>
+    </div>
 
-    <div>
-        <table>
-            <thead id="cabecera">
+    <div class="table-responsive mt-2">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
                 <tr>
                     <th>Id</th>
                     <th>Nombres</th>
@@ -29,9 +29,10 @@
                     <th>Correo</th>
                     <th>Fecha Solicitud</th>
                     <th>Id problema</th>
+                    <th>Editar / Borrar</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="tabladatos">
                 <?php
             
                 foreach ($resultados as $fila) {
@@ -44,9 +45,13 @@
                         <td><?php echo $fila['fecha_solicitud'] ?></td>
                         <td><?php echo $fila['id_problemas'] ?></td>
                         <td>
-                            <a href="eliminar.php?id=<?php echo $fila['id'] ?>">
-                                <img src="../imagenes/eliminar.png" width="20px" height="20px" alt="eliminar"></a>
-                            </td>
+                            <a class="btn btn-primary" href="index.php?c=proveedores&f=view_edit&id=<?php echo  $fila['id_solicitud']; ?>">
+                                <i class="fas fa-marker"></i></a>
+                            </a>
+                            <a class="btn btn-danger" onclick="if(!confirm('Esta seguro de eliminar a este proveedor?'))return false;" href="index.php?c=proveedores&f=delete&id=<?php echo  $fila['id_solicitud']; ?>">
+                                <i class="fas fa-trash-alt"></i></a>
+                            </a>
+                        </td>
                         </tr>
                     <?php } ?>
                 </tbody>
@@ -54,6 +59,5 @@
             <br/><br/>
             <a href="insertar.php" id="agregar">Agregar solicitud tecnico</a>
         </div>
-    </body>
-</html>
+</div>
 <?php  require_once FOOTER ?>

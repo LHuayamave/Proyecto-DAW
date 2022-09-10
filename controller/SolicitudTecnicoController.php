@@ -1,4 +1,4 @@
-// autor:Piguave Saltos Marlon 
+
 <?php
 require_once 'model/dao/SolicitudTecnicoDAO.php';
 
