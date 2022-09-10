@@ -3,7 +3,7 @@ require_once HEADER; ?>
 
 <div class="container">
     <div class="card card-body">
-        <form action="index.php?c=proveedores&f=new" method="POST" name="formProvNuevo" id="formProvNuevo">
+        <form action="index.php?c=solicitudtecnico&f=new" method="POST" name="formProvNuevo" id="formProvNuevo">
             <div class="form-row">
                 
                 <div class="form-group col-sm-6">
@@ -27,7 +27,7 @@ require_once HEADER; ?>
                 </div>
                 <div class="form-group col-sm-6">
                     <label for="medioPago">Medio de Pago</label>
-                    <select id="medioPago" name="medioPago" class=" ">
+                    <select id="medioPago" name="problemas" class=" ">
                         <?php foreach ($problemas as $medio) {
                         ?>
                             <option value="<?php echo $medio->id_problemas ?>">
@@ -43,7 +43,7 @@ require_once HEADER; ?>
                 <div class="form-group mx-auto">
                     <button type="submit" class="btn btn-primary">Guardar</button>
 
-                    <a href="index.php?c=proveedores&f=index" class="btn btn-primary">Cancelar</a>
+                    <a href="index.php?c=solicitudtecnico&f=index" class="btn btn-primary">Cancelar</a>
                 </div>
 
             </div>

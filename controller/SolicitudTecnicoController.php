@@ -48,21 +48,16 @@ class SolicitudTecnicoController {
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {// insertar el producto
           // considerar verificaciones
           //if(!isset($_POST['codigo'])){ header('');}
-          $prod = new Producto();
+          $soli = new SolicitudTecnico();
           // lectura de parametros
-          $prod->setCodigo(htmlentities($_POST['codigo']));
-          $prod->setNombre(htmlentities($_POST['nombre']));
-          $prod->setDescripcion(htmlentities($_POST['descripcion']));
-          $prod->setPrecio(htmlentities($_POST['precio']));
-          $prod->setIdCategoria(htmlentities($_POST['categoria']));
-          $estado = (isset($_POST['estado'])) ? 1 : 0; // ejemplo de dato no obligatorio
-          $prod->setEstado($estado);
-          $prod->setUsuario('usuario'); //$_SESSION['usuario'];
-          $fechaActual = new DateTime('NOW');
-          $prod->setFechaActualizacion($fechaActual->format('Y-m-d H:i:s'));
+          $soli->setNombre(htmlentities($_POST['nombre']));
+          $soli->setApellido(htmlentities($_POST['apellido']));
+          $soli->setCorreo(htmlentities($_POST['correo']));
+          $soli->setFechaSolicitud(htmlentities($_POST['fecha_solicitud']));
+          $soli->setId_problemas(htmlentities($_POST['problemas']));
         
           //comunicar con el modelo
-          $exito = $this->model->insert($prod);
+          $exito = $this->model->insert($soli);
 
           $msj = 'Producto guardado exitosamente';
           $color = 'primary';
@@ -76,7 +71,7 @@ class SolicitudTecnicoController {
           $_SESSION['mensaje'] = $msj;
           $_SESSION['color'] = $color;
           //llamar a la vista
-          header('Location:index.php?c=Productos&f=index');
+          header('Location:index.php?c=solicitudtecnico&f=index');
       } 
   }
 }

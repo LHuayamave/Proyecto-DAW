@@ -52,6 +52,37 @@ class SolicitudTecnicoDAO {
         return $resultados;
     }
 
+    public function insert($soli)
+    {
+        try {
+            //sentencia sql
+            $sql = "INSERT INTO solicitud_tecnico (id_solicitud, nombre, apellido, correo, fecha_solicitud, id_problemas) 
+            VALUES (NULL, :nom, :apell, :corr, :fsolicitud, :idProblem)";
+
+
+            //bind parameters
+            $sentencia = $this->con->prepare($sql);
+            $data = [
+                
+                'nom' =>  $soli->getNombre(),
+                'apell' =>  $soli->getApellido(),
+                'corr' =>  $soli->getCorreo(),
+                'fsolicitud' =>  $soli->getFecha_solicitud(),
+                'idProblem' =>  $soli->getId_problemas()
+            ];
+            //execute
+            $sentencia->execute($data);
+            //retornar resultados, 
+            if ($sentencia->rowCount() <= 0) { // verificar si se inserto 
+                return false;
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            return false;
+        }
+        return true;
+    }
+
 
     
 }
