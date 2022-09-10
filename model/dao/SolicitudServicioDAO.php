@@ -31,4 +31,44 @@ class SolicitudServicioDAO
         $resultados = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $resultados;
     }
+
+    public function selectOne($id)
+    {
+        $sql = "SELECT * from solicitud_servicio where id_solicitud=:id";
+        $stmt = $this->con->prepare($sql);
+        $data = ['id' => $id];
+        $stmt->execute($data);
+        $tipo_solicitud = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $tipo_solicitud;
+    }
+
+    public function insert($soli)
+    {
+        try {
+            $sql = "INSERT INTO `solicitud_servicio`(`id_solicitud`, `nombre`, `correo`, `telefono`, `direccion`,
+            `descripcion`, `fecha_solicitud`, `id_tipo`) VALUES 
+            (:id, :nom, :correo, :tele, :dir, :desc, :fecha, :idTipo)";
+
+            $stmt = $this->con->prepare($sql);
+            $data = [
+                'id' => $soli->getIdSolicitud(),
+                'nom' => $soli->getNombre(),
+                'correo' => $soli->getCorreo(),
+                'tele' => $soli->getTelefono(),
+                'dir' => $soli->getDireccion(),
+                'desc' => $soli->getDescripcion(),
+                'fecha' => $soli->getFechaSolicitud(),
+                'idTipo' => $soli->getIdTipo()
+            ];
+            $stmt->execute($data);
+            if ($stmt->rowCount() <= 0) {
+                return false;
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            return false;
+        }
+        return true;
+    }
 }

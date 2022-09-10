@@ -4,13 +4,13 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
-            <form action="index.php?c=solicitud_servicio&f=search" method="POST">
+            <form action="index.php?c=SolicitudServicio&f=search" method="POST">
                 <input type="text" name="b" id="busqueda" placeholder="buscar..." />
                 <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i>Buscar</button>
             </form>
         </div>
         <div class="col-sm-6 d-flex flex-column align-items-end">
-            <a href="index.php?c=solicitud_servicio&f=view_new">
+            <a href="index.php?c=SolicitudServicio&f=view_new">
                 <button type="button" class="btn btn-primary">
                     <i class="fas fa-plus"></i>
                     Nuevo</button>
@@ -45,9 +45,9 @@
                         <td><?php echo $fila['descripcion']; ?></td>
                         <td><?php echo $fila['tipo_servicio']; ?></td>
                         <td>
-                            <a class="btn btn-primary" href="index.php?c=solicitud_servicio&f=view_edit&id=<?php echo  $fila['id_solicitud']; ?>">
+                            <a class="btn btn-primary" href="index.php?c=SolicitudServicio&f=view_edit&id=<?php echo  $fila['id_solicitud']; ?>">
                                 <i class="fas fa-marker"></i></a>
-                            <a class="btn btn-danger" onclick="if(!confirm('Esta seguro de eliminar el producto?'))return false;" href="index.php?c=solicitud_servicio&f=delete&id=<?php echo  $fila['id_solicitud']; ?>">
+                            <a class="btn btn-danger" onclick="if(!confirm('Esta seguro de eliminar el producto?'))return false;" href="index.php?c=SolicitudServicio&f=delete&id=<?php echo  $fila['id_solicitud']; ?>">
                                 <i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
