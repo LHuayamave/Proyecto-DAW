@@ -26,6 +26,13 @@ class ProductosController
         require_once VPRODUCTOS . 'list.php';
     }
 
+    public function searchAjax()
+    {
+        $parametro = (!empty($_GET["b"])) ? htmlentities($_GET["b"]) : "";
+        $resultados = $this->model->selectAllFiltro($parametro);
+        echo json_encode($resultados);
+    }
+
     public function view_new()
     {
         $modeloProv = new ProveedoresDAO();

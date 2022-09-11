@@ -15,7 +15,7 @@ require_once HEADER; ?>
             <!--<h4>Busqueda con ajax</h4>-->
             <input type="text" name="busquedaAjax" id="busquedaAjax" placeholder="Buscar...">
         </div>
-        
+
         <div class="col-sm-6 d-flex flex-column align-items-end">
             <a href="index.php?c=proveedores&f=view_new">
                 <button type="button" class="btn btn-primary">

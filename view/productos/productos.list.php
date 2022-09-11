@@ -1,20 +1,17 @@
 <!--autor: Huayamave Cedeño Luis-->
-<?php require_once HEADER; ?>
+<?php $titulo = "Lista de productos";
+require_once HEADER; ?>
 
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
-            <form action="index.php?c=productos&f=search" method="POST">
-                <input type="text" name="b" id="busqueda" placeholder="buscar..." />
-                <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i>Buscar</button>
-            </form>
+            <input type="text" name="busquedaAjax" id="busquedaAjax" placeholder="Buscar...">
         </div>
         <div class="col-sm-6 d-flex flex-column align-items-end">
             <a href="index.php?c=productos&f=view_new">
                 <button type="button" class="btn btn-primary">
                     <i class="fas fa-plus"></i>
                     Nuevo</button>
-
             </a>
         </div>
     </div>
@@ -57,4 +54,49 @@
     </div>
 
 </div>
+
+<script type="text/javascript">
+    var txtBuscar = document.querySelector('#busquedaAjax');
+    txtBuscar.addEventListener('keyup', cargarProducto);
+
+    function cargarProducto() {
+        var buscar = txtBuscar.value;
+        var url = "index.php?c=productos&f=searchAjax&b=" + buscar;
+        var xmlh = new XMLHttpRequest();
+        xmlh.open("GET", url, true);
+        xmlh.send();
+        xmlh.onreadystatechange = function() {
+            if (xmlh.readyState === 4 && xmlh.status === 200) {
+                var respuesta = xmlh.responseText;
+                actualizar(respuesta);
+            }
+        }
+    }
+
+    function actualizar(respuesta) {
+        var tdbody = document.querySelector('.tabladatos');
+        var producto = JSON.parse(respuesta);
+        console.log(producto);
+        resultados = '';
+        for (var i = 0; i < producto.length; i++) {
+            resultados += '<tr>';
+            resultados += '<td>' + producto[i].id_producto + '</td>';
+            resultados += '<td>' + producto[i].nombre_producto + '</td>';
+            resultados += '<td>' + producto[i].descripcion + '</td>';
+            resultados += '<td>' + producto[i].stock_inicial + '</td>';
+            resultados += '<td>' + producto[i].fecha_ingreso + '</td>';
+            resultados += '<td>' + producto[i].total + '</td>';
+            resultados += '<td>' + producto[i].tipo_producto + '</td>';
+            resultados += '<td>' + producto[i].nombre_proveedor + '</td>';
+            resultados += '<td>' +
+                "<a href='index.php?c=productos&f=view_edit&id=" + producto[i].id_producto +
+                "' " + "class='btn btn-primary'><i class='fas fa-marker'></i></a>" +
+                "<a href='index.php?c=productos&f=delete&id=" + producto[i].id_producto + "'" +
+                "class='btn btn-danger' onclick = 'if (!confirm(\'Desea eliminar el prodcuto: '" + producto[i].nombre_producto +
+                " \')) return false; " + " ><i class='far fa-trash-alt'></i> </a>" + '</td>';
+            resultados += '</tr>';
+        }
+        tdbody.innerHTML = resultados;
+    }
+</script>
 <?php require_once FOOTER ?>
