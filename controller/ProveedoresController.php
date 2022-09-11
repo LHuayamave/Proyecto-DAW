@@ -31,6 +31,14 @@ class ProveedoresController
         require_once VPROVEEDORES . 'list.php';
     }
 
+
+    public function searchAjax()
+    {
+        $parametro = (!empty($_GET["b"])) ? htmlentities($_GET["b"]) : "";
+        $resultados = $this->model->selectAllFiltro($parametro);
+        echo json_encode($resultados);
+    }
+
     // muestra el formulario de nuevo producto
     public function view_new()
     {
