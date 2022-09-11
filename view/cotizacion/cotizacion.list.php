@@ -29,6 +29,7 @@
                 <th>Presupuesto</th>
                 <th>Fecha cotizacion</th>
                 <th>Tipo producto</th>
+                <th>Editar / Borrar</th>
             </thead>
             <tbody class="tabladatos">
                 <?php
