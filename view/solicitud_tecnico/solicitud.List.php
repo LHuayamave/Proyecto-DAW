@@ -58,7 +58,6 @@ require_once HEADER; ?>
                 </tbody>
             </table>
             <br/><br/>
-            <a href="insertar.php" id="agregar">Agregar solicitud tecnico</a>
         </div>
 </div>
 <?php  require_once FOOTER ?>

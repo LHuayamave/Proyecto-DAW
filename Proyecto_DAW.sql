@@ -77,6 +77,12 @@ CREATE TABLE `problemas` (
   `nombre_problema` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `problemas`
+--
+
+INSERT INTO `problemas` (`id_problemas`, `nombre_problema`) 
+VALUES (087, 'Problemas de motor'), (090, 'Electro-mecanico'), (080, 'Inyectores'), (072, 'Carrocería');
 -- --------------------------------------------------------
 
 --
@@ -168,6 +174,27 @@ CREATE TABLE `solicitud_tecnico` (
   `id_problemas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Indices de la tabla `solicitud_tecnico`
+--
+ALTER TABLE `solicitud_tecnico`
+  ADD PRIMARY KEY (`id_solicitud`),
+  ADD KEY `id_problemas` (`id_problemas`);
+
+--
+-- Llave primaria autoincrementable 
+--
+ALTER TABLE `solicitud_tecnico` MODIFY COLUMN `id_solicitud` INT AUTO_INCREMENT;
+
+--
+-- Volcado de datos para la tabla `solicitud_tecnico`
+--
+INSERT INTO `solicitud_tecnico` (`id_solicitud`, `nombre`, `apellido`, `correo`, `fecha_solicitud`, `id_problemas`) VALUES 
+(NULL, 'Pedro Pablo', 'Velasco', 'pedro@outlook.com', '2022-09-13', '90'), 
+(NULL, 'Damian', 'Diaz', 'kitu@bsc.com', '2022-09-20', '80'), 
+(NULL, 'Skyler', 'White', 'waltjr@metazul.com', '2022-06-14', '87'), 
+(NULL, 'Matheew', 'Murdock', 'catolico@gmail.com', '2022-09-04', '72');
+
 -- --------------------------------------------------------
 
 --
@@ -208,6 +235,9 @@ INSERT INTO `tipo_servicio` (`id_tipo`, `tipo_servicio`) VALUES
 (2, 'Mantenimiento Preventivo'),
 (3, 'Mecanica General'),
 (4, 'Desabolladura');
+
+
+
 
 --
 -- Índices para tablas volcadas
@@ -253,13 +283,6 @@ ALTER TABLE `proveedor`
 ALTER TABLE `solicitud_servicio`
   ADD PRIMARY KEY (`id_solicitud`),
   ADD KEY `id_tipo` (`id_tipo`);
-
---
--- Indices de la tabla `solicitud_tecnico`
---
-ALTER TABLE `solicitud_tecnico`
-  ADD PRIMARY KEY (`id_solicitud`),
-  ADD KEY `id_problemas` (`id_problemas`);
 
 --
 -- Indices de la tabla `tipo_producto`
@@ -318,3 +341,5 @@ ALTER TABLE `solicitud_servicio`
 ALTER TABLE `solicitud_tecnico`
   ADD CONSTRAINT `solicitud_tecnico_ibfk_2` FOREIGN KEY (`id_problemas`) REFERENCES `problemas` (`id_problemas`);
 COMMIT;
+
+
