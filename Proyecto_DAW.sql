@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-09-2022 a las 02:39:04
+-- Tiempo de generación: 11-09-2022 a las 02:06:12
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.0.19
 
@@ -144,6 +144,15 @@ CREATE TABLE `solicitud_servicio` (
   `id_tipo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `solicitud_servicio`
+--
+
+INSERT INTO `solicitud_servicio` (`id_solicitud`, `nombre`, `correo`, `telefono`, `direccion`, `descripcion`, `fecha_solicitud`, `id_tipo`) VALUES
+(1, 'Luis Huayamave', 'luis@gmail.com', '021345667', 'Valdivia', 'Solicitud para pintar coche', '2022-09-08', 1),
+(2, 'Kenia Nieves', 'kenia@gmail.com', '0987523145', 'Esteros ', 'Mantenimiento anual al coche.', '2022-09-09', 3),
+(3, 'Ariel Palacios', 'ariel@gmail.com', '0986532156', 'La Guangala', 'Mantenimiento anual del coche', '2022-09-09', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -189,6 +198,16 @@ CREATE TABLE `tipo_servicio` (
   `id_tipo` int(11) NOT NULL,
   `nombre` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tipo_servicio`
+--
+
+INSERT INTO `tipo_servicio` (`id_tipo`, `nombre`) VALUES
+(1, 'Pintura'),
+(2, 'Mantenimiento Preventivo'),
+(3, 'Mecanica General'),
+(4, 'Desabolladura');
 
 --
 -- Índices para tablas volcadas
@@ -255,17 +274,18 @@ ALTER TABLE `tipo_servicio`
   ADD PRIMARY KEY (`id_tipo`);
 
 --
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
   MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
-
---
 -- Restricciones para tablas volcadas
 --
-
 
 --
 -- Filtros para la tabla `cotizacion`
