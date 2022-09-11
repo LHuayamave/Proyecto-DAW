@@ -100,6 +100,7 @@ class ProductosController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $prod = new Producto();
+            $prod->setIdProducto(htmlentities($_POST['id']));
             $prod->setNombreProducto(htmlentities($_POST['nombre_producto']));
             $prod->setDescripcion(htmlentities($_POST['descripcion']));
             $prod->setStockInicial(htmlentities($_POST['stock_inicial']));
@@ -120,7 +121,7 @@ class ProductosController
             };
             $_SESSION['mensaje'] = $msj;
             $_SESSION['color'] = $color;
-            header('Location:index.php?c=Productos&f=index');
+            header('Location:index.php?c=productos&f=index');
         }
     }
 }

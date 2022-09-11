@@ -49,13 +49,13 @@ class ProductosDAO
     public function insert($prod)
     {
         try {
-            $sql = "INSERT INTO producto (id_producto, nombre_producto, descripcion, stock_inicial, fecha_ingreso, total,
-            id_tipo, id_proveedor) VALUES
-            (null, :nom, :descr, :stock, :fecha, :total, :idTipo, :idProveedor)";
+            $sql = "INSERT INTO producto (id_producto, nombre_producto, descripcion, stock_inicial, fecha_ingreso, 
+            total, id_tipo, id_proveedor) VALUES 
+            (:idPro, :nom, :descr, :stock, :fecha, :total, :idTipo, :idProveedor)";
 
             $stmt = $this->con->prepare($sql);
             $data = [
-                'id' => $prod->getIdProducto(),
+                'idPro' => $prod->getIdProducto(),
                 'nom' => $prod->getNombreProducto(),
                 'descr' => $prod->getDescripcion(),
                 'stock' => $prod->getStockInicial(),
@@ -78,15 +78,15 @@ class ProductosDAO
     public function update($prod)
     {
         try {
-            $sql = "UPDATE `producto` SET `nombre_producto`=:nom,`descripcion`=:desc,
-            `stock_inicial`=:stck,`fecha_ingreso`=:fecha,`total`=:total,`id_tipo`='idTipo',
-            `id_proveedor`='idProveedor' WHERE id_producto = :id";
+            $sql = "UPDATE `producto` SET `nombre_producto`=:nom,`descripcion`=:descr," .
+                "`stock_inicial`=:stock,`fecha_ingreso`=:fecha,`total`=:total,`id_tipo`=:idTipo," .
+                "`id_proveedor`=:idProveedor WHERE id_producto=:idProd";
             $stmt = $this->con->prepare($sql);
             $data = [
-                'id' => $prod->getIdProducto(),
+                'idProd' => $prod->getIdProducto(),
                 'nom' => $prod->getNombreProducto(),
-                'desc' =>  $prod->getDescripcion(),
-                'stck' => $prod->getStockInicial(),
+                'descr' =>  $prod->getDescripcion(),
+                'stock' => $prod->getStockInicial(),
                 'fecha' =>  $prod->getFecha_ingreso(),
                 'total' =>  $prod->getTotal(),
                 'idTipo' =>  $prod->getId_Tipo(),

@@ -73,6 +73,37 @@ class SolicitudServicioDAO
         return true;
     }
 
+    public function update($soli)
+    {
+        try {
+            $sql = "UPDATE `solicitud_servicio` SET `nombre`=:nom,`correo`=:correo," .
+                "`telefono`=:telf,`direccion`=:dir,`descripcion`=:descr,`fecha_solicitud`=:fecha," .
+                "`id_tipo`=:idTipo WHERE id_solicitud =:idSoli";
+            $stmt = $this->con->prepare($sql);
+            $data = [
+                'idSoli' => $soli->getIdSolicitud(),
+                'nom' => $soli->getNombre(),
+                'correo' =>  $soli->getCorreo(),
+                'telf' =>  $soli->getTelefono(),
+                'dir' =>  $soli->getDireccion(),
+                'descr' =>  $soli->getDescripcion(),
+                'fecha' =>  $soli->getFechaSolicitud(),
+                'idTipo' =>  $soli->getIdTipo()
+            ];
+
+            $stmt->execute($data);
+
+            if ($stmt->rowCount() <= 0) {
+                return false;
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            return false;
+        }
+        return true;
+    }
+
+
     public function delete($soli)
     {
         try {

@@ -7,6 +7,10 @@ require_once HEADER; ?>
         <form action="index.php?c=productos&f=edit" method="POST" name="formProdNuevo" id="formProvNuevo">
             <div class="form-row">
                 <div class="form-group col-sm-6">
+                    <label>Id Producto</label>
+                    <input type="text" name="id" id="id" value="<?php echo $prod['id_producto']; ?>" readonly />
+                </div>
+                <div class="form-group col-sm-6">
                     <label>Nombre del Producto:</label>
                     <input type="text" name="nombre_producto" id="nombre_producto" value="<?php echo $prod['nombre_producto']; ?>" class=" " placeholder="Nombre del Producto" required>
                 </div>
