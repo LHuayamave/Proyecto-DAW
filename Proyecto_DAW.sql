@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-09-2022 a las 02:06:12
+-- Tiempo de generación: 11-09-2022 a las 02:15:52
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.0.19
 
@@ -85,7 +85,7 @@ CREATE TABLE `problemas` (
 
 CREATE TABLE `producto` (
   `id_producto` int(11) NOT NULL,
-  `nombre` varchar(20) NOT NULL,
+  `nombre_producto` varchar(20) NOT NULL,
   `descripcion` varchar(100) NOT NULL,
   `stock_inicial` int(11) NOT NULL,
   `fecha_ingreso` date NOT NULL,
@@ -98,7 +98,7 @@ CREATE TABLE `producto` (
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `stock_inicial`, `fecha_ingreso`, `total`, `id_tipo`, `id_proveedor`) VALUES
+INSERT INTO `producto` (`id_producto`, `nombre_producto`, `descripcion`, `stock_inicial`, `fecha_ingreso`, `total`, `id_tipo`, `id_proveedor`) VALUES
 (1, 'Rueda', 'Ruedas de Repuesto', 8, '2022-09-06', 60, 1, 1);
 
 -- --------------------------------------------------------
@@ -196,14 +196,14 @@ INSERT INTO `tipo_producto` (`id_tipo`, `tipo_producto`) VALUES
 
 CREATE TABLE `tipo_servicio` (
   `id_tipo` int(11) NOT NULL,
-  `nombre` varchar(30) NOT NULL
+  `tipo_servicio` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tipo_servicio`
 --
 
-INSERT INTO `tipo_servicio` (`id_tipo`, `nombre`) VALUES
+INSERT INTO `tipo_servicio` (`id_tipo`, `tipo_servicio`) VALUES
 (1, 'Pintura'),
 (2, 'Mantenimiento Preventivo'),
 (3, 'Mecanica General'),

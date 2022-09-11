@@ -1,7 +1,7 @@
 <?php
 class SolicitudServicio
 {
-    private $id_solicitud, $nombre, $correo, z, $direccion, $descripcion, $fecha_solicitud,
+    private $id_solicitud, $nombre, $correo, $direccion, $descripcion, $fecha_solicitud,
         $id_tipo;
 
     function __construct()
