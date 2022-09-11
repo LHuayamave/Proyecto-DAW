@@ -15,7 +15,8 @@ class ProveedoresDAO
     {
         // sql de la sentencia
         $sql = "SELECT * FROM proveedor p , medio_pago m  where p.id_medio_pago = m.id_medio_pago and 
-        (p.nombre_proveedor like :b1 or m.nombre_medio like :b2)";
+        (p.nombre_proveedor like :b1 or m.nombre_medio like :b2)
+        ORDER BY p.id_proveedor";
         $stmt = $this->con->prepare($sql);
         // preparar la sentencia
         $conlike = '%' . $parametro . '%';

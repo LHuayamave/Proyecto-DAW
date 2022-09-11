@@ -2,39 +2,44 @@
 // dao data access object
 require_once 'config/Conexion.php';
 
-class SolicitudTecnicoDAO {
+class SolicitudTecnicoDAO
+{
     private $con;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->con = Conexion::getConexion();
     }
 
-    public function selectAll($parametro) {
+    public function selectAll($parametro)
+    {
         // sql de la sentencia
-      $sql = "SELECT * FROM solicitud_tecnico s, problemas p  where s.id_problemas = p.id_problemas and 
-      (nombre like :b1 or nombre_problema like :b2)";
-      $stmt = $this->con->prepare($sql);
-      // preparar la sentencia
-      $conlike = '%' . $parametro . '%';
-      $data = array('b1' => $conlike, 'b2' => $conlike);
-      // ejecutar la sentencia
-      $stmt->execute($data);
-      //recuperar  resultados
-      $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-      //retornar resultados
-      return $resultados;
-  }
+        $sql = "SELECT * FROM solicitud_tecnico s, problemas p  where s.id_problemas = p.id_problemas and 
+      (nombre like :b1 or nombre_problema like :b2)
+      ORDER BY s.id_solicitud";
+        $stmt = $this->con->prepare($sql);
+        // preparar la sentencia
+        $conlike = '%' . $parametro . '%';
+        $data = array('b1' => $conlike, 'b2' => $conlike);
+        // ejecutar la sentencia
+        $stmt->execute($data);
+        //recuperar  resultados
+        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //retornar resultados
+        return $resultados;
+    }
 
-  public function selectOne($id) { // buscar un producto por su id
-        $sql = "select * from solicitud_tecnico where ".
-        "id_solicitud=:id";
+    public function selectOne($id)
+    { // buscar un producto por su id
+        $sql = "select * from solicitud_tecnico where " .
+            "id_solicitud=:id";
         // preparar la sentencia
         $stmt = $this->con->prepare($sql);
         $data = ['id' => $id];
         // ejecutar la sentencia
         $stmt->execute($data);
         // recuperar los datos (en caso de select)
-        $producto = $stmt->fetch(PDO::FETCH_ASSOC);// fetch retorna el primer registro
+        $producto = $stmt->fetch(PDO::FETCH_ASSOC); // fetch retorna el primer registro
         // retornar resultados
         return $producto;
     }
@@ -63,7 +68,7 @@ class SolicitudTecnicoDAO {
             //bind parameters
             $sentencia = $this->con->prepare($sql);
             $data = [
-                
+
                 'nom' =>  $soli->getNombre(),
                 'apell' =>  $soli->getApellido(),
                 'corr' =>  $soli->getCorreo(),
@@ -111,9 +116,9 @@ class SolicitudTecnicoDAO {
             $sql = "UPDATE solicitud_tecnico SET nombre=:nom, apellido=:apell," .
                 "correo=:corr, fecha_solicitud=:fsolicitud, id_problemas=:idProblem WHERE id_solicitud=:idSoli";
 
-                
+
             $sentencia = $this->con->prepare($sql);
-                
+
             $data = [
                 'idSoli' => $soli->getIdSolicitud(),
                 'nom' =>  $soli->getNombre(),
@@ -134,7 +139,4 @@ class SolicitudTecnicoDAO {
         }
         return true;
     }
-
-
-    
 }

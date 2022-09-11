@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-09-2022 a las 03:49:33
+-- Tiempo de generación: 11-09-2022 a las 04:13:28
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.0.19
 
@@ -77,6 +77,16 @@ CREATE TABLE `problemas` (
   `nombre_problema` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `problemas`
+--
+
+INSERT INTO `problemas` (`id_problemas`, `nombre_problema`) VALUES
+(72, 'Carrocería'),
+(80, 'Inyectores'),
+(87, 'Problemas de motor'),
+(90, 'Electro-mecanico');
+
 -- --------------------------------------------------------
 
 --
@@ -99,8 +109,7 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_producto`, `nombre_producto`, `descripcion`, `stock_inicial`, `fecha_ingreso`, `total`, `id_tipo`, `id_proveedor`) VALUES
-(1, 'Rueda', 'Ruedas de Repuesto', 8, '2022-09-06', 60, 1, 101),
-(2, 'Prueba', 'Prueba', 1, '2022-09-09', 220, 3, 1);
+(1, 'Rueda', 'Ruedas de Repuesto', 8, '2022-09-06', 60, 1, 101);
 
 -- --------------------------------------------------------
 
@@ -168,6 +177,16 @@ CREATE TABLE `solicitud_tecnico` (
   `fecha_solicitud` date NOT NULL,
   `id_problemas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `solicitud_tecnico`
+--
+
+INSERT INTO `solicitud_tecnico` (`id_solicitud`, `nombre`, `apellido`, `correo`, `fecha_solicitud`, `id_problemas`) VALUES
+(1, 'Pedro Pablo', 'Velasco', 'pedro@outlook.com', '2022-09-13', 90),
+(2, 'Damian', 'Diaz', 'kitu@bsc.com', '2022-09-20', 80),
+(3, 'Skyler', 'White', 'waltjr@metazul.com', '2022-06-14', 87),
+(4, 'Matheew', 'Murdock', 'catolico@gmail.com', '2022-09-04', 72);
 
 -- --------------------------------------------------------
 
@@ -282,7 +301,13 @@ ALTER TABLE `tipo_servicio`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `solicitud_tecnico`
+--
+ALTER TABLE `solicitud_tecnico`
+  MODIFY `id_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
