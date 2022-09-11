@@ -1,5 +1,5 @@
 <?php
-// dao data access object
+//Autor: Sellan Fajardo Israel
 require_once 'config/Conexion.php';
 
 class SolicitudTecnicoDAO

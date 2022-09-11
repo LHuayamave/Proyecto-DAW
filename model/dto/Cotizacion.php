@@ -1,8 +1,9 @@
 <?php
+//Autor: Aguirre Aguirre Ronaldo
 class Cotizacion
 {
     private $id, $nombre, $correo, $telefono, $direccion,
-        $descripcion, $presupuesto, $fechaCotizacion,$id_tipo;
+        $descripcion, $presupuesto, $fechaCotizacion, $id_tipo;
 
     function __construct()
     {

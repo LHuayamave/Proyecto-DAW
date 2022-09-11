@@ -1,32 +1,37 @@
 <?php
+//Autor: Aguirre Aguirre Ronaldo
 require_once 'model/dao/CotizacionDAO.php';
 require_once 'model/dao/ProductosDAO.php';
 require_once 'model/dto/Cotizacion.php';
 
-class CotizacionController {
+class CotizacionController
+{
     private $model;
-    
-    public function __construct() {// constructor
+
+    public function __construct()
+    { // constructor
         $this->model = new CotizacionDAO();
     }
 
     // funciones del controlador
-    public function index() {
+    public function index()
+    {
         //comunica con el modelo (enviar datos o obtener datos)
         $resultados = $this->model->selectAll("");
         // comunicarnos a la vista
         // require_once HEADERADICIONAL;
-        require_once VCOTIZACION.'list.php';
+        require_once VCOTIZACION . 'list.php';
         // require_once FOOTER ;
     }
 
-    public function search(){
+    public function search()
+    {
         // lectura de parametros enviados
-        $parametro = (!empty($_POST["b"]))?htmlentities($_POST["b"]):"";
+        $parametro = (!empty($_POST["b"])) ? htmlentities($_POST["b"]) : "";
         //comunica con el modelo (enviar datos o obtener datos)
         $resultados = $this->model->selectAllFiltro($parametro);
         // comunicarnos a la vista
-        require_once VCOTIZACION.'list.php';
+        require_once VCOTIZACION . 'list.php';
     }
 
     // lee datos del formulario de nuevo Cotizacion y lo inserta en la bdd (llamando al modelo)
@@ -65,13 +70,14 @@ class CotizacionController {
     }
 
     // muestra el formulario de nuevo producto
-    public function view_new(){
+    public function view_new()
+    {
         //comunicarse con el modelo
         $modeloTipoProd = new ProductosDAO();
         $tipoProductos = $modeloTipoProd->selectTipoProducto();
 
         // comunicarse con la vista
-        require_once VCOTIZACION.'nuevo.php';
+        require_once VCOTIZACION . 'nuevo.php';
     }
 
     public function delete()
@@ -103,7 +109,7 @@ class CotizacionController {
         $tipoProductos = $modeloTipoProd->selectTipoProducto();
 
         // comunicarse con la vista
-        require_once VCOTIZACION.'edit.php';
+        require_once VCOTIZACION . 'edit.php';
     }
 
     // lee datos del formulario de editar cotizacion y lo actualiza en la bdd (llamando al modelo)
@@ -140,6 +146,4 @@ class CotizacionController {
             header('Location:index.php?c=cotizacion&f=index');
         }
     }
-
-
 }

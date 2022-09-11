@@ -1,4 +1,5 @@
 <?php
+//Autor: Huayamave Cedeño Luis
 class Producto
 {
     private $id_producto, $nombre_producto, $descripcion, $stock_inicial, $fecha_ingreso,

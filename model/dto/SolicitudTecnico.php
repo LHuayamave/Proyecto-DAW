@@ -1,4 +1,5 @@
 <?php
+//Autor: Sellan Fajardo Israel
 class SolicitudTecnico
 {
     private $id_solicitud, $nombre, $apellido, $correo, $fecha_solicitud, $id_problemas;

@@ -1,4 +1,5 @@
 <?php
+//Autor: Palacios Avila Ariel
 class SolicitudServicio
 {
     private $id_solicitud, $nombre, $correo, $telefono, $direccion, $descripcion, $fecha_solicitud,

@@ -1,4 +1,5 @@
 <?php
+//Autor: Huayamave Cedeño Luis
 require_once 'model/dao/ProductosDAO.php';
 require_once 'model/dao/ProveedoresDAO.php';
 require_once 'model/dto/Producto.php';

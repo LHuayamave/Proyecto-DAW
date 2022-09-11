@@ -1,5 +1,5 @@
 <?php
-// dao data access object
+//Autor: Aguirre Aguirre Ronaldo
 require_once 'config/Conexion.php';
 
 class CotizacionDAO

@@ -1,3 +1,4 @@
+<!--autor: Sellan Fajardo Leonardo-->
 <?php $titulo = "Ingresar Solicitud para un tecnico";
 require_once HEADER; ?>
 
@@ -5,7 +6,7 @@ require_once HEADER; ?>
     <div class="card card-body">
         <form action="index.php?c=solicitudtecnico&f=new" method="POST" name="formProvNuevo" id="formProvNuevo">
             <div class="form-row">
-                
+
                 <div class="form-group col-sm-6">
                     <label for="nombre">Nombres</label>
                     <input type="text" name="nombre" id="nombre" class="form-control" required>
@@ -23,7 +24,7 @@ require_once HEADER; ?>
 
                 <div class="form-group col-sm-6">
                     <label>Fecha de solicitud</label>
-                    <input type="date" name="fecha_solicitud" id="fecha"/>
+                    <input type="date" name="fecha_solicitud" id="fecha" />
                 </div>
                 <div class="form-group col-sm-6">
                     <label for="problemas">Problema presentado</label>
