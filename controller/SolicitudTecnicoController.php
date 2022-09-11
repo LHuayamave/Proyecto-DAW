@@ -96,4 +96,49 @@ class SolicitudTecnicoController {
       //llamar a la vista
       header('Location:index.php?c=solicitudtecnico&f=index');
   }
+
+  public function view_edit()
+    {
+        //leer parametro
+        $id = $_REQUEST['id'];
+        $soli = $this->model->selectOne($id);
+        $modeloSoli = new SolicitudTecnicoDAO();
+        $problemas = $modeloSoli->selectAllProblems();
+        // comunicarse con la vista editar solicitud
+        require_once VSOLICITUDTECNICO . 'edit.php';
+    }
+
+    public function edit()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $soli = new SolicitudTecnico();
+          // lectura de parametros
+            $soli->setIdSolicitud(htmlentities($_POST['id_solicitud']));
+            $soli->setNombre(htmlentities($_POST['nombre']));
+            $soli->setApellido(htmlentities($_POST['apellido']));
+            $soli->setCorreo(htmlentities($_POST['correo']));
+            $soli->setFechaSolicitud(htmlentities($_POST['fecha']));
+            $soli->setId_problemas(htmlentities($_POST['problemas']));
+
+            
+            //llamar al modelo
+            $exito = $this->model->update($soli);
+
+            $msj = 'Solicitud actualizada con exito';
+            $color = 'primary';
+            if (!$exito) {
+                $msj = "No se pudo realizar la actualizacion :(";
+                $color = "danger";
+            }
+            if (!isset($_SESSION)) {
+                session_start();
+            };
+            $_SESSION['mensaje'] = $msj;
+            $_SESSION['color'] = $color;
+            //llamar a la vista
+            header('Location:index.php?c=solicitudtecnico&f=index');
+        }
+    }
+
 }

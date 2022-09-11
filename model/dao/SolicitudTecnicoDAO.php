@@ -104,5 +104,37 @@ class SolicitudTecnicoDAO {
     }
 
 
+    public function update($soli)
+    {
+
+        try {
+            $sql = "UPDATE solicitud_tecnico SET nombre=:nom, apellido=:apell," .
+                "correo=:corr, fecha_solicitud=:fsolicitud, id_problemas=:idProblem WHERE id_solicitud=:idSoli";
+
+                
+            $sentencia = $this->con->prepare($sql);
+                
+            $data = [
+                'idSoli' => $soli->getIdSolicitud(),
+                'nom' =>  $soli->getNombre(),
+                'apell' =>  $soli->getApellido(),
+                'corr' =>  $soli->getCorreo(),
+                'fsolicitud' =>  $soli->getFecha_solicitud(),
+                'idProblem' =>  $soli->getId_problemas()
+            ];
+
+            $sentencia->execute($data);
+
+            if ($sentencia->rowCount() <= 0) {
+                return false;
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            return false;
+        }
+        return true;
+    }
+
+
     
 }

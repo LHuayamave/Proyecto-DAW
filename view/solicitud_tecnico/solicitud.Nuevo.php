@@ -26,8 +26,8 @@ require_once HEADER; ?>
                     <input type="date" name="fecha_solicitud" id="fecha"/>
                 </div>
                 <div class="form-group col-sm-6">
-                    <label for="medioPago">Medio de Pago</label>
-                    <select id="medioPago" name="problemas" class=" ">
+                    <label for="problemas">Problema presentado</label>
+                    <select id="problemas" name="problemas" class=" ">
                         <?php foreach ($problemas as $medio) {
                         ?>
                             <option value="<?php echo $medio->id_problemas ?>">

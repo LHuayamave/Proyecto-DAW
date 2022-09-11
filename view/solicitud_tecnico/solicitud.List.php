@@ -45,10 +45,11 @@ require_once HEADER; ?>
                         <td><?php echo $fila['fecha_solicitud'] ?></td>
                         <td><?php echo $fila['id_problemas'] ?></td>
                         <td>
-                            <a class="btn btn-primary" href="index.php?c=proveedores&f=view_edit&id=<?php echo  $fila['id_solicitud']; ?>">
+                            <a class="btn btn-primary" href="index.php?c=solicitudtecnico&f=view_edit&id=<?php echo  $fila['id_solicitud']; ?>">
                                 <i class="fas fa-marker"></i></a>
                             </a>
-                            <a class="btn btn-danger" onclick="if(!confirm('Desea eliminar esta solicitud?'))return false;" href="index.php?c=solicitudtecnico&f=delete&id=<?php echo  $fila['id_solicitud']; ?>">
+                            <a class="btn btn-danger" onclick="if(!confirm('Desea eliminar esta solicitud?'))return false;
+                                " href="index.php?c=solicitudtecnico&f=delete&id=<?php echo  $fila['id_solicitud']; ?>">
                                 <i class="fas fa-trash-alt"></i></a>
                             </a>
                         </td>
