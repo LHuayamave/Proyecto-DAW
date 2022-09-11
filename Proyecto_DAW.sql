@@ -152,7 +152,7 @@ CREATE TABLE `solicitud_servicio` (
 INSERT INTO `solicitud_servicio` (`id_solicitud`, `nombre`, `correo`, `telefono`, `direccion`, `descripcion`, `fecha_solicitud`, `id_tipo`) VALUES
 (1, 'Luis Huayamave', 'luis@gmail.com', '021345667', 'Valdivia', 'Solicitud para pintar coche', '2022-09-08', 1),
 (2, 'Kenia Nieves', 'kenia@gmail.com', '0987523145', 'Esteros ', 'Mantenimiento anual al coche.', '2022-09-09', 3),
-(3, 'Ariel Palacios', 'ariel@gmail.com', '0986532156', 'La Guangala', 'Mantenimiento anual del coche', '2022-09-09', 2),
+(3, 'Ariel Palacios', 'ariel@gmail.com', '0986532156', 'La Guangala', 'Mantenimiento anual del coche', '2022-09-09', 2);
 
 -- --------------------------------------------------------
 
