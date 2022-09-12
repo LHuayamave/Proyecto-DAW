@@ -4,13 +4,6 @@ require_once HEADER; ?>
 
 <div class="container">
     <div class="row">
-        <!--<div class="col-sm-6">
-            <form action="index.php?c=proveedores&f=search" method="POST">
-                <input type="text" name="b" id="busqueda" placeholder="buscar..." />
-                <button type="submit" class="btn btn-primary"><i class="fa-light fa-magnifying-glass"></i>Buscar</button>
-            </form>
-        </div>-->
-
         <div class="col-sm-6">
             <!--<h4>Busqueda con ajax</h4>-->
             <input type="text" name="busquedaAjax" id="busquedaAjax" placeholder="Buscar...">

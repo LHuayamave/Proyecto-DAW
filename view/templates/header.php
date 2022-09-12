@@ -12,6 +12,36 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
     <title>Automotriz</title>
+    <style>
+        .form-cont select{
+            margin-right: 12px;
+            width: 500px;
+        }
+        .form-cont, input:focus {
+            outline: none;
+        }
+
+        .form-cont.ok input {
+            border: 0.1px solid;
+            border-color: #08ffc8;  
+        }
+        .form-cont.falla input {
+            border: 0.1px solid;
+            border-color: #fe5f55;
+        }
+        .form-cont span {
+            visibility: hidden;
+            position: relative;
+            font-size: small;
+            font-weight: 100;
+            text-align: right;
+        }
+
+        .form-cont.falla span {
+            visibility: visible;
+            color:#e74c3c;
+        }
+    </style>
 </head>
 <div style="margin-bottom: 20px">
     <header>
