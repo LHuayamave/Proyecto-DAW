@@ -50,6 +50,7 @@ class ProveedoresController
         require_once VPROVEEDORES . 'nuevo.php';
     }
 
+
     // lee datos del formulario de nuevo proveedor y lo inserta en la bdd (llamando al modelo)
     public function new()
     {

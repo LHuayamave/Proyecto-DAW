@@ -41,6 +41,9 @@
             visibility: visible;
             color:#e74c3c;
         }
+        .error {
+            color: #FF0000;
+        }
     </style>
 </head>
 <div style="margin-bottom: 20px">
