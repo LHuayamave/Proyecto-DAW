@@ -1,5 +1,8 @@
 <!--autor: Nieves Pincay Kenia-->
-<?php $titulo = "Ingresar Proveedor";
+<?php $link ="index.php?c=Login&f=index";
+$imagen = "assets/imagenes/salir.png";
+$opcion ="&nbsp;Salir";
+$titulo = "Ingresar Proveedor";
 require_once HEADER; ?>
 
 <!---------------------INICIO PRUEBA POST VALIDACIONES----------------------

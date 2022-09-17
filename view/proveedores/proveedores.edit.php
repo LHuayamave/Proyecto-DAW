@@ -1,5 +1,9 @@
 <!--autor: Nieves Pincay Kenia-->
-<?php $titulo = "Editar Proveedor";
+<?php 
+$link ="index.php?c=Login&f=index";
+$imagen = "assets/imagenes/salir.png";
+$opcion ="&nbsp;Salir";
+$titulo = "Editar Proveedor";
 require_once HEADER; ?>
 
 <div class="container">

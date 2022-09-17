@@ -1,11 +1,13 @@
 <!--autor: Nieves Pincay Kenia-->
-<?php $titulo = "Lista de Proveedores";
+<?php $link ="index.php?c=Login&f=index";
+$imagen = "assets/imagenes/usuarioInicio.png";
+$opcion ="Mi Cuenta";
+$titulo = "Lista de Proveedores";
 require_once HEADER; ?>
 
 <div class="container">
     <div class="row" id="form">
         <div class="col-sm-6 componente">
-            <!--<h4>Busqueda con ajax</h4>-->
             <img src="assets/imagenes/buscar.png" class="icono"/>
             <input type="text" name="busquedaAjax" id="busquedaAjax" placeholder="Buscar...">
         </div>

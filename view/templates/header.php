@@ -108,7 +108,6 @@
 			outline: none;
 			
 		}
-
 		#form .componente img{
 			position: absolute;
 			margin-left: 5px;
@@ -117,10 +116,12 @@
 		}
     </style>
 </head>
-<body style="background:url(<?php echo isset($fondo) ? $fondo : ""; ?>); background-size: cover;">
+<body style="background:url(<?php echo isset($fondo) ? $fondo : "";?>); background-size: cover;">
 <div style="margin-bottom: 20px">
     <header>
-        <a href=""><img src="assets/imagenes/logo3.png" alt="logo" /></a>
+            <a href=""><img src="assets/imagenes/logo3.png" alt="logo" /></a>  
+            <a href="<?php echo isset($link) ? $link : "";?>" style="float: right; color: white; margin-right:15px; margin-top:50px;">
+            <img src="<?php echo isset($imagen) ? $imagen : "";?>" alt="ingresa" style="width: 35px; height:35px;"/><?php echo isset($opcion) ? $opcion : "";?></a>    
     </header>
     <nav style="margin-bottom: 40px">
         <div id="navegador">
@@ -134,7 +135,7 @@
         </div>
     </nav>
     <h1 style="text-align:center">
-        <?php echo isset($titulo) ? $titulo : ""; ?>
+        <?php echo isset($titulo) ? $titulo : "";?>
     </h1>
 </div>
 
