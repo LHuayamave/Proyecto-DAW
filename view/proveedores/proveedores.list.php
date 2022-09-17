@@ -3,9 +3,10 @@
 require_once HEADER; ?>
 
 <div class="container">
-    <div class="row">
-        <div class="col-sm-6">
+    <div class="row" id="form">
+        <div class="col-sm-6 componente">
             <!--<h4>Busqueda con ajax</h4>-->
+            <img src="assets/imagenes/buscar.png" class="icono"/>
             <input type="text" name="busquedaAjax" id="busquedaAjax" placeholder="Buscar...">
         </div>
 

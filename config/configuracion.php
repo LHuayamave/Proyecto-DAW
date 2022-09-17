@@ -1,6 +1,6 @@
 <?php
 //controlador y funcion predefinida
-define("CONTROLADOR_PRINCIPAL", "cotizacion");
+define("CONTROLADOR_PRINCIPAL", "login");
 define("FUNCION_PRINCIPAL", "index");
 
 //ruta de templates
@@ -14,6 +14,7 @@ define("VPRODUCTOS", "view/productos/productos.");
 define("VSOLICITUDTECNICO", "view/solicitud_tecnico/solicitud.");
 define("VSOLICITUDSERVICIO", "view/solicitud_servicio/solicitud_servicio.");
 define("VCOTIZACION", "view/cotizacion/cotizacion.");
+define("VLOGIN", "view/login/login.");
 
 
 // conexion bb
