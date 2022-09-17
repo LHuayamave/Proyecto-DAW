@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-09-2022 a las 04:13:28
+-- Tiempo de generación: 17-09-2022 a las 06:10:43
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.0.19
 
@@ -109,7 +109,7 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_producto`, `nombre_producto`, `descripcion`, `stock_inicial`, `fecha_ingreso`, `total`, `id_tipo`, `id_proveedor`) VALUES
-(1, 'Rueda', 'Ruedas de Repuesto', 8, '2022-09-06', 60, 1, 101);
+(4, 'Radiador', 'Radiadores nuevos para coches.', 50, '2022-09-04', 120, 2, 100);
 
 -- --------------------------------------------------------
 
@@ -229,6 +229,40 @@ INSERT INTO `tipo_servicio` (`id_tipo`, `tipo_servicio`) VALUES
 (3, 'Mecanica General'),
 (4, 'Desabolladura');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `trabajo`
+--
+
+CREATE TABLE `trabajo` (
+  `id_trabajo` int(11) NOT NULL,
+  `nombre` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `trabajo`
+--
+
+INSERT INTO `trabajo` (`id_trabajo`, `nombre`) VALUES
+(0, 'Cliente'),
+(1, 'Empleado');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL,
+  `nombre` varchar(60) NOT NULL,
+  `correo` varchar(100) NOT NULL,
+  `contrasenia` varchar(50) NOT NULL,
+  `fecha_nac` date NOT NULL,
+  `id_trabajo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Índices para tablas volcadas
 --
@@ -294,6 +328,19 @@ ALTER TABLE `tipo_servicio`
   ADD PRIMARY KEY (`id_tipo`);
 
 --
+-- Indices de la tabla `trabajo`
+--
+ALTER TABLE `trabajo`
+  ADD PRIMARY KEY (`id_trabajo`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD KEY `id_trabajo` (`id_trabajo`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -301,7 +348,7 @@ ALTER TABLE `tipo_servicio`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitud_tecnico`
@@ -343,4 +390,10 @@ ALTER TABLE `solicitud_servicio`
 --
 ALTER TABLE `solicitud_tecnico`
   ADD CONSTRAINT `solicitud_tecnico_ibfk_2` FOREIGN KEY (`id_problemas`) REFERENCES `problemas` (`id_problemas`);
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_trabajo`) REFERENCES `trabajo` (`id_trabajo`);
 COMMIT;
