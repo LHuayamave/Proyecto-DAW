@@ -17,11 +17,17 @@ class SolicitudServicioController
         $resultados = $this->model->selectAllFiltro("");
         require_once VSOLICITUDSERVICIO . 'list.php';
     }
-    public function search()
+    // public function search()
+    // {
+    //     $parametro = (!empty($_POST['b'])) ? htmlentities($_POST['b']) : "";
+    //     $resultados = $this->model->selectAllFiltro($parametro);
+    //     require_once VSOLICITUDSERVICIO . 'list.php';
+    // }
+    public function searchAjax()
     {
-        $parametro = (!empty($_POST['b'])) ? htmlentities($_POST['b']) : "";
+        $parametro = (!empty($_GET["b"])) ? htmlentities($_GET["b"]) : "";
         $resultados = $this->model->selectAllFiltro($parametro);
-        require_once VSOLICITUDSERVICIO . 'list.php';
+        echo json_encode($resultados);
     }
     public function view_new()
     {

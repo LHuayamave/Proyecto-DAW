@@ -4,17 +4,13 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
-            <form action="index.php?c=SolicitudServicio&f=search" method="POST">
-                <input type="text" name="b" id="busqueda" placeholder="buscar..." />
-                <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i>Buscar</button>
-            </form>
+            <input type="text" name="busquedaAjax" id="busquedaAjax" placeholder="Buscar...">
         </div>
         <div class="col-sm-6 d-flex flex-column align-items-end">
             <a href="index.php?c=SolicitudServicio&f=view_new">
                 <button type="button" class="btn btn-primary">
                     <i class="fas fa-plus"></i>
                     Nuevo</button>
-
             </a>
         </div>
     </div>
@@ -57,4 +53,49 @@
     </div>
 
 </div>
+
+<script type="text/javascript">
+    var txtBuscar = document.querySelector('#busquedaAjax');
+    txtBuscar.addEventListener('keyup', cargarSolicitudes);
+
+    function cargarSolicitudes() {
+        var buscar = txtBuscar.value;
+        var url = "index.php?c=SolicitudServicio&f=searchAjax&b=" + buscar;
+        var xmlh = new XMLHttpRequest();
+        xmlh.open("GET", url, true);
+        xmlh.send();
+        xmlh.onreadystatechange = function() {
+            if (xmlh.readyState === 4 && xmlh.status === 200) {
+                var respuesta = xmlh.responseText;
+                actualizar(respuesta);
+            }
+        }
+    }
+
+    function actualizar(respuesta) {
+        var tbody = document.querySelector('.tabladatos');
+        var solicitud = JSON.parse(respuesta);
+        console.log(solicitud);
+        resultados = '';
+        for (var i = 0; i < solicitud.length; i++) {
+            resultados += '<tr>';
+            resultados += '<td>' + solicitud[i].id_solicitud + '</td>';
+            resultados += '<td>' + solicitud[i].nombre + '</td>';
+            resultados += '<td>' + solicitud[i].correo + '</td>';
+            resultados += '<td>' + solicitud[i].telefono + '</td>';
+            resultados += '<td>' + solicitud[i].direccion + '</td>';
+            resultados += '<td>' + solicitud[i].fecha_solicitud + '</td>';
+            resultados += '<td>' + solicitud[i].descripcion + '</td>';
+            resultados += '<td>' + solicitud[i].tipo_servicio + '</td>';
+            resultados += '<td>' +
+                "<a href='index.php?c=SolicitudServicio&f=view_edit&id=" + solicitud[i].id_solicitud +
+                "' " + "class='btn btn-primary'><i class='fas fa-marker'></i></a>" +
+                "<a href='index.php?c=SolicitudServicio&f=delete&id=" + solicitud[i].id_solicitud + "'" +
+                "class='btn btn-danger' onclick = 'if (!confirm(\'Desea eliminar la solicitud de: '" + solicitud[i].nombre +
+                " \')) return false; " + " ><i class='far fa-trash-alt'></i> </a>" + '</td>';
+            resultados += '</tr>';
+        }
+        tbody.innerHTML = resultados;
+    }
+</script>
 <?php require_once FOOTER ?>
