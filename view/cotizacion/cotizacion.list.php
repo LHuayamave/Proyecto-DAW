@@ -4,10 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
-            <form action="index.php?c=cotizacion&f=search" method="POST">
-                <input type="text" name="b" id="busqueda" placeholder="buscar..." />
-                <button type="submit" class="btn btn-primary"><i class="fa-light fa-magnifying-glass"></i>Buscar</button>
-            </form>
+           <input type="text" name="busquedaAjax" id="busquedaAjax"  placeholder="Buscar por nombre"/>   
         </div>
         <div class="col-sm-6 d-flex flex-column align-items-end">
             <a href="index.php?c=cotizacion&f=view_new">
@@ -16,6 +13,7 @@
                     Nuevo</button>
             </a>
         </div>
+        
     </div>
     <div class="table-responsive mt-2">
         <table class="table table-striped table-bordered">
@@ -56,6 +54,55 @@
             </tbody>
         </table>
     </div>
-
 </div>
+
+<script type="text/javascript">
+var txtBuscar = document.querySelector("#busquedaAjax");
+txtBuscar.addEventListener('keyup', cargarcotizacion);
+
+function cargarcotizacion() {
+    // leer paramteros
+    var bus = txtBuscar.value;
+    // realizar la peticion
+    var url = "index.php?c=cotizacion&f=searchAjax&b=" + bus;
+    var xmlh = new XMLHttpRequest();
+    xmlh.open("GET", url, true);
+    xmlh.send();
+    // lectura de respuesta
+    xmlh.onreadystatechange = function () {
+        if (xmlh.readyState === 4 && xmlh.status === 200) {
+            var respuesta = xmlh.responseText;
+            actualizar(respuesta); //actualizar cierta parte de la pagina
+        }
+    };
+}
+function actualizar(respuesta) {
+    // elemento a actualizar
+    var tbody = document.querySelector('.tabladatos');
+    var cotizacion = JSON.parse(respuesta); // parse de respuesta aformato json
+    console.log(cotizacion);
+    resultados = '';
+    for (var i = 0; i < cotizacion.length; i++) {
+        resultados += '<tr>';
+        resultados += '<td>' + cotizacion[i].id_cotizacion + '</td>';
+        //o tambien  resultados += '<td>' + producto[i]['prod_codigo']+ '</td>';
+        resultados += '<td>' + cotizacion[i].nombre+ '</td>';
+        resultados += '<td>' + cotizacion[i].correo + '</td>';
+        resultados += '<td>' + cotizacion[i].telefono + '</td>';
+        resultados += '<td>' + cotizacion[i].direccion + '</td>';
+        resultados += '<td>' + cotizacion[i].descripcion + '</td>';
+        resultados += '<td>' + cotizacion[i].presupuesto + '</td>';
+        resultados += '<td>' + cotizacion[i].fecha_cotizacion + '</td>';
+        resultados += '<td>' + cotizacion[i].id_tipo + '</td>';
+        resultados += '<td>' +
+            "<a href='index.php?c=cotizacion&a=editar&id=" + cotizacion[i].id_cotizacion +
+            "' " + "class='btn btn-primary'><i class='fas fa-marker'></i></a>" +
+            "<a href='index.php?c=cotizacion&a=eliminar&id=" + cotizacion[i].id_cotizacion + "'" +
+            "class='btn btn-danger' onclick = 'if (!confirm(\'Desea eliminar la actividad: '" + cotizacion[i].nombre
+            + " \')) return false; " + " ><i class='far fa-trash-alt'></i> </a>" + '</td>';
+        resultados += '</tr>';
+    }
+    tbody.innerHTML = resultados;
+}
+</script>
 <?php require_once FOOTER ?>

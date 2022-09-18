@@ -16,12 +16,19 @@ class CotizacionController
     // funciones del controlador
     public function index()
     {
-        //comunica con el modelo (enviar datos o obtener datos)
-        $resultados = $this->model->selectAll("");
-        // comunicarnos a la vista
-        // require_once HEADERADICIONAL;
-        require_once VCOTIZACION . 'list.php';
-        // require_once FOOTER ;
+        //if (!isset($_SESSION))
+        //{
+           // require_once VLOGIN . 'ingresar.php';
+        //}
+        //else
+        //{
+            //comunica con el modelo (enviar datos o obtener datos)
+            $resultados = $this->model->selectAll("");
+            // comunicarnos a la vista
+            // require_once HEADERADICIONAL;
+            require_once VCOTIZACION . 'list.php';
+            // require_once FOOTER ;
+        //}
     }
 
     public function search()
@@ -32,6 +39,17 @@ class CotizacionController
         $resultados = $this->model->selectAllFiltro($parametro);
         // comunicarnos a la vista
         require_once VCOTIZACION . 'list.php';
+    }
+
+    // buscar con ajax
+    public function searchAjax() {
+    //lectura de parametros
+    $parametro = (!empty($_GET["b"]))?htmlentities($_GET["b"]):"";
+    //llamar al modelo
+    $resultados =  $this->model->selectAll($parametro);
+    //no llama a la vista  
+    // imprime resultados para que la vista pueda leerlos a traves de js
+    echo json_encode($resultados);
     }
 
     // lee datos del formulario de nuevo Cotizacion y lo inserta en la bdd (llamando al modelo)
