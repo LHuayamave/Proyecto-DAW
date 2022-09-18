@@ -74,7 +74,7 @@ require_once HEADER; ?>
     }
 
     function actualizar(respuesta) {
-        var tdbody = document.querySelector('.tabladatos');
+        var tbody = document.querySelector('.tabladatos');
         var producto = JSON.parse(respuesta);
         console.log(producto);
         resultados = '';
@@ -96,7 +96,7 @@ require_once HEADER; ?>
                 " \')) return false; " + " ><i class='far fa-trash-alt'></i> </a>" + '</td>';
             resultados += '</tr>';
         }
-        tdbody.innerHTML = resultados;
+        tbody.innerHTML = resultados;
     }
 </script>
 <?php require_once FOOTER ?>
