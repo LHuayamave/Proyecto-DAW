@@ -87,17 +87,17 @@ $opcion ="Mi Cuenta";
 				<div class="elemento2">
 					<p class="texto">Inicio de Sesión</p>
 				</div>
-                <form id="form">
+                <form action="index.php?c=login&f=validar" id="form">
                     <div class="componente">
                         <label>Usuario:</label><br/>
 						<img src="assets/imagenes/usuario.png" class="icono"/>
-                        <input type="text" name="nombres" id="nombres" placeholder="usuario" />
+                        <input type="text" name="usuario" id="nombres" placeholder="usuario" />
                     </div>
                     <br/>
                     <div class="componente">
                         <label>Contraseña:</label><br/>
 						<img src="assets/imagenes/contrasenia.png" class="icono"/>
-                        <input type="text" name="apellidos" id="apellidos" placeholder="contraseña"/>
+                        <input type="text" name="contra" id="apellidos" placeholder="contraseña"/>
                     </div>
                     <br/>
                     

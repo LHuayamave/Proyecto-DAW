@@ -11,6 +11,36 @@ class LoginDAO
         $this->con = Conexion::getConexion();
     }
 
+    function validarUsuario($login){
+
+        try {
+            $cantidad_resultado = null;
+            
+            $sql = "SELECT *FROM usuarios where correo=:USER and contrasenia=:PASS";
+            $resultado = $con->prepare($sql);
+            $resultado->execute(array(":USER"=>$login->getUsuario(), ":PASS"=>$login->getContrasenia()));
+            $cantidad_resultado = $resultado->rowCount();
+
+            session_start();
+
+                    if ($cantidad_resultado == 1) {
+                        $_SESSION["user"] = login->getUsuario();
+                        $_SESSION["pass"] = login->getContrasenia();  
+                        return false;
+
+                    } else {
+                        $_SESSION["error"] = "ERROR";
+                        return true;
+                    }
+            }catch (Exception $e) {
+
+
+            } finally {
+
+                $cantidad_resultado = null;
+            }
+    }
+
     /*public function selectAllFiltro($parametro)
     {
         // sql de la sentencia
