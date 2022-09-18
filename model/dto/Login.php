@@ -1,6 +1,6 @@
 <?php
 // autor:Nieves Pincay Kenia
-class Proveedor
+class Login
 {
     private $usuario, $contrasenia;
 
@@ -26,6 +26,25 @@ class Proveedor
     function setContrasenia($contrasenia)
     {
         $this->contrasenia = $contrasenia;
+    }
+
+    public function __set($usuario, $valor)
+    {
+        if (property_exists('Usuario', $usuario)) {
+            $this->$usuario = $valor;
+        } else {
+            echo $usuario . "No existe ";
+        }
+    }
+
+
+    public function __get($usuario)
+    {
+        if (property_exists('Producto', $usuario)) {
+            return $this->$usuario;
+        }
+
+        return NULL;
     }
 
 }

@@ -89,23 +89,23 @@ $opcion ="Mi Cuenta";
 				</div>
 
 				
-                <form action="index.php?c=login&f=validar" id="form">
+                <form action="index.php?c=login&f=validar" id="form" method="POST">
                     <div class="componente">
                         <label>Usuario:</label><br/>
 						<img src="assets/imagenes/usuario.png" class="icono"/>
-                        <input type="text" name="usuario" id="nombres" placeholder="usuario" />
+                        <input type="text" name="usuario" id="usuario" placeholder="usuario" />
                     </div>
                     <br/>
                     <div class="componente">
                         <label>Contraseña:</label><br/>
 						<img src="assets/imagenes/contrasenia.png" class="icono"/>
-                        <input type="text" name="contra" id="apellidos" placeholder="contraseña"/>
+                        <input type="text" name="contra" id="contra" placeholder="contraseña"/>
                     </div>
                     <br/>
                     
                     <br/><br/>
                     <div id="boton">
-                        <input type="submit" name="boton" id="enviar" class="btn btn-primary" value="Iniciar Sesión"/><br/><br/>
+                        <input type="submit" class="btn btn-primary"/><br/><br/>
                     </div>
  
                 </form>   
