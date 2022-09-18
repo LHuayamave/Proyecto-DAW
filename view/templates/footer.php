@@ -1,3 +1,13 @@
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/estilos.css" rel="stylesheet">
+    <!-- FONT AWESOME -->x
+</head>
+
 <footer class="p-3 mb-2 bg-dark text-white" style="margin-top:30px">
     <div class="row">
         <div class="col-sm-4 d-flex flex-column">

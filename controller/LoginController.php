@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 // autor:Nieves Pincay Kenia
 require_once 'model/dao/LoginDAO.php';
 require_once 'model/dto/Login.php';
@@ -19,6 +22,10 @@ class LoginController
         //$resultados = $this->model->selectAllFiltro("");
         // comunicarnos a la vista
         require_once VLOGIN . 'ingresar.php';
+
+        if(isset($_SESSION['login'])){
+            //header
+        }
     }
 
     

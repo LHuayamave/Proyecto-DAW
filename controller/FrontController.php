@@ -11,7 +11,6 @@ class FrontController
         $controlador = ucwords(strtolower($controlador)) . "Controller";
         //ProductosController
         $funcion = (!empty($_REQUEST['f'])) ? htmlentities($_REQUEST['f']) : FUNCION_PRINCIPAL;
-
         require_once 'controller/' . $controlador . '.php';
         $cont = new  $controlador(); // creacion del objeto controlador
         $cont->$funcion(); // llamada a la funcion del controlador
