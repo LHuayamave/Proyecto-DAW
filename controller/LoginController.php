@@ -24,32 +24,33 @@ class LoginController
         // comunicarnos a la vista
         require_once VLOGIN . 'ingresar.php';
 
-        if(isset($_SESSION['login'])){
-            //header
-        }
     }
 
     public function validar(){
-        $login = new Login();
 
-        $login-> setUsuario(htmlentities($_POST['usuario']));
-        $login-> setContrasenia(htmlentities($_POST['contra']));
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $login = new Login();
 
-        $exito = $this->model->validarUsuario($login);
+            $login-> setUsuario(htmlentities($_POST['usuario']));
+            $login-> setContrasenia(htmlentities($_POST['contra']));
 
-        $msj = 'Inicio de sesion exitoso :)';
-        $color = 'primary';
-        
-        if (!$exito) {
-            $msj = "No se pudo inciar sesión";
-            $color = "danger";
-        }
+            $exito = $this->model->validarUsuario($login);
+
+            $msj = 'Inicio de sesion exitoso :)';
+            $color = 'primary';
             
-        if (!isset($_SESSION)) {
-            session_start();
-        };
-        
-        $_SESSION['mensaje'] = $msj;
-        $_SESSION['color'] = $color;
+            if (!$exito) {
+                $msj = "No se pudo inciar sesión";
+                $color = "danger";
+            }
+                
+            if (!isset($_SESSION)) {
+                session_start();
+                
+            };
+            
+                $_SESSION['mensaje'] = $msj;
+                $_SESSION['color'] = $color;
+            }
     }
 }

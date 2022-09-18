@@ -87,6 +87,8 @@ $opcion ="Mi Cuenta";
 				<div class="elemento2">
 					<p class="texto">Inicio de Sesión</p>
 				</div>
+
+				
                 <form action="index.php?c=login&f=validar" id="form">
                     <div class="componente">
                         <label>Usuario:</label><br/>
