@@ -75,6 +75,8 @@ class LoginController
             };
             $_SESSION['mensaje'] = $msj;
             $_SESSION['color'] = $color;
+            $_SESSION['usuario'] = $login -> getUsuario();
+            $_SESSION['contra'] = $login -> getContrasenia();
             //llamar a la vista
             header('Location:index.php?c=cotizacion&f=index');
         }

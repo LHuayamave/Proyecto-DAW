@@ -16,6 +16,13 @@ class CotizacionController
     // funciones del controlador
     public function index()
     {
+        if(!isset($_SESSION)){
+            session_start();
+        }
+
+        if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
+            require_once VLOGIN . 'ingresar.php'; //redirijir
+        }
         //if (!isset($_SESSION))
         //{
            // require_once VLOGIN . 'ingresar.php';

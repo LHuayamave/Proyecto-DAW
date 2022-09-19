@@ -43,6 +43,9 @@ class LoginDAO
         }
         return true;
     }
+    
+
+
 
     /*public function selectAllFiltro($parametro)
     {

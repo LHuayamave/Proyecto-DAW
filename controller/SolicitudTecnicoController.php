@@ -16,6 +16,13 @@ class SolicitudTecnicoController
     // funciones del controlador
     public function index()
     {
+        if(!isset($_SESSION)){
+            session_start();
+        }
+
+        if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
+            require_once VLOGIN . 'ingresar.php'; //redirijir
+        }
         //comunica con el modelo (enviar datos o obtener datos)
         $resultados = $this->model->selectAll("");
         // comunicarnos a la vista
