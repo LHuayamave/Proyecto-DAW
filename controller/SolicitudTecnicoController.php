@@ -24,7 +24,7 @@ class SolicitudTecnicoController
             require_once VLOGIN . 'ingresar.php'; //redirijir
         }
         //comunica con el modelo (enviar datos o obtener datos)
-        $resultados = $this->model->selectAll("");
+        $resultados = $this->model->selectAllFiltro("");
         // comunicarnos a la vista
         // require_once HEADERADICIONAL;
         require_once VSOLICITUDTECNICO . 'list.php';
@@ -37,9 +37,16 @@ class SolicitudTecnicoController
         // lectura de parametros enviados
         $parametro = (!empty($_POST["b"])) ? htmlentities($_POST["b"]) : "";
         //comunica con el modelo (enviar datos o obtener datos)
-        $resultados = $this->model->selectAll($parametro);
+        $resultados = $this->model->selectAllFiltro($parametro);
         // comunicarnos a la vista
         require_once VSOLICITUDTECNICO . 'list.php';
+    }
+
+    public function searchAjax()
+    {
+        $parametro = (!empty($_GET["b"])) ? htmlentities($_GET["b"]) : "";
+        $resultados = $this->model->selectAllFiltro($parametro);
+        echo json_encode($resultados);
     }
 
     // muestra el formulario de nuevo producto

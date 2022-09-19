@@ -11,7 +11,7 @@ class SolicitudTecnicoDAO
         $this->con = Conexion::getConexion();
     }
 
-    public function selectAll($parametro)
+    public function selectAllFiltro($parametro)
     {
         // sql de la sentencia
         $sql = "SELECT * FROM solicitud_tecnico s, problemas p  where s.id_problemas = p.id_problemas and 
