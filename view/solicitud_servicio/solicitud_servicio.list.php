@@ -1,5 +1,7 @@
 <!--autor: Palacios Avila Ariel-->
-<?php require_once HEADER; ?>
+<?php
+$titulo = "Lista de Solicitudes de Servicios";
+require_once HEADER; ?>
 
 <div class="container">
     <div class="row">
