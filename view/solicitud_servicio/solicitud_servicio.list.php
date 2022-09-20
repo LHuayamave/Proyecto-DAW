@@ -27,7 +27,10 @@ require_once HEADER; ?>
                 <th>Fecha de la Solicitud</th>
                 <th>Descripci&oacute;n</th>
                 <th>Tipo de Servicio</th>
-                <th>Editar / Eliminar</th>
+                <?php
+                if ($_SESSION['rol']  == null || $_SESSION['rol'] == 1 || $_SESSION['rol'] == 3) { ?>
+                    <th>Editar / Borrar</th>
+                <?php } ?>
             </thead>
             <tbody class="tabladatos">
                 <?php
@@ -42,12 +45,17 @@ require_once HEADER; ?>
                         <td><?php echo $fila['fecha_solicitud']; ?></td>
                         <td><?php echo $fila['descripcion']; ?></td>
                         <td><?php echo $fila['tipo_servicio']; ?></td>
-                        <td>
-                            <a class="btn btn-primary" href="index.php?c=SolicitudServicio&f=view_edit&id=<?php echo  $fila['id_solicitud']; ?>">
-                                <i class="fas fa-marker"></i></a>
-                            <a class="btn btn-danger" onclick="if(!confirm('¿Esta seguro de que desea eliminar esta solicitud?'))return false;" href="index.php?c=SolicitudServicio&f=delete&id=<?php echo  $fila['id_solicitud']; ?>">
-                                <i class="fas fa-trash-alt"></i></a>
-                        </td>
+                        <?php
+                        if ($_SESSION['rol'] == null || $_SESSION['rol'] == 1 || $_SESSION['rol'] == 3) { ?>
+                            <td>
+                                <a class="btn btn-primary" href="index.php?c=SolicitudServicio&f=view_edit&id=<?php echo  $fila['id_solicitud']; ?>">
+                                    <i class="fas fa-marker"></i></a>
+                            <?php } ?>
+                            <?php if ($_SESSION['rol'] == null || $_SESSION['rol'] == 3) { ?>
+                                <a class="btn btn-danger" onclick="if(!confirm('¿Esta seguro de que desea eliminar esta solicitud?'))return false;" href="index.php?c=SolicitudServicio&f=delete&id=<?php echo  $fila['id_solicitud']; ?>">
+                                    <i class="fas fa-trash-alt"></i></a>
+                            </td>
+                        <?php } ?>
                     </tr>
                 <?php  } ?>
             </tbody>

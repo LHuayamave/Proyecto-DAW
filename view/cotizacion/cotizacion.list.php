@@ -27,7 +27,10 @@
                 <th>Presupuesto</th>
                 <th>Fecha cotizacion</th>
                 <th>Tipo producto</th>
-                <th>Editar / Borrar</th>
+                <?php
+                if ($_SESSION['rol']  == null || $_SESSION['rol'] == 1 || $_SESSION['rol'] == 3) { ?>
+                    <th>Editar / Borrar</th>
+                <?php } ?>
             </thead>
             <tbody class="tabladatos">
                 <?php
@@ -43,12 +46,17 @@
                         <td><?php echo $fila['presupuesto']; ?></td>
                         <td><?php echo $fila['fecha_cotizacion']; ?></td>
                         <td><?php echo $fila['tipo_producto']; ?></td>
-                        <td>
-                            <a class="btn btn-primary" href="index.php?c=cotizacion&f=view_edit&id=<?php echo  $fila['id_cotizacion']; ?>">
-                                <i class="fas fa-marker"></i></a>
-                            <a class="btn btn-danger" onclick="if(!confirm('Esta seguro de eliminar de eliminar la cotizacion?'))return false;" href="index.php?c=cotizacion&f=delete&id=<?php echo  $fila['id_cotizacion']; ?>">
-                                <i class="fas fa-trash-alt"></i></a>
-                        </td>
+                        <?php if ($_SESSION['rol'] == null || $_SESSION['rol'] == 1 || $_SESSION['rol'] == 3) { ?>
+                            <td>
+                                <a class="btn btn-primary" href="index.php?c=cotizacion&f=view_edit&id=<?php echo  $fila['id_cotizacion']; ?>">
+                                    <i class="fas fa-marker"></i></a>
+                            <?php } ?>
+
+                            <?php if ($_SESSION['rol'] == null || $_SESSION['rol'] == 3) { ?>
+                                <a class="btn btn-danger" onclick="if(!confirm('Esta seguro de eliminar de eliminar la cotizacion?'))return false;" href="index.php?c=cotizacion&f=delete&id=<?php echo  $fila['id_cotizacion']; ?>">
+                                    <i class="fas fa-trash-alt"></i></a>
+                            </td>
+                        <?php }  ?>
                     </tr>
                 <?php } ?>
             </tbody>

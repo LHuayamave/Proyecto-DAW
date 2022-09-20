@@ -1,19 +1,22 @@
-body{
+body {
     margin: 0;
     background-color: #fff;
 }
-header{
+
+header {
     background-color: #2C4A64;
     background-size: cover;
-    height:100px;
+    height: 100px;
     width: 100%;
     overflow: hidden;
 }
-header img{
+
+header img {
     width: 400px;
     height: 100px;
     text-align: left;
 }
+
 #navegador ul {
     list-style-type: none;
     margin: 0;
@@ -42,12 +45,14 @@ header img{
 #navegador li a:hover {
     background-color: #111;
 }
-#navegador li ul{
+
+#navegador li ul {
     display: none;
     position: absolute;
     min-width: 135px;
 }
-#navegador li:hover > ul{
+
+#navegador li:hover>ul {
     display: block;
 }
 
