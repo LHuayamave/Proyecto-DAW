@@ -251,7 +251,7 @@ CREATE TABLE `trabajo` (
 
 INSERT INTO `trabajo` (`id_trabajo`, `nombre`) VALUES
 (0, 'Cliente'),
-(1, 'Empleado');
+(1, 'Empleado'),
 (3, 'administrador');
 
 -- --------------------------------------------------------
@@ -275,7 +275,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `correo`, `contrasenia`, `fecha_nac`, `id_trabajo`) VALUES
 (0, 'Pedro Pablo', 'pedro@gmail.com', 'pedropablo', '2001-03-08', 0),
-(1, 'Julio maldonado', 'julio@hotmail.com', 'juliomaldonado', '2002-09-18', 1);
+(1, 'Julio maldonado', 'julio@hotmail.com', 'juliomaldonado', '2002-09-18', 1),
 (3, 'manolo', 'manolo@gmail.com', 'manolo', '2012-09-01', 3);
 
 --

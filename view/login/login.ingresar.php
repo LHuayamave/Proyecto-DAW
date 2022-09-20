@@ -1,7 +1,7 @@
 <?php $fondo = "assets/imagenes/automotriz3.jpeg";
 $link ="index.php?c=Login&f=index";
-$imagen = "assets/imagenes/usuarioInicio.png";
-$opcion ="Mi Cuenta";
+//$imagen = "assets/imagenes/usuarioInicio.png";
+//$opcion ="Mi Cuenta";
 //require_once HEADER; ?>
 <head>
     <meta charset="UTF-8">
