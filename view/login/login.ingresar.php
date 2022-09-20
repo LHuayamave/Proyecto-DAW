@@ -106,7 +106,7 @@ $link = "index.php?c=Login&f=index";
 				</div>
 
 
-				<form action="index.php?c=login&f=validar" id="form" method="POST">
+				<form action="index.php?c=login&f=validar" id="formLogin" method="POST">
 					<div class="componente">
 						<label>Usuario:</label><br />
 						<img src="assets/imagenes/usuario.png" class="icono" />
@@ -130,4 +130,56 @@ $link = "index.php?c=Login&f=index";
 		</div>
 	</div>
 
+	//validacion lado del cliente
+	<script>
+    var form = document.getElementById("formLogin");
+    form.addEventListener('submit', validar);
+
+    function validar(event) {
+        // variable para retornar
+        var valido = true;
+        
+        // obtencion de los elementos a validar
+        var txtemail = document.getElementById("usuario");
+
+        var correo = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        
+
+        limpiarMensajes();
+
+        //validacion email
+        if (txtemail.value === "") {
+            valido = false;
+            mensaje("Debe ingresar un correo", txtemail);
+        } else if (!correo.test(txtemail.value)) {
+            valido = false;
+            mensaje("Correo no es correcto", txtemail);
+        }
+
+        if (!valido) {
+            event.preventDefault();
+        }
+    }
+
+    function mensaje(cadenaMensaje, elemento) {
+        elemento.focus();
+
+        var nodoMensaje = document.createElement("span");
+        nodoMensaje.textContent = cadenaMensaje;
+        nodoMensaje.setAttribute("class", "alert alert-danger d-flex align-items-center");
+
+
+        var nodoPadre = elemento.parentNode;
+        nodoPadre.appendChild(nodoMensaje);
+
+    }
+
+    function limpiarMensajes() {
+        var mensajes = document.querySelectorAll("span");
+        for (let i = 0; i < mensajes.length; i++) {
+            mensajes[i].remove();
+
+        }
+    }
+</script>
 	<?php require_once FOOTER ?>
