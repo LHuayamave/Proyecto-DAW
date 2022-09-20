@@ -26,7 +26,10 @@ require_once HEADER; ?>
                 <th>Total en $</th>
                 <th>Tipo de Producto</th>
                 <th>Proveedor</th>
-                <th>Editar / Borrar</th>
+                <?php
+                if ($_SESSION['rol']  == null || $_SESSION['rol'] == 1 || $_SESSION['rol'] == 3) { ?>
+                    <th>Editar / Borrar</th>
+                <?php } ?>
             </thead>
             <tbody class="tabladatos">
                 <?php
@@ -41,12 +44,18 @@ require_once HEADER; ?>
                         <td><?php echo '$' . $fila['total']; ?></td>
                         <td><?php echo $fila['tipo_producto']; ?></td>
                         <td><?php echo $fila['nombre_proveedor']; ?></td>
-                        <td>
-                            <a class="btn btn-primary" href="index.php?c=productos&f=view_edit&id=<?php echo  $fila['id_producto']; ?>">
-                                <i class="fas fa-marker"></i></a>
-                            <a class="btn btn-danger" onclick="if(!confirm('Esta seguro de eliminar el producto?'))return false;" href="index.php?c=productos&f=delete&id=<?php echo  $fila['id_producto']; ?>">
-                                <i class="fas fa-trash-alt"></i></a>
-                        </td>
+                        <?php
+                        if ($_SESSION['rol'] == null || $_SESSION['rol'] == 1 || $_SESSION['rol'] == 3) { ?>
+                            <td>
+
+
+                                <a class="btn btn-primary" href="index.php?c=productos&f=view_edit&id=<?php echo  $fila['id_producto']; ?>">
+                                    <i class="fas fa-marker"></i></a>
+                                <a class="btn btn-danger" onclick="if(!confirm('Esta seguro de eliminar el producto?'))return false;" href="index.php?c=productos&f=delete&id=<?php echo  $fila['id_producto']; ?>">
+                                    <i class="fas fa-trash-alt"></i></a>
+
+                            </td>
+                        <?php } ?>
                     </tr>
                 <?php  } ?>
             </tbody>
