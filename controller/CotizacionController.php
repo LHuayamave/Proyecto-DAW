@@ -23,10 +23,10 @@ class CotizacionController
         if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
             require_once VLOGIN . 'ingresar.php'; //redirijir
         }
-        //if (!isset($_SESSION))
-        //{
-           // require_once VLOGIN . 'ingresar.php';
-        //}
+
+        else if($_SESSION['rol'] == null || $_SESSION['rol'] == 0){
+            header('Location:index.php?c=productos&f=index');
+        }
         else
         {
             echo $_SESSION['rol'];
@@ -139,7 +139,7 @@ class CotizacionController
             require_once VLOGIN . 'ingresar.php'; //redirijir
         }
 
-        if($_SESSION['rol'] == null || $_SESSION['rol'] == 0){
+        if($_SESSION['rol'] == null || $_SESSION['rol'] == 0 || $_SESSION['rol'] == 1){
             header('Location:index.php?c=cotizacion&f=index');
         }else {
             $prod = new Cotizacion();

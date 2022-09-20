@@ -23,13 +23,14 @@ class SolicitudTecnicoController
         if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
             require_once VLOGIN . 'ingresar.php'; //redirijir
         }
-        //comunica con el modelo (enviar datos o obtener datos)
-        $resultados = $this->model->selectAllFiltro("");
-        // comunicarnos a la vista
-        // require_once HEADERADICIONAL;
-        require_once VSOLICITUDTECNICO . 'list.php';
-        // require_once FOOTER ;
-
+        else {
+            //comunica con el modelo (enviar datos o obtener datos)
+            $resultados = $this->model->selectAllFiltro("");
+            // comunicarnos a la vista
+            // require_once HEADERADICIONAL;
+            require_once VSOLICITUDTECNICO . 'list.php';
+            // require_once FOOTER ;
+        }
     }
 
     public function search()
@@ -52,19 +53,43 @@ class SolicitudTecnicoController
     // muestra el formulario de nuevo producto
     public function view_new()
     {
-        //comunicarse con el modelo
-        $modeloSolicitud = new SolicitudTecnicoDAO();
-        $problemas = $modeloSolicitud->selectAllProblems();
+        if(!isset($_SESSION)){
+            session_start();
+        }
 
-        // comunicarse con la vista
-        require_once VSOLICITUDTECNICO . 'nuevo.php';
+        if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
+            require_once VLOGIN . 'ingresar.php'; //redirijir
+        }
+
+        if($_SESSION['rol'] == null || $_SESSION['rol'] == 0){
+            header('Location:index.php?c=solicitudtecnico&f=index');
+        }
+        else{
+            //comunicarse con el modelo
+            $modeloSolicitud = new SolicitudTecnicoDAO();
+            $problemas = $modeloSolicitud->selectAllProblems();
+
+            // comunicarse con la vista
+            require_once VSOLICITUDTECNICO . 'nuevo.php';
+        }
     }
 
     // lee datos del formulario de una nueva solictud y lo inserta en la bdd (llamando al modelo)
     public function new()
     {
+        if(!isset($_SESSION)){
+            session_start();
+        }
+
+        if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
+            require_once VLOGIN . 'ingresar.php'; //redirijir
+        }
+
+        if($_SESSION['rol'] == null || $_SESSION['rol'] == 0){
+            header('Location:index.php?c=solicitudtecnico&f=index');
+        }
         //cuando la solicitud es por post
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') { // insertar solicitud
+        else if ($_SERVER['REQUEST_METHOD'] == 'POST') { // insertar solicitud
 
             $soli = new SolicitudTecnico();
             // lectura de parametros
@@ -95,41 +120,78 @@ class SolicitudTecnicoController
 
     public function delete()
     {
-        //leeer parametros
-        $soli = new SolicitudTecnico();
-        $soli->setIdSolicitud(htmlentities($_REQUEST['id']));
-
-        //comunicando con el modelo
-        $exito = $this->model->delete($soli);
-        $msj = 'Solicitud eliminada con exito';
-        $color = 'primary';
-        if (!$exito) {
-            $msj = "No se pudo eliminar la solicitud";
-            $color = "danger";
-        }
-        if (!isset($_SESSION)) {
+        if(!isset($_SESSION)){
             session_start();
-        };
-        $_SESSION['mensaje'] = $msj;
-        $_SESSION['color'] = $color;
-        //llamar a la vista
-        header('Location:index.php?c=solicitudtecnico&f=index');
+        }
+
+        if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
+            require_once VLOGIN . 'ingresar.php'; //redirijir
+        }
+
+        if($_SESSION['rol'] == null || $_SESSION['rol'] == 0 || $_SESSION['rol'] == 1){
+            header('Location:index.php?c=solicitudtecnico&f=index');
+        }
+        else {
+            //leeer parametros
+            $soli = new SolicitudTecnico();
+            $soli->setIdSolicitud(htmlentities($_REQUEST['id']));
+
+            //comunicando con el modelo
+            $exito = $this->model->delete($soli);
+            $msj = 'Solicitud eliminada con exito';
+            $color = 'primary';
+            if (!$exito) {
+                $msj = "No se pudo eliminar la solicitud";
+                $color = "danger";
+            }
+            if (!isset($_SESSION)) {
+                session_start();
+            };
+            $_SESSION['mensaje'] = $msj;
+            $_SESSION['color'] = $color;
+            //llamar a la vista
+            header('Location:index.php?c=solicitudtecnico&f=index');
+        }
     }
 
     public function view_edit()
     {
-        //leer parametro
-        $id = $_REQUEST['id'];
-        $soli = $this->model->selectOne($id);
-        $modeloSoli = new SolicitudTecnicoDAO();
-        $problemas = $modeloSoli->selectAllProblems();
-        // comunicarse con la vista editar solicitud
-        require_once VSOLICITUDTECNICO . 'edit.php';
+        if(!isset($_SESSION)){
+            session_start();
+        }
+
+        if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
+            require_once VLOGIN . 'ingresar.php'; //redirijir
+        }
+
+        if($_SESSION['rol'] == null || $_SESSION['rol'] == 0){
+            header('Location:index.php?c=solicitudtecnico&f=index');
+        }
+        else {
+            //leer parametro
+            $id = $_REQUEST['id'];
+            $soli = $this->model->selectOne($id);
+            $modeloSoli = new SolicitudTecnicoDAO();
+            $problemas = $modeloSoli->selectAllProblems();
+            // comunicarse con la vista editar solicitud
+            require_once VSOLICITUDTECNICO . 'edit.php';
+        }
     }
 
     public function edit()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if(!isset($_SESSION)){
+            session_start();
+        }
+
+        if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
+            require_once VLOGIN . 'ingresar.php'; //redirijir
+        }
+
+        if($_SESSION['rol'] == null || $_SESSION['rol'] == 0){
+            header('Location:index.php?c=solicitudtecnico&f=index');
+        }
+        else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $soli = new SolicitudTecnico();
             // lectura de parametros

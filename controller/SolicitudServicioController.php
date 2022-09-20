@@ -21,8 +21,10 @@ class SolicitudServicioController
         if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
             require_once VLOGIN . 'ingresar.php'; //redirijir
         }
-        $resultados = $this->model->selectAllFiltro("");
-        require_once VSOLICITUDSERVICIO . 'list.php';
+        else{
+            $resultados = $this->model->selectAllFiltro("");
+            require_once VSOLICITUDSERVICIO . 'list.php';
+        }
     }
     // public function search()
     // {
@@ -38,15 +40,39 @@ class SolicitudServicioController
     }
     public function view_new()
     {
-        $modeloSoli = new SolicitudServicioDAO();
-        $tipo = $modeloSoli->selectTipoServicio();
+        if(!isset($_SESSION)){
+            session_start();
+        }
 
-        require_once VSOLICITUDSERVICIO . 'nuevo.php';
+        if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
+            require_once VLOGIN . 'ingresar.php'; //redirijir
+        }
+
+        if($_SESSION['rol'] == null || $_SESSION['rol'] == 0){
+            header('Location:index.php?c=SolicitudServicio&f=index');
+        }
+        else {
+            $modeloSoli = new SolicitudServicioDAO();
+            $tipo = $modeloSoli->selectTipoServicio();
+    
+            require_once VSOLICITUDSERVICIO . 'nuevo.php';
+        }
     }
 
     public function new()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if(!isset($_SESSION)){
+            session_start();
+        }
+
+        if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
+            require_once VLOGIN . 'ingresar.php'; //redirijir
+        }
+
+        if($_SESSION['rol'] == null || $_SESSION['rol'] == 0){
+            header('Location:index.php?c=SolicitudServicio&f=index');
+        }
+        else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $soli = new SolicitudServicio();
             $soli->setIdTipo(htmlentities($_POST['tipo_servicio']));
             $soli->setIdSolicitud(htmlentities($_POST['id']));
@@ -77,36 +103,73 @@ class SolicitudServicioController
 
     public function delete()
     {
-        $soli = new SolicitudServicio();
-        $soli->setIdSolicitud(htmlentities($_REQUEST['id']));
-        $exito = $this->model->delete($soli);
-        $msj = 'Solicitud eliminada exitosamente';
-        $color = 'primary';
-        if (!$exito) {
-            $msj = "No se pudo eliminada la solicitud";
-            $color = "danger";
-        }
-        if (!isset($_SESSION)) {
+        if(!isset($_SESSION)){
             session_start();
-        };
-        $_SESSION['mensaje'] = $msj;
-        $_SESSION['color'] = $color;
-        header('Location:index.php?c=SolicitudServicio&f=index');
+        }
+
+        if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
+            require_once VLOGIN . 'ingresar.php'; //redirijir
+        }
+
+        if($_SESSION['rol'] == null || $_SESSION['rol'] == 0 || $_SESSION['rol'] == 1){
+            header('Location:index.php?c=SolicitudServicio&f=index');
+        }
+        else {
+            $soli = new SolicitudServicio();
+            $soli->setIdSolicitud(htmlentities($_REQUEST['id']));
+            $exito = $this->model->delete($soli);
+            $msj = 'Solicitud eliminada exitosamente';
+            $color = 'primary';
+            if (!$exito) {
+                $msj = "No se pudo eliminada la solicitud";
+                $color = "danger";
+            }
+            if (!isset($_SESSION)) {
+                session_start();
+            };
+            $_SESSION['mensaje'] = $msj;
+            $_SESSION['color'] = $color;
+            header('Location:index.php?c=SolicitudServicio&f=index');
+        }
     }
 
     public function view_edit()
     {
-        $id = $_REQUEST['id'];
-        $soli = $this->model->selectOne($id);
-        $modeloSoli = new SolicitudServicioDAO();
-        $tipo = $modeloSoli->selectTipoServicio();
+        if(!isset($_SESSION)){
+            session_start();
+        }
 
-        require_once VSOLICITUDSERVICIO . 'edit.php';
+        if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
+            require_once VLOGIN . 'ingresar.php'; //redirijir
+        }
+
+        if($_SESSION['rol'] == null || $_SESSION['rol'] == 0){
+            header('Location:index.php?c=SolicitudServicio&f=index');
+        }
+        else {
+            $id = $_REQUEST['id'];
+            $soli = $this->model->selectOne($id);
+            $modeloSoli = new SolicitudServicioDAO();
+            $tipo = $modeloSoli->selectTipoServicio();
+
+            require_once VSOLICITUDSERVICIO . 'edit.php';
+        }
     }
 
     public function edit()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if(!isset($_SESSION)){
+            session_start();
+        }
+
+        if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
+            require_once VLOGIN . 'ingresar.php'; //redirijir
+        }
+
+        if($_SESSION['rol'] == null || $_SESSION['rol'] == 0){
+            header('Location:index.php?c=SolicitudServicio&f=index');
+        }
+        else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $soli = new SolicitudServicio();
             $soli->setIdSolicitud(htmlentities($_POST['id']));

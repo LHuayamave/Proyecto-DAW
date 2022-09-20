@@ -22,8 +22,10 @@ class ProductosController
         if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
             require_once VLOGIN . 'ingresar.php'; //redirijir
         }
-        $resultados = $this->model->selectAllFiltro("");
-        require_once VPRODUCTOS . 'list.php';
+        else{
+            $resultados = $this->model->selectAllFiltro("");
+            require_once VPRODUCTOS . 'list.php';
+        }
     }
 
     public function search()
@@ -42,17 +44,41 @@ class ProductosController
 
     public function view_new()
     {
-        $modeloProv = new ProveedoresDAO();
-        $prov = $modeloProv->selectAll();
+        if(!isset($_SESSION)){
+            session_start();
+        }
 
-        $modeloTipo = new ProductosDAO();
-        $tipo = $modeloTipo->selectTipoProducto();
-        require_once VPRODUCTOS . 'nuevo.php';
+        if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
+            require_once VLOGIN . 'ingresar.php'; //redirijir
+        }
+
+        if($_SESSION['rol'] == null || $_SESSION['rol'] == 0){
+            header('Location:index.php?c=productos&f=index');
+        }
+        else {
+            $modeloProv = new ProveedoresDAO();
+            $prov = $modeloProv->selectAll();
+
+            $modeloTipo = new ProductosDAO();
+            $tipo = $modeloTipo->selectTipoProducto();
+            require_once VPRODUCTOS . 'nuevo.php';
+        }
     }
 
     public function new()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if(!isset($_SESSION)){
+            session_start();
+        }
+
+        if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
+            require_once VLOGIN . 'ingresar.php'; //redirijir
+        }
+
+        if($_SESSION['rol'] == null || $_SESSION['rol'] == 0){
+            header('Location:index.php?c=productos&f=index');
+        }
+        else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $prod = new Producto();
             $prod->setNombreProducto(htmlentities($_POST['nombre_producto']));
             $prod->setDescripcion(htmlentities($_POST['descripcion']));
@@ -80,40 +106,77 @@ class ProductosController
 
     public function delete()
     {
-        $prod = new Producto();
-        $prod->setIdProducto(htmlentities($_REQUEST['id']));
-        $exito = $this->model->delete($prod);
-        $msj = 'Producto eliminado exitosamente';
-        $color = 'primary';
-        if (!$exito) {
-            $msj = "No se pudo eliminar este Producto";
-            $color = "danger";
-        }
-        if (!isset($_SESSION)) {
+        if(!isset($_SESSION)){
             session_start();
-        };
-        $_SESSION['mensaje'] = $msj;
-        $_SESSION['color'] = $color;
-        header('Location:index.php?c=productos&f=index');
+        }
+
+        if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
+            require_once VLOGIN . 'ingresar.php'; //redirijir
+        }
+
+        if($_SESSION['rol'] == null || $_SESSION['rol'] == 0 || $_SESSION['rol'] == 1){
+            header('Location:index.php?c=productos&f=index');
+        }
+        else {
+            $prod = new Producto();
+            $prod->setIdProducto(htmlentities($_REQUEST['id']));
+            $exito = $this->model->delete($prod);
+            $msj = 'Producto eliminado exitosamente';
+            $color = 'primary';
+            if (!$exito) {
+                $msj = "No se pudo eliminar este Producto";
+                $color = "danger";
+            }
+            if (!isset($_SESSION)) {
+                session_start();
+            };
+            $_SESSION['mensaje'] = $msj;
+            $_SESSION['color'] = $color;
+            header('Location:index.php?c=productos&f=index');
+        }
     }
 
     public function view_edit()
     {
-        $id = $_REQUEST['id'];
-        $prod = $this->model->selectOne($id);
+        if(!isset($_SESSION)){
+            session_start();
+        }
 
-        $modeloProv = new ProveedoresDAO();
-        $prov = $modeloProv->selectAll();
+        if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
+            require_once VLOGIN . 'ingresar.php'; //redirijir
+        }
 
-        $modeloTipo = new ProductosDAO();
-        $tipo = $modeloTipo->selectTipoProducto();
+        if($_SESSION['rol'] == null || $_SESSION['rol'] == 0){
+            header('Location:index.php?c=productos&f=index');
+        }
+        else {
+            $id = $_REQUEST['id'];
+            $prod = $this->model->selectOne($id);
 
-        require_once VPRODUCTOS . 'edit.php';
+            $modeloProv = new ProveedoresDAO();
+            $prov = $modeloProv->selectAll();
+
+            $modeloTipo = new ProductosDAO();
+            $tipo = $modeloTipo->selectTipoProducto();
+
+            require_once VPRODUCTOS . 'edit.php';
+        }
     }
 
     public function edit()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if(!isset($_SESSION)){
+            session_start();
+        }
+
+        if ($_SESSION['usuario']  == null || $_SESSION['usuario'] == '' && $_SESSION['contra'] == null || $_SESSION['contra'] == '') {
+            require_once VLOGIN . 'ingresar.php'; //redirijir
+        }
+
+        if($_SESSION['rol'] == null || $_SESSION['rol'] == 0){
+            header('Location:index.php?c=productos&f=index');
+        }
+        else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $prod = new Producto();
             $prod->setIdProducto(htmlentities($_POST['id']));
             $prod->setNombreProducto(htmlentities($_POST['nombre_producto']));
