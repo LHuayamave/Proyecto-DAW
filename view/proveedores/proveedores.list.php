@@ -1,7 +1,7 @@
 <!--autor: Nieves Pincay Kenia-->
 <?php $link ="index.php?c=Login&f=index";
-$imagen = "assets/imagenes/usuarioInicio.png";
-$opcion ="Mi Cuenta";
+$imagen = "assets/imagenes/salir.png";
+$opcion ="Salir";
 $titulo = "Lista de Proveedores";
 require_once HEADER; ?>
 
