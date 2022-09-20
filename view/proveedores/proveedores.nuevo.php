@@ -6,123 +6,6 @@ $titulo = "Ingresar Proveedor";
 require_once HEADER; ?>
 
 <!---------------------INICIO PRUEBA POST VALIDACIONES----------------------
-<?php
-var_dump($_POST);
-//var_dump($_REQUEST);
-
-  // define variables establece valores vacios
-  $idError = $nombreError = $direccionError = $telefonoError = $fechaError = $medioPagoError = "";// variables para errores
-  $nombre = $direccion = $fecha = $medioPago ="";// variables para datos
-  $id=0;
-  $telefono =0; // variable para datos entero
-  $valido = true;
-    // validaciones y lectura de datos
-    if (empty($_POST["id"])) { // empty retorna verdadero cuando es vacio, null o no existe
-      $idError = "<br/> id es requerido <br/>";
-      $valido = false;
-    } else { // empty retorna false si exsite y no esta vacio
-      $id = test_input($_POST["id"]); // funcion propia que limpia el dato enviado
-      if (!preg_match("/^[0-9]{3}$/g", $id)) {// ejemplo validacion contra expresion regular
-        $idError = "Solo números de 3 dígitos";
-        $valido = false;
-      }
-    }
-
-    if (empty($_POST["nPaginas"])) {
-      $nPaginasErr = "El numero de paginas es requerido <br/>";
-      $valido = false;
-    } else {
-      $nPaginas = test_input($_POST["nPaginas"]);
-      if (!filter_var($nPaginas, FILTER_VALIDATE_INT)) {// ejemplo uso de filtros de validacion
-        $nPaginasErr = "Formato invalido de numero <br/>";
-        $valido = false;
-      }
-    }
-     
-    // validaciones y lectura de datos
-    if (empty($_POST["nombre"])) { // empty retorna verdadero cuando es vacio, null o no existe
-        $nombreError = "<br/> nombre es requerido <br/>";
-        $valido = false;
-    } else { // empty retorna false si exsite y no esta vacio
-        $nombre = test_input($_POST["nombre"]); // funcion propia que limpia el dato enviado
-        if (!preg_match("/^[a-zA-Z-' ]*$/", $nombre)) {// ejemplo validacion contra expresion regular
-        $nombreError = "Solo letras y espacio en blanco";
-        $valido = false;
-        }
-    }
-
-   
-    // validaciones y lectura de datos
-    if (empty($_POST["direccion"])) { // empty retorna verdadero cuando es vacio, null o no existe
-        $direccionError = "<br/> direccion es requerida <br/>";
-        $valido = false;
-    } else { // empty retorna false si exsite y no esta vacio
-        $direccion = test_input($_POST["direccion"]); // funcion propia que limpia el dato enviado
-        if (!preg_match("/^[a-zA-Z-' ]*$/", $direccion)) {// ejemplo validacion contra expresion regular
-        $direccionError = "Solo letras y espacio en blanco";
-        $valido = false;
-        }
-    }
-
-
-    // validaciones y lectura de datos
-    if (empty($_POST["telefono"])) { // empty retorna verdadero cuando es vacio, null o no existe
-        $telefonoError = "<br/> telefono es requerido <br/>";
-        $valido = false;
-      } else { // empty retorna false si exsite y no esta vacio
-        $telefono = test_input($_POST["telefono"]); // funcion propia que limpia el dato enviado
-        if (!preg_match("/^[0-9]{10}$/g", $telefono)) {// ejemplo validacion contra expresion regular
-          $telefonoError = "Solo números de 10 dígitos";
-          $valido = false;
-        }
-      }
-
-
-
-    if (empty($_POST["fecha"])) {
-      $fechaError = "Debe seleccionar una fecha <br/>";
-      $valido = false;
-    } else {
-      $fecha = test_input($_POST["fecha"]);
-    }
-
-    if (empty($_POST["medioPago"])) {
-      $medioPagoError = "Debe seleccionar un método de Pago <br/>";
-      $valido = false;
-    } else {
-      $medioPago  = test_input($_POST["medioPago"]);
-    }
-
-
-    if(!$valido){    
-      echo "<h3 class='error'>Errores de llenado:</h3>";
-     // echo  $tituloErr. $nPaginasErr . $tipoPastaErr. $encuadernacionErr ;
-      echo  "$idError $nombreError  $direccionError $telefonoError $fechaError $medioPagoError" ;
-    }
-
-   if($valido){
-      echo "<h3>Datos ingresados:</h3>";
-      echo "ID: $id </br>";
-      echo "Nombre:  $nombre <br/>";
-      echo "Direccion: $direccion <br/>";
-      echo "Telefono: $telefono <br/>";
-      echo "Fecha: $fecha <br/>";
-      echo "Medio Pago: $medioPago <br/>";
-
-    
-    //echo "<h2>La cotizacion de percio del libro 'es' $ ". $total.'</h2>';
-
-  } // end if(valido)
-
-  function test_input($data)
-  {
-    $data = trim($data); //removes whitespace both sides
-    $data = stripslashes($data); //removes backslashes
-    $data = htmlspecialchars($data); //converts some predefined characters to HTML entities
-    return $data;
-  }
-  ?>
-
 
 <------------------FIN PRUEBA POST VALIDACIONES----------------------->
 
@@ -136,33 +19,28 @@ var_dump($_POST);
             <div class="form-row">
                 <div class="form-group col-sm-6" class="form-cont">
                     <label for="id">Id</label>
-                    <input type="text" name="id" id="id" class="form-control" placeholder="codigo del proveedor" autofocus="" value="<?php echo $id ?>"/>
-                    <span></span>
-                    <span class="error"><?php echo $idError; ?></span>
+                    <input type="text" name="id" id="id" class="form-control" placeholder="codigo del proveedor" autofocus="" />
+            
                 </div>
                 <div class="form-group col-sm-6" class="form-cont">
                     <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="nombre proveedor" value="<?php echo $nombre ?>"/>
-                    <span></span>
-                    <span class="error"><?php echo $nombreError; ?></span>
+                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="nombre proveedor" />
+                
                 </div>
                 <div class="form-group col-sm-6" class="form-cont">
                     <label for="direccion">Direcci&oacute;n</label>
-                    <input type="text" name="direccion" id="direccion" class="form-control" placeholder="direccion proveedor" value="<?php echo $direccion ?>"/>
-                    <span></span>
-                    <span class="error"><?php echo $direccionError; ?></span>
+                    <input type="text" name="direccion" id="direccion" class="form-control" placeholder="direccion proveedor" />
+                  
                 </div>
                 <div class="form-group col-sm-6" class="form-cont">
                     <label for="telefono">Tel&eacute;fono</label>
-                    <input type="text" name="telefono" id="telefono" class="form-control" placeholder="telefono proveedor" value="<?php echo $telefono ?>"/>
-                    <span></span>
-                    <span class="error"><?php echo $telefonoError; ?></span>
+                    <input type="text" name="telefono" id="telefono" class="form-control" placeholder="telefono proveedor" />
+                   
                 </div>
                 <div class="form-group col-sm-6" class="form-cont">
                     <label>Fecha de Contrato:</label>
-                    <input type="date" name="fecha" id="fecha" class="form-control" value="<?php echo $fecha ?>"/>
-                    <span></span>
-                    <span class="error"><?php echo $fechaError; ?></span>
+                    <input type="date" name="fecha" id="fecha" class="form-control" />
+                    
                 </div>
                 <div class="form-group col-sm-6" class="form-cont">
                     <label for="medioPago">Medio de Pago</label>
@@ -178,8 +56,7 @@ var_dump($_POST);
                         ?> 
 
                     </select>
-                    <span></span>
-                    <span class="error"><?php echo $medioPagoError; ?></span>
+                  
                 </div>
                 <div class="form-group mx-auto">
                     <button type="submit" class="btn btn-primary">Guardar</button>
@@ -193,109 +70,124 @@ var_dump($_POST);
     </div>
 </div>
 
-<script type="text/javascript">
-window.addEventListener('load', ()=> {
 
-    const form = document.querySelector('#formProvNuevo')
-    const nombre = document.getElementById('nombre')
-    const id = document.getElementById("id")
-    const direccion = document.getElementById("direccion")
-    const telefono = document.getElementById("telefono")
-    const fechaContrato = document.getElementById("fecha")
-    const medioPago = document.getElementById("medioPago")
+<script>
+	var form = document.getElementById("formProvNuevo");
+	form.addEventListener('submit', validar);
 
-    form.addEventListener('keyup', (e) => {
-        e.preventDefault()
-        validaCampos()
-    })
-    
-    const validaCampos = ()=> { 
-        /*var nombre = document.getElementById('nombre')
-        var id = document.getElementById("id")
-        var direccion = document.getElementById("direccion")
-        var telefono = document.getElementById("telefono")
-        var fechaContrato = document.getElementById("fecha")
-        var medioPago = document.getElementById("medioPago")*/
+	function validar(event) {
+		// variable para retornar
+		var valido = true;
+		// obtencion de los elementos a validar
+		var txtId = document.getElementById("id");
+		var txtNombre = document.getElementById("nombre");
+		var txtTelefono = document.getElementById("telefono");
+		var txtDireccion = document.getElementById("direccion");
+		var txtfecha = document.getElementById("fecha");
+		var selectMedioPago= document.getElementById("medioPago");
 
 
-        var letra = /^[a-z ,.'-]+$/i;// letrasyespacio   ///^[A-Z]+$/i;// solo letras
-        var telefonoreg = /^[0-9]{10}$/g; // para validar datos que deban tener 10 numeros 
+		var letra = /^[a-z ,.'-]+$/i; // letrasyespacio   ///^[A-Z]+$/i;// solo letras
+		var telefonoreg = /^[0-9]{10}$/g; // para validar datos que deban tener 10 numeros
+		var idreg = /^[0-9]{3}$/g; // para validar datos que deben tener 3 numeros
 
-        //Validar Id
-        const idValor = id.value.trim()
-        if(!idValor){
-            validaFalla(id, 'Campo vacío')
-        }else if (isNaN(idValor)) {
-            validaFalla(id, 'Id debe ser numérico')
-        }else {
-            validaOk(id)
-        } 
+		limpiarMensajes();
 
-        //Validar nombre
-        const nombreValor = nombre.value.trim()
-        if(!nombreValor){
-            validaFalla(nombre, 'Campo vacío')
-        }else if (!letra.test(nombreValor)) { 
-            validaFalla(nombre, 'Nombre solo debe contener letras')
-        }else{
-            validaOk(nombre)
-        }   
-        
-        // validar dirección
-        const direccionValor = direccion.value.trim()
-        if (!direccionValor) {
-            validaFalla(direccion, 'Campo vacío')
-        } else if (!letra.test(direccionValor)) { 
-            validaFalla(direccion, 'Dirección solo debe contener letras')
-        }else{
-            validaOk(direccion)
-        }  
+		//validacion id
+		if (txtId.value === "") {
+			valido = false;
+			mensaje("Debe ingresar un id", txtId);
+		} else if (!idreg.test(txtId.value)) {
+			valido = false;
+			mensaje("Id debe contener 3 digitos", txtId);
+		}
 
+		//validacion para nombres
+		if (txtNombre.value === "") {
+			valido = false;
+			mensaje("Debe ingresar los Nombres", txtNombre);
+		} else if (!letra.test(txtNombre.value)) {
+			valido = false;
+			mensaje("Nombre solo debe contener letras", txtNombre);
+		} else if (txtNombre.value.length > 20) {
+			valido = false;
+			mensaje("Nombre maximo 20 caracteres", txtNombre);
+		}
 
-        //validacion telefono
-        const telefonoValor = telefono.value.trim()
-        if (!telefonoValor) {
-            validaFalla(telefono, 'Campo vacío')
-        } else if (!telefonoreg.test(telefonoValor)) {
-            validaFalla(telefono, 'Teléfono solo debe contener numeros y contener 10 dígitos')
-        }else{
-            validaOk(telefono)
-        } 
+		//validacion telefono
+		if (txtTelefono.value === "") {
+			valido = false;
+			mensaje("Debe ingresar un teléfono", txtTelefono);
+		} else if (!telefonoreg.test(txtTelefono.value)) {
+			valido = false;
+			mensaje("Telefono debe ser de 10 digitos", txtTelefono);
+		}
 
 
-        // validacion de fecha
-        const fechaValor = fechaContrato.value.trim()
-        var fechaN = new Date(fechaValor);
-        var anioN=fechaN.getFullYear();
-        var fechaActual = new Date();
-        var anioA =fechaActual.getFullYear();    
-        if(fechaN > fechaActual){
-            validaFalla(fechaContrato, 'Fecha no puede ser superior a la fecha actual')
-        }else if(anioN < 1930){
-            validaFalla(fechaContrato, 'Anio de nacimiento no puede ser menor a 1930')
-        }else if(!fechaValor){
-            validaFalla(fechaContrato, 'Campo vacío')
-        }else{
-            validaOk(fechaContrato)
-        } 
+		// validar dirección
+		if (txtDireccion.value === "") {
+			valido = false;
+			mensaje("Debe ingresar una dirección", txtDireccion);
+		} else if (!letra.test(txtDireccion.value)) {
+			valido = false;
+			mensaje("Dirección solo debe contener letras", txtDireccion);
+		} else if (txtDireccion.value.length > 20) {
+			valido = false;
+			mensaje("Nombre maximo 20 caracteres", txtDireccion);
+		}
 
-        
-    }
+	
+		// validacion de fecha
+		var dato = txtfecha.value;
+		var fechaN = new Date(dato);
+		var anioN = fechaN.getFullYear();
 
-    const validaFalla = (input, msje) => {
-        const formControl = input.parentElement
-        const aviso = formControl.querySelector('span')
-        aviso.innerText = msje
+		var fechaActual = new Date();
+		var anioA = fechaActual.getFullYear();
+		if (fechaN > fechaActual) {
+			valido = false;
+			mensaje("Fecha no puede ser superior a la actual", txtfecha);
+		} else if (anioN < 2010) {
+			valido = false;
+			mensaje("Anio de cotizacion no puede ser menor a 2010", txtfecha);
+		} else if (dato === "") {
+			valido = false;
+			mensaje("Debe seleccionar fecha", txtfecha);
+		}
 
-        formControl.className = 'form-cont falla form-group col-sm-6'
-    }
+		if (!valido) {
+			event.preventDefault();
+		}
 
-    const validaOk = (input, msje) => {
-        const formControl = input.parentElement
-        formControl.className = 'form-cont ok form-group col-sm-6'
-    }
-})
+		//validacion de medio pago
+		if (selectMedioPago.value === null || selectMedioPago.value === '0') {
+			valido = false;
+			mensaje("Debe seleccionar un medio de pago", selectMedioPago);
+		}
 
+	}
+
+	function mensaje(cadenaMensaje, elemento) {
+		elemento.focus();
+
+		var nodoMensaje = document.createElement("span");
+		nodoMensaje.textContent = cadenaMensaje;
+		nodoMensaje.setAttribute("class", "alert alert-danger d-flex align-items-center");
+
+
+		var nodoPadre = elemento.parentNode;
+		nodoPadre.appendChild(nodoMensaje);
+
+	}
+
+	function limpiarMensajes() {
+		var mensajes = document.querySelectorAll("span");
+		for (let i = 0; i < mensajes.length; i++) {
+			mensajes[i].remove();
+
+		}
+	}
 </script>
+
 
 <?php require_once FOOTER; ?>
