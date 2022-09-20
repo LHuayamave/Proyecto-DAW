@@ -51,6 +51,14 @@ class LoginController
             $_SESSION['color'] = $color;
             $_SESSION['usuario'] = $login -> getUsuario();
             $_SESSION['contra'] = $login -> getContrasenia();
+
+            $parametro = $_SESSION['usuario'];
+
+            $resultados = $this->model->selectRol($parametro);
+            $resultado = json_encode($resultados[0]['id_trabajo']);
+
+            $_SESSION['rol'] = $resultado;
+
             //llamar a la vista
             header('Location:index.php?c=cotizacion&f=index');
         }

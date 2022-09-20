@@ -2,7 +2,7 @@
 // autor:Nieves Pincay Kenia
 class Login
 {
-    private $usuario, $contrasenia;
+    private $usuario, $contrasenia, $id_trabajo;
 
     function __construct()
     {
@@ -18,6 +18,10 @@ class Login
         return $this->contrasenia;
     }
 
+    function getId_trabajo(){
+        return $this->id_trabajo;
+    }
+
     function setUsuario($usuario)
     {
         $this->usuario = $usuario;
@@ -26,6 +30,10 @@ class Login
     function setContrasenia($contrasenia)
     {
         $this->contrasenia = $contrasenia;
+    }
+
+    function setId_Trabajo($id_trabajo){
+        $this->id_trabajo = $id_trabajo;
     }
 
     public function __set($usuario, $valor)

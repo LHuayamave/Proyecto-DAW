@@ -252,6 +252,7 @@ CREATE TABLE `trabajo` (
 INSERT INTO `trabajo` (`id_trabajo`, `nombre`) VALUES
 (0, 'Cliente'),
 (1, 'Empleado');
+(3, 'administrador');
 
 -- --------------------------------------------------------
 
