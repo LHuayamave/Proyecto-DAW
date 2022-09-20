@@ -43,6 +43,8 @@
         }
         .error {
             color: #FF0000;
+            font-size: small;
+            font-weight: 100;
         }
         
         .icono{

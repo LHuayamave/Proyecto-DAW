@@ -1,14 +1,14 @@
 <!--autor: Nieves Pincay Kenia-->
 <?php $link ="index.php?c=Login&f=index";
-$imagen = "assets/imagenes/usuarioInicio.png";
-$opcion ="Mi Cuenta";
+$imagen = "assets/imagenes/salir.png";
+$opcion ="Salir";
 $titulo = "Lista de Proveedores";
 require_once HEADER; ?>
 
 <div class="container">
     <div class="row" id="form">
         <div class="col-sm-6 componente">
-            <img src="assets/imagenes/buscar.png" class="icono"/>
+            <img src="assets/imagenes/buscar.png" class="icono" />
             <input type="text" name="busquedaAjax" id="busquedaAjax" placeholder="Buscar...">
         </div>
 
@@ -30,7 +30,10 @@ require_once HEADER; ?>
                 <th>Tel&eacute;fono</th>
                 <th>Fecha contrato</th>
                 <th>Medio de Pago</th>
-                <th>Editar / Borrar</th>
+                <?php
+                if ($_SESSION['rol']  == null || $_SESSION['rol'] == 1 || $_SESSION['rol'] == 3) { ?>
+                    <th>Editar / Borrar</th>
+                <?php } ?>
             </thead>
             <tbody class="tabladatos">
                 <?php
@@ -43,14 +46,19 @@ require_once HEADER; ?>
                         <td><?php echo $fila['telefono']; ?></td>
                         <td><?php echo $fila['fecha_contrato']; ?></td>
                         <td><?php echo $fila['nombre_medio']; ?></td>
-                        <td>
-                            <a class="btn btn-primary" href="index.php?c=proveedores&f=view_edit&id=<?php echo  $fila['id_proveedor']; ?>">
-                                <i class="fas fa-marker"></i></a>
-                            </a>
-                            <a class="btn btn-danger" onclick="if(!confirm('Esta seguro de eliminar a este proveedor?'))return false;" href="index.php?c=proveedores&f=delete&id=<?php echo  $fila['id_proveedor']; ?>">
-                                <i class="fas fa-trash-alt"></i></a>
-                            </a>
-                        </td>
+                        <?php if ($_SESSION['rol'] == null || $_SESSION['rol'] == 1 || $_SESSION['rol'] == 3) { ?>
+                            <td>
+                                <a class="btn btn-primary" href="index.php?c=proveedores&f=view_edit&id=<?php echo  $fila['id_proveedor']; ?>">
+                                    <i class="fas fa-marker"></i></a>
+                                </a>
+                            <?php } ?>
+
+                            <?php if ($_SESSION['rol'] == null || $_SESSION['rol'] == 3) { ?>
+                                <a class="btn btn-danger" onclick="if(!confirm('Esta seguro de eliminar a este proveedor?'))return false;" href="index.php?c=proveedores&f=delete&id=<?php echo  $fila['id_proveedor']; ?>">
+                                    <i class="fas fa-trash-alt"></i></a>
+                                </a>
+                            </td>
+                        <?php } ?>
                     </tr>
                 <?php } ?>
             </tbody>

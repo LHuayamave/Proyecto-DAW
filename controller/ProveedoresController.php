@@ -52,7 +52,7 @@ class ProveedoresController
         echo json_encode($resultados);
     }
 
-    // muestra el formulario de nuevo producto
+    // muestra el formulario de nuevo proveedor
     public function view_new()
     {
         if(!isset($_SESSION)){
@@ -225,4 +225,5 @@ class ProveedoresController
             header('Location:index.php?c=Proveedores&f=index');
         }
     }
+
 }
