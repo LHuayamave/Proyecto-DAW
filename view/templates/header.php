@@ -45,6 +45,24 @@
             color: #FF0000;
         }
         
+        .icono{
+			width: 25px;
+			height: 25px;
+		}
+		#form .componente{
+			position: relative;
+		}
+		#form .componente input{
+			padding-left: 30px;
+			outline: none;
+			
+		}
+		#form .componente img{
+			position: absolute;
+			margin-left: 5px;
+			margin-top: 3px;
+
+		}
     </style>
 </head>
 <body style="background:url(<?php echo isset($fondo) ? $fondo : "";?>); background-size: cover;">
