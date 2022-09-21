@@ -115,30 +115,37 @@ function test_input($data)
                 <div class="form-group col-sm-6">
                     <label>Id Solicitud</label>
                     <input type="text" name="id" id="id" value="<?php echo $soli['id_solicitud']; ?>" readonly />
+                    <span></span>
                 </div>
                 <div class="form-group col-sm-6">
                     <label>Nombre</label>
                     <input type="text" name="nombre" id="nombre" value="<?php echo $soli['nombre']; ?>" class=" " placeholder="Nombre" required>
+                    <span></span>
                 </div>
                 <div class="form-group col-sm-6">
                     <label>Correo</label>
                     <input type="text" name="correo" id="correo" value="<?php echo $soli['correo']; ?>" class=" " placeholder="Correo" required>
+                    <span></span>
                 </div>
                 <div class="form-group col-sm-6">
                     <label>Tel&eacute;fono</label>
                     <input type="text" name="telefono" id="telefono" value="<?php echo $soli['telefono']; ?>" class=" " placeholder="telefono proveedor" required>
+                    <span></span>
                 </div>
                 <div class="form-group col-sm-6">
                     <label>Direcci&oacute;n</label>
                     <input type="text" name="direccion" id="direccion" value="<?php echo $soli['direccion']; ?>" class=" " placeholder="Direccion" required>
+                    <span></span>
                 </div>
                 <div class="form-group col-sm-6">
                     <label>Descripci&oacute;n</label>
                     <input type="text" name="descripcion" id="descripcion" value="<?php echo $soli['descripcion']; ?>" class=" " placeholder="Descripcion" required>
+                    <span></span>
                 </div>
                 <div class="form-group col-sm-6">
                     <label>Fecha de Solicitud</label>
                     <input type="date" name="fecha" id="fecha" value="<?php echo $soli['fecha_solicitud']; ?>" class=" " placeholder="fecha contrato proveedor" required>
+                    <span></span>
                 </div>
                 <div class="form-group col-sm-6">
                     <label>Tipo de Servicio</label>
@@ -155,8 +162,8 @@ function test_input($data)
                         <?php
                         }
                         ?>
-
                     </select>
+                    <span></span>
                 </div>
                 <div class="form-group mx-auto">
                     <button type="submit" class="btn btn-primary" onclick="if (!confirm('¿Esta seguro de modificar la Solicitud?')) return false;">Guardar</button>
