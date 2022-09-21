@@ -1,8 +1,8 @@
 <!--autor: Huayamave Cedeño Luis-->
 <?php
-$link ="index.php?c=Login&f=index";
+$link = "index.php?c=Login&f=index";
 $imagen = "assets/imagenes/salir.png";
-$opcion ="Salir";
+$opcion = "Salir";
 $titulo = "Ingresar un nuevo Producto";
 require_once HEADER; ?>
 
@@ -98,24 +98,29 @@ function test_input($data)
             <div class="form-row">
                 <div class="form-group col-sm-6">
                     <label>Nombre del producto</label>
-                    <input type="text" name="nombre_producto" id="nombre_producto" class="form-control" placeholder="Nombre Producto" required>
+                    <input type="text" name="nombre_producto" id="nombre_producto" class="form-control" placeholder="Nombre Producto">
+                    <span></span>
                 </div>
                 <div class="form-group col-sm-6">
                     <label>Descripci&oacute;n</label>
-                    <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Descripcion del Producto" required>
+                    <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Descripcion del Producto">
+                    <span></span>
+
                 </div>
                 <div class="form-group col-sm-6">
                     <label>Stock Inicial</label>
-                    <input type="text" name="stock_inicial" id="stock_inicial" class="form-control" placeholder="Stock Inicial" required>
+                    <input type="text" name="stock_inicial" id="stock_inicial" class="form-control" placeholder="Stock Inicial">
+                    <span></span>
                 </div>
                 <div class="form-group col-sm-6">
                     <label>Total: </label>
-                    <input type="text" name="total" id="total" class="form-control" placeholder="Total" required>
-
+                    <input type="text" name="total" id="total" class="form-control" placeholder="Total">
+                    <span></span>
                 </div>
                 <div class="form-group col-sm-6">
                     <label>Fecha de ingreso:</label>
                     <input type="date" name="fecha_ingreso" id="fecha_ingreso" class=" " />
+                    <span></span>
                 </div>
                 <div class="form-group col-sm-6">
                     <label> Tipo de Producto: </label>
@@ -130,6 +135,7 @@ function test_input($data)
                         }
                         ?>
                     </select>
+                    <span></span>
                 </div>
                 <div class="form-group col-sm-12">
                     <label>Proveedor: </label>
@@ -144,6 +150,7 @@ function test_input($data)
                         }
                         ?>
                     </select>
+                    <span></span>
                 </div>
 
                 <div class="form-group mx-auto">
@@ -162,13 +169,13 @@ function test_input($data)
 
 <script type="text/javascript">
     var form = document.getElementById("formProdNuevo");
-    var nombre = document.getElementById("nombre_producto");
-    var descripcion = document.getElementById("descripcion");
-    var stock = document.getElementById("stock_inicial");
-    var total = document.getElementById("total");
-    var fecha = document.getElementById("fecha_ingreso");
-    var tipo = document.getElementById("tipo_producto");
-    var proveedor = document.getElementById("nombre_proveedor");
+    const nombre = document.getElementById("nombre_producto");
+    const descripcion = document.getElementById("descripcion");
+    const stock = document.getElementById("stock_inicial");
+    const total = document.getElementById("total");
+    const fecha = document.getElementById("fecha_ingreso");
+    const tipo = document.getElementById("tipo_producto");
+    const proveedor = document.getElementById("nombre_proveedor");
 
     form.addEventListener("submit", validarCampos);
 
@@ -182,7 +189,7 @@ function test_input($data)
         const tipoValor = tipo.value.trim();
         const proveedorValor = proveedor.value.trim();
 
-        var letra = /^[a-z ,.'-]+$/i; // letrasyespacio   ///^[A-Z]+$/i;// solo letras
+        var letra = /^[a-z ,.'-]+$/i;
         var numero = /^[0-9]*(\.?)[0-9]+$/;
         var decimal = /^\d*\.\d+$/;
 
@@ -191,7 +198,7 @@ function test_input($data)
             validaFalla(nombre, 'Campo vacío');
         } else if (!letra.test(nombreValor)) {
             valido = false;
-            validaFalla(nombreValor, 'Nombre solo debe contener letras');
+            validaFalla(nombre, 'Nombre solo debe contener letras');
         } else {
             valido = true;
             validaOk(nombre);
