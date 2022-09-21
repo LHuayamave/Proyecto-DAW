@@ -1,7 +1,8 @@
 <!--autor: Aguirre Aguirre Ronaldo-->
-<?php $link ="index.php?c=Login&f=index";
+<?php $link = "index.php?c=Login&f=index";
 $imagen = "assets/imagenes/salir.png";
-$opcion ="Salir";
+$opcion = "Salir";
+$titulo = "Lista de cotizaciones";
 require_once HEADER; ?>
 
 <div class="container">
