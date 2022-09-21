@@ -1,8 +1,8 @@
 <!--autor: Huayamave Cedeño Luis-->
 <?php
-$link = "index.php?c=Login&f=index";
-$imagen = "assets/images/salir.png";
-$opcion = "&nbsp;Salir";
+$link ="index.php?c=Login&f=index";
+$imagen = "assets/imagenes/salir.png";
+$opcion ="Salir";
 $titulo = "Ingresar un nuevo Producto";
 require_once HEADER; ?>
 

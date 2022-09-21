@@ -83,20 +83,20 @@ $link = "index.php?c=Login&f=index";
 			height: 110px;
 		}
 
-		#form .componente {
+		#formLogin .componente {
 			position: relative;
 		}
 
-		#form .componente input {
+		#formLogin .componente input {
 			padding-left: 30px;
 			outline: none;
 
 		}
 
-		#form .componente img {
+		#formLogin .componente img {
 			position: absolute;
 			margin-left: 5px;
-			margin-top: 3px;
+			margin-top: 4px;
 
 		}
 	</style>
@@ -116,13 +116,13 @@ $link = "index.php?c=Login&f=index";
 					<div class="componente">
 						<label>Usuario:</label><br />
 						<img src="assets/imagenes/usuario.png" class="icono" />
-						<input type="text" name="usuario" id="usuario" placeholder="usuario" />
+						<input type="text" name="usuario" id="usuario" placeholder="usuario"/>
 					</div>
 					<br />
 					<div class="componente">
 						<label>Contraseña:</label><br />
 						<img src="assets/imagenes/contrasenia.png" class="icono" />
-						<input type="password" name="contra" id="contra" placeholder="contraseña" />
+						<input type="password" name="contra" id="contra" placeholder="contraseña"/>
 					</div>
 					<br />
 

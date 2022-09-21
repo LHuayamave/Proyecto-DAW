@@ -1,5 +1,9 @@
 <!--autor: Palacios Avila Ariel-->
-<?php $titulo = "Editar Solicitud";
+<?php 
+$link ="index.php?c=Login&f=index";
+$imagen = "assets/imagenes/salir.png";
+$opcion ="Salir";
+$titulo = "Editar Solicitud";
 require_once HEADER; ?>
 
 <div class="container">

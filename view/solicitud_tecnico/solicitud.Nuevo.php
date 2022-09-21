@@ -1,5 +1,9 @@
 <!--autor: Sellan Fajardo Leonardo-->
-<?php $titulo = "Ingresar Solicitud para un tecnico";
+<?php 
+$link ="index.php?c=Login&f=index";
+$imagen = "assets/imagenes/salir.png";
+$opcion ="Salir";
+$titulo = "Ingresar Solicitud para un tecnico";
 require_once HEADER; ?>
 <!---------------------INICIO VALIDACIONES POST---------------------->
 <?php

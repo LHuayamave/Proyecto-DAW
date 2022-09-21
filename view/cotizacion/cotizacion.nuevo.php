@@ -1,5 +1,9 @@
 <!--autor: Aguirre Aguirre Ronaldo-->
-<?php require_once HEADER; ?>
+<?php 
+$link ="index.php?c=Login&f=index";
+$imagen = "assets/imagenes/salir.png";
+$opcion ="Salir";
+require_once HEADER; ?>
 
 <!---------------------INICIO PRUEBA POST VALIDACIONES---------------------->
 <?php

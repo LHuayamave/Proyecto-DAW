@@ -1,5 +1,9 @@
 <!--autor: Sellan Fajardo Leonardo-->
-<?php $titulo = "Lista de Solicitudes tecnicos";
+<?php 
+$link ="index.php?c=Login&f=index";
+$imagen = "assets/imagenes/salir.png";
+$opcion ="Salir";
+$titulo = "Lista de Solicitudes tecnicos";
 require_once HEADER; ?>
 
 <div class="container">
