@@ -72,7 +72,7 @@
     <header>
             <a href=""><img src="assets/imagenes/logo3.png" alt="logo" /></a>  
             <a href="<?php echo isset($link) ? $link : "";?>" style="float: right; color: white; margin-right:15px; margin-top:50px;">
-            <img src="<?php echo isset($imagen) ? $imagen : "";?>" alt="ingresa" style="width: 35px; height:35px;"/><?php echo isset($opcion) ? $opcion : "";?></a>    
+            <img src="<?php echo isset($imagen) ? $imagen : "";?>" alt="salir" style="width: 35px; height:35px;"/><?php echo isset($opcion) ? $opcion : "";?></a>    
     </header>
     <nav style="margin-bottom: 40px">
         <div id="navegador">
