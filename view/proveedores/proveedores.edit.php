@@ -89,25 +89,21 @@ function test_input($data)
                     <label for="nombre">Nombre</label>
                     <input type="text" name="nombre" id="nombre" value="<?php echo $prov['nombre_proveedor']; ?>" class="form-control" placeholder="nombre proveedor">
                     <span></span>
-                    <span class="error"><?php echo $nombreError; ?></span>
                 </div>
                 <div class="form-group col-sm-6" class="form-cont">
                     <label for="direccion">Direcci&oacute;n</label>
                     <input type="text" name="direccion" id="direccion" value="<?php echo $prov['direccion']; ?>" class="form-control" placeholder="direccion proveedor">
                     <span></span>
-                    <span class="error"><?php echo $direccionError; ?></span>
                 </div>
                 <div class="form-group col-sm-6" class="form-cont">
                     <label for="telefono">Tel&eacute;fono</label>
                     <input type="text" name="telefono" id="telefono" value="<?php echo $prov['telefono']; ?>" class="form-control" placeholder="telefono proveedor">
                     <span></span>
-                    <span class="error"><?php echo $telefonoError; ?></span>
                 </div>
                 <div class="form-group col-sm-6" class="form-cont">
                     <label for="fecha">Fecha Contrato</label>
                     <input type="date" name="fecha" id="fecha" value="<?php echo $prov['fecha_contrato']; ?>" class="form-control" placeholder="fecha contrato proveedor">
                     <span></span>
-                    <span class="error"><?php echo $fechaError; ?></span>
                 </div>
                 <div class="form-group col-sm-6" class="form-cont">
                     <label for="medioPago">Medio de Pago</label>
@@ -127,7 +123,6 @@ function test_input($data)
 
                     </select>
                     <span></span>
-                    <span class="error"><?php echo $medioPagoError; ?></span>
                 </div>
                 <div class="form-group mx-auto">
                     <button type="submit" class="btn btn-primary"
