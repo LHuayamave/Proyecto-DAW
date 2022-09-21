@@ -110,14 +110,14 @@ require_once HEADER; ?>
             <?php if ($_SESSION['rol'] == null || $_SESSION['rol'] == 1 || $_SESSION['rol'] == 3) { ?>
                 resultados += '<td>' +
                     "<a href='index.php?c=cotizacion&a=editar&id=" + cotizacion[i].id_cotizacion +
-                    "' " + "class='btn btn-primary'><i class='fas fa-marker'></i></a>" +
-                <?php } ?>
-                <?php if ($_SESSION['rol'] == 3) { ?>
-                        "<a href='index.php?c=cotizacion&a=eliminar&id=" + cotizacion[i].id_cotizacion + "'" +
-                        "class='btn btn-danger' onclick = 'if (!confirm(\'Desea eliminar la actividad: '" + cotizacion[i].nombre +
-                        " \')) return false; " + " ><i class='far fa-trash-alt'></i> </a>" + '</td>';
-                    resultados += '</tr>';
-                <?php } ?>
+                    "' " + "class='btn btn-primary'><i class='fas fa-marker'></i></a>"
+            <?php } ?>
+            <?php if ($_SESSION['rol'] == 3) { ?>
+                    "<a href='index.php?c=cotizacion&a=eliminar&id=" + cotizacion[i].id_cotizacion + "'" +
+                    "class='btn btn-danger' onclick = 'if (!confirm(\'Desea eliminar la actividad: '" + cotizacion[i].nombre +
+                    " \')) return false; " + " ><i class='far fa-trash-alt'></i> </a>" + '</td>';
+                resultados += '</tr>';
+            <?php } ?>
         }
         tbody.innerHTML = resultados;
     }

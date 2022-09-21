@@ -104,14 +104,14 @@ require_once HEADER; ?>
 
                 resultados += '<td>' +
                     "<a href='index.php?c=SolicitudServicio&f=view_edit&id=" + solicitud[i].id_solicitud +
-                    "' " + "class='btn btn-primary'><i class='fas fa-marker'></i></a>" +
-                <?php } ?>
-                <?php if ($_SESSION['rol'] == 3) { ?>
-                        "<a href='index.php?c=SolicitudServicio&f=delete&id=" + solicitud[i].id_solicitud + "'" +
-                        "class='btn btn-danger' onclick = 'if (!confirm(\'Desea eliminar la solicitud de: '" + solicitud[i].nombre +
-                        " \')) return false; " + " ><i class='far fa-trash-alt'></i> </a>" + '</td>';
-                    resultados += '</tr>';
-                <?php } ?>
+                    "' " + "class='btn btn-primary'><i class='fas fa-marker'></i></a>"
+            <?php } ?>
+            <?php if ($_SESSION['rol'] == 3) { ?>
+                    "<a href='index.php?c=SolicitudServicio&f=delete&id=" + solicitud[i].id_solicitud + "'" +
+                    "class='btn btn-danger' onclick = 'if (!confirm(\'Desea eliminar la solicitud de: '" + solicitud[i].nombre +
+                    " \')) return false; " + " ><i class='far fa-trash-alt'></i> </a>" + '</td>';
+                resultados += '</tr>';
+            <?php } ?>
         }
         tbody.innerHTML = resultados;
     }

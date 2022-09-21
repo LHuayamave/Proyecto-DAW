@@ -70,7 +70,6 @@ require_once HEADER; ?>
     </div>
 </div>
 
-//Script busqueda AJAX
 <script type="text/javascript">
     var txtBuscar = document.querySelector("#busquedaAjax");
     txtBuscar.addEventListener('keyup', cargarSolicitud);
@@ -111,14 +110,14 @@ require_once HEADER; ?>
             <?php if ($_SESSION['rol'] == null || $_SESSION['rol'] == 1 || $_SESSION['rol'] == 3) { ?>
                 resultados += '<td>' +
                     "<a href='index.php?c=solicitudtecnico&a=editar&id=" + solicitud[i].id_solicitud +
-                    "' " + "class='btn btn-primary'><i class='fas fa-marker'></i></a>" +
-                <?php } ?>
-                <?php if ($_SESSION['rol'] == 3) { ?>
-                        "<a href='index.php?c=solicitudtecnico&a=eliminar&id=" + solicitud[i].id_solicitud + "'" +
-                        "class='btn btn-danger' onclick = 'if (!confirm(\'Desea eliminar la actividad: '" + solicitud[i].nombre +
-                        " \')) return false; " + " ><i class='far fa-trash-alt'></i> </a>" + '</td>';
-                    resultados += '</tr>';
-                <?php } ?>
+                    "' " + "class='btn btn-primary'><i class='fas fa-marker'></i></a>"
+            <?php } ?>
+            <?php if ($_SESSION['rol'] == 3) { ?>
+                    "<a href='index.php?c=solicitudtecnico&a=eliminar&id=" + solicitud[i].id_solicitud + "'" +
+                    "class='btn btn-danger' onclick = 'if (!confirm(\'Desea eliminar la actividad: '" + solicitud[i].nombre +
+                    " \')) return false; " + " ><i class='far fa-trash-alt'></i> </a>" + '</td>';
+                resultados += '</tr>';
+            <?php } ?>
         }
         tbody.innerHTML = resultados;
     }
