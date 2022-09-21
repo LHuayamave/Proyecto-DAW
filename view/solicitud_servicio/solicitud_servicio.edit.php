@@ -1,10 +1,112 @@
 <!--autor: Palacios Avila Ariel-->
-<?php 
-$link ="index.php?c=Login&f=index";
+<?php
+$link = "index.php?c=Login&f=index";
 $imagen = "assets/imagenes/salir.png";
-$opcion ="Salir";
+$opcion = "Salir";
 $titulo = "Editar Solicitud";
 require_once HEADER; ?>
+
+<?php
+
+$idError = $nombreError = $correoError = $telefonoError = $direccionError = $descripcionError = $fechaError = $tipoError = "";
+$nombre = $correo = $direccion = $descripcion = $fecha = $tipoS = "";
+$id = 0;
+$telefono = 0;
+$valido = true;
+
+
+if (empty($_POST["id"])) {
+    $idError = "<br /> id es requerido <br />";
+    $valido = false;
+} else {
+    $id = test_input($_POST["id"]);
+    if (!preg_match("/^[0-9]{3}$/g", $id)) {
+        $idError = "Solo números de 3 dígitos";
+        $valido = false;
+    }
+}
+
+if (empty($_POST["nombre"])) {
+    $nombreError = "<br /> Nombre es requerido <br />";
+    $valido = false;
+} else {
+    $nombre = test_input($_POST["nombre"]);
+    if (!preg_match("/^[a-zA-Z-' ]*$/", $nombre)) {
+        $nombreError = "Solo letras y espacio en blanco";
+        $valido = false;
+    }
+}
+
+if (empty($_POST["correo"])) {
+    $correoError = "<br /> Correo es requerido <br />  ";
+    $valido = false;
+} else {
+    $correo = test_input($_POST["correo"]);
+    if (!preg_match("/^[A-z0-9\\._-]+@[A-z0-9][A-z0-9-]*(\\.[A-z0-9_-]+)*\\.([A-z]{2,6})$/", $correo)) {
+        $correoError = "<br/>Correo electronico invalido<br/>";
+        $valido = false;
+    }
+}
+
+if (empty($_POST["telefono"])) {
+    $telefonoError = "<br /> Telefono es requerido <br/>";
+    $valido = false;
+} else {
+    $telefono = test_input($_POST["telefono"]);
+    if (!preg_match("/^[0-9]{10}$/g", $telefono)) {
+        $telefonoError = "Solo números de 10 dígitos";
+        $valido = false;
+    }
+}
+
+if (empty($_POST["direccion"])) {
+    $direccionError = "<br /> direccion es requerida <br />";
+    $valido = false;
+} else {
+    $direccion = test_input($_POST["direccion"]);
+    if (!preg_match("/^[a-zA-Z-' ]*$/", $direccion)) {
+        $direccionError = "Solo letras y espacio en blanco";
+        $valido = false;
+    }
+}
+
+if (empty($_POST["descripcion"])) {
+    $descripcionError = "<br /> descripcion es requerida <br />";
+    $valido = false;
+} else {
+    $descripcion = test_input($_POST["descripcion"]);
+    if (!preg_match("/^[a-zA-Z-' ]*$/", $descripcion)) {
+        $direccionError = "Solo letras y espacio en blanco";
+        $valido = false;
+    }
+}
+
+if (empty($_POST["fecha"])) {
+    $fechaError = "<br /> fecha es requerida <br />";
+    $valido = false;
+} else {
+    $fecha = test_input($_POST["fecha"]);
+}
+
+if (empty($_POST["tipo_servicio"])) {
+    $tipoError = "<br />Debe seleccionar un tipo de Servicio <br />";
+    $valido = false;
+} else {
+    $tipoS = test_input($_POST["tipo_servicio"]);
+    $valido = true;
+}
+
+
+
+
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+?>
 
 <div class="container">
     <div class="card card-body">
