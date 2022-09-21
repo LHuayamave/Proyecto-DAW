@@ -104,7 +104,7 @@ require_once HEADER; ?>
                     "' " + "class='btn btn-primary'><i class='fas fa-marker'></i></a>"
             <?php } ?>
             <?php if ($_SESSION['rol'] == 3) { ?>
-                    "<a href='index.php?c=videojuego&a=eliminar&id=" + proveedor[i].id + "'" +
+                resultados += "<a href='index.php?c=videojuego&a=eliminar&id=" + proveedor[i].id + "'" +
                     "class='btn btn-danger' onclick = 'if (!confirm(\'Desea eliminar la actividad: '" + proveedor[i].nombre_proveedor +
                     " \')) return false; " + " ><i class='far fa-trash-alt'></i> </a>" + '</td>';
                 resultados += '</tr>';

@@ -113,7 +113,7 @@ require_once HEADER; ?>
                     "' " + "class='btn btn-primary'><i class='fas fa-marker'></i></a>"
             <?php } ?>
             <?php if ($_SESSION['rol'] == 3) { ?>
-                    "<a href='index.php?c=solicitudtecnico&a=eliminar&id=" + solicitud[i].id_solicitud + "'" +
+                resultados += "<a href='index.php?c=solicitudtecnico&a=eliminar&id=" + solicitud[i].id_solicitud + "'" +
                     "class='btn btn-danger' onclick = 'if (!confirm(\'Desea eliminar la actividad: '" + solicitud[i].nombre +
                     " \')) return false; " + " ><i class='far fa-trash-alt'></i> </a>" + '</td>';
                 resultados += '</tr>';
