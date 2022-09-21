@@ -1,5 +1,9 @@
 <!--autor: Huayamave Cedeño Luis-->
-<?php $titulo = "Lista de productos";
+<?php
+$link = "index.php?c=Login&f=index";
+$imagen = "assets/images/salir.png";
+$opcion = "&nbsp;Salir";
+$titulo = "Lista de productos";
 require_once HEADER; ?>
 
 <div class="container">
