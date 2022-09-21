@@ -72,114 +72,110 @@ require_once HEADER; ?>
 
 <script type="text/javascript">
     var form = document.getElementById("formProdNuevo");
-    form.addEventListener("submit", validar);
+    var nombre = document.getElementById("nombre_producto");
+    var descripcion = document.getElementById("descripcion");
+    var stock = document.getElementById("stock_inicial");
+    var total = document.getElementById("total");
+    var fecha = document.getElementById("fecha_ingreso");
+    var tipo = document.getElementById("tipo_producto");
+    var proveedor = document.getElementById("nombre_proveedor");
 
-    function validar(event) {
+    form.addEventListener("submit", validarCampos);
+
+    function validarCampos(event) {
         var valido = true;
-        var txtNombre = document.getElementById("nombre_producto");
-        var txtDescripcion = document.getElementById("descripcion");
-        var txtStock = document.getElementById("stock_inicial");
-        var txtTotal = document.getElementById("total");
-        var txtFecha = document.getElementById("fecha_ingreso");
-        var selectTipo = document.getElementById("tipo_producto");
-        var selectProveedor = document.getElementById("nombre_proveedor");
+        const nombreValor = nombre.value.trim();
+        const descripcionValor = descripcion.value.trim();
+        const stockValor = stock.value.trim();
+        const totalValor = total.value.trim();
+        const fechaValor = fecha.value.trim();
+        const tipoValor = tipo.value.trim();
+        const proveedorValor = proveedor.value.trim();
 
         var letra = /^[a-z ,.'-]+$/i; // letrasyespacio   ///^[A-Z]+$/i;// solo letras
         var numero = /^[0-9]*(\.?)[0-9]+$/;
         var decimal = /^\d*\.\d+$/;
 
-        limpiarMensajes();
-
-        if (txtNombre.value === "") {
+        if (!nombreValor) {
             valido = false;
-            mensaje("Debe ingresar los nombres", txtNombre);
-        } else if (!letra.test(txtNombre.value)) {
+            validaFalla(nombre, 'Campo vacío');
+        } else if (!letra.test(nombreValor)) {
             valido = false;
-            mensaje("El nombre solo debe contener letras", txtNombre);
-        } else if (!txtNombre.value.length > 20) {
-            valido = false;
-            mensaje("Nombre maximo 20 caracteres", txtNombre);
+            validaFalla(nombreValor, 'Nombre solo debe contener letras');
+        } else {
+            valido = true;
+            validaOk(nombre);
         }
 
-        if (txtDescripcion.value === "") {
+        if (!descripcionValor) {
             valido = false;
-            mensaje("Debe ingresar una descripcion", txtDescripcion);
-        } else if (txtDescripcion.value.length > 60) {
+            validaFalla(descripcion, 'Campo vacío');
+        } else if (!letra.test(descripcionValor)) {
             valido = false;
-            mensaje("La descripcion debe contener un maximo de 60 caracteres", txtDescripcion);
+            validaFalla(descripcion, 'La descripcion solo debe contener letras');
+        } else {
+            valido = true;
+            validaOk(descripcion);
         }
 
-        if (txtStock.value === "") {
+        if (!stockValor) {
             valido = false;
-            mensaje("Debe ingresar el stock", txtStock);
-        } else if (!numero.test(txtStock.value)) {
+            validaFalla(stock, 'Campo vacío');
+        } else if (!numero.test(stockValor)) {
             valido = false;
-            mensaje("El stock solo debe contener numeros", txtStock);
-        } else if (!txtStock.value.length > 75) {
-            valido = false;
-            mensaje("El stock maximo que se puede ingresar no debe ser mayor a 75", txtStock);
+            validaFalla(stock, 'El stock debe contener numeros');
+        } else {
+            valido = true;
+            validaOk(stock);
         }
 
-        if (txtTotal.value === "") {
+        if (!totalValor) {
             valido = false;
-            mensaje("Debe ingresar total", txtTotal);
-        } else if (!decimal.test(txtTotal.value)) {
+            validaFalla(total, 'Campo vacío');
+        } else if (!decimal.test(totalValor)) {
             valido = false;
-            mensaje("El valor debe ser un numero decimal", txtTotal);
+            validaFalla(total, 'El total debe contener numeros decimales');
+        } else {
+            valido = true;
+            validaOk(total);
         }
 
-        var dato = txtFecha.value;
+
+        var dato = fecha.value;
         var fechaN = new Date(dato);
         var anioN = fechaN.getFullYear();
 
         var fechaActual = new Date();
         var anioA = fechaActual.getFullYear();
-
         if (fechaN > fechaActual) {
             valido = false;
-            mensaje("La fecha no puede ser superior a la actual", txtFecha);
+            validaFalla(fecha, 'Fecha no puede ser superior a la actual');
         } else if (anioN < 2020) {
             valido = false;
-            mensaje("El anio de ingreso no puede ser menor a 2020", txtFecha);
-        } else if (dato === "") {
+            validaFalla(fecha, 'Anio de ingreso no puede ser menor a 2020');
+        } else if (!fechaValor) {
             valido = false;
-            mensaje("Debe seleccionar una fecha", txtFecha);
+            validaFalla(fecha, 'Campo vacío');
+        } else {
+            valido = true;
+            validaOk(fecha);
         }
 
         if (!valido) {
             event.preventDefault();
         }
+    }
+    const validaFalla = (input, msje) => {
+        const formControl = input.parentElement
+        const aviso = formControl.querySelector('span')
+        aviso.innerText = msje
 
-        if (selectTipo.value === null || selectTipo.value === '0') {
-            valido = false;
-            mensaje("Debe seleccionar un tipo de producto", selectTipo);
-        }
-
-        if (selectProveedor.value === null || selectProveedor.value === '0') {
-            valido = false;
-            mensaje("Debe seleccionar un proveedor de producto", selectProveedor);
-        }
+        formControl.className = 'form-group col-sm-6 form-cont falla'
     }
 
-    function mensaje(cadenaMensaje, elemento) {
-        elemento.focus();
-
-        var nodoMensaje = document.createElement("span");
-        nodoMensaje.textContent = cadenaMensaje;
-        nodoMensaje.setAttribute("class", "alert alert-danger d-flex align-items-center");
-
-
-        var nodoPadre = elemento.parentNode;
-        nodoPadre.appendChild(nodoMensaje);
-
-    }
-
-    function limpiarMensajes() {
-        var mensajes = document.querySelectorAll("span");
-        for (let i = 0; i < mensajes.length; i++) {
-            mensajes[i].remove();
-
-        }
+    const validaOk = (input, msje) => {
+        const formControl = input.parentElement
+        formControl.className = 'form-group col-sm-6 form-cont ok'
     }
 </script>
 
