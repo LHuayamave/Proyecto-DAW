@@ -1,6 +1,102 @@
 <!--autor: Aguirre Aguirre Ronaldo-->
 <?php require_once HEADER; ?>
 
+<!---------------------INICIO PRUEBA POST VALIDACIONES---------------------->
+<?php
+// define variables establece valores vacios
+$idError = $nombreError = $correoError = $direccionError = $telefonoError = $descripcionError = $presupuestoError = $fechaError = $tipoProductoError = ""; // variables para errores
+$nombre = $correo =$direccion = $descripcion = $fecha = $medioPago = ""; // variables para datos
+$id = 0;
+$telefono = 0; // variable para datos entero
+$valido = true;
+
+// validaciones de id
+if (empty($_POST["id"])) {
+    $idError = "<br/> id es requerido <br/>";
+    $valido = false;
+} else {
+    $id = test_input($_POST["id"]);
+    if (!preg_match("/^[0-9]{3}$/g", $id)) {
+        $idError = "Solo números de 3 dígitos";
+        $valido = false;
+    }
+}
+
+// validaciones de nombre
+if (empty($_POST["nombre"])) {
+    $nombreError = "<br/> nombre es requerido <br/>";
+    $valido = false;
+} else {
+    $nombre = test_input($_POST["nombre"]);
+    if (!preg_match("/^[a-zA-Z-' ]*$/", $nombre)) {
+        $nombreError = "Solo letras y espacio en blanco";
+        $valido = false;
+    }
+}
+
+// validaciones de correo
+if(empty($_POST["correo"])) {
+	$correoError = "<br/> correo electronico es requerio <br/>";
+	$valido = false;
+} else {
+	$correo = test_input($_POST["correo"]);
+	if (!preg_match("/^[A-z0-9\\._-]+@[A-z0-9][A-z0-9-]*(\\.[A-z0-9_-]+)*\\.([A-z]{2,6})$/", $correo)) {
+		$correoError = "<br/>Correo electronico invalido<br/>";
+		$valido = false;
+	}
+}
+
+// validaciones de direccion
+if (empty($_POST["direccion"])) {
+    $direccionError = "<br/> direccion es requerida <br/>";
+    $valido = false;
+} else {
+    $direccion = test_input($_POST["direccion"]);
+    if (!preg_match("/^[a-zA-Z-' ]*$/", $direccion)) {
+        $direccionError = "Solo letras y espacio en blanco";
+        $valido = false;
+    }
+}
+
+// validaciones de telefono
+if (empty($_POST["telefono"])) {
+    $telefonoError = "<br/> telefono es requerido <br/>";
+    $valido = false;
+} else {
+    $telefono = test_input($_POST["telefono"]);
+    if (!preg_match("/^[0-9]{10}$/g", $telefono)) {
+        $telefonoError = "Solo números de 10 dígitos";
+        $valido = false;
+    }
+}
+
+// validaciones de fecha
+if (empty($_POST["fecha"])) {
+    $fechaError = "<br>Debe seleccionar una fecha <br/>";
+    $valido = false;
+} else {
+    $fecha = test_input($_POST["fecha"]);
+}
+
+// validaciones de tipo de producto
+if (empty($_POST["tipo_producto"])) {
+    $medioPagoError = "<br>Debe seleccionar un tipo de producto <br/>";
+    $valido = false;
+} else {
+    $medioPago  = test_input($_POST["tipo_producto"]);
+    $valido = true;
+}
+
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+?>
+<!------------------FIN VALIDACIONES POST----------------------->
+
 <div class="container">
 	<div class="card card-body">
 		<form action="index.php?c=cotizacion&f=new" method="POST" name="formCotNuevo" id="formCotNuevo">
