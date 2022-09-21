@@ -1,6 +1,96 @@
 <!--autor: Huayamave Cedeño Luis-->
-<?php $titulo = "Ingresar un nuevo Producto";
+<?php
+$link = "index.php?c=Login&f=index";
+$imagen = "assets/images/salir.png";
+$opcion = "&nbsp;Salir";
+$titulo = "Ingresar un nuevo Producto";
 require_once HEADER; ?>
+
+
+<?php
+$nombreError = $descripcionError = $stockError = $totalError = $fechaError = $tipoError = $proveedorError = "";
+$nombre = $descripcion = $fecha = $tipoP = $provee = "";
+$stock = 0;
+$total = 0.0;
+$valido = true;
+
+if (empty($_POST["nombre"])) {
+    $nombreError = "<br/> Nombre es requerido <br/>";
+    $valido = false;
+} else {
+    $nombre = test_input($_POST["nombre"]);
+    if (!preg_match("/^[a-zA-Z-' ]*$/", $nombre)) {
+        $nombreError = "Se requieren letras y espacios en blanco";
+        $valido = false;
+    }
+}
+
+if (empty($_POST["descripcion"])) {
+    $descripcionError = "<br/> Descripcion es requerido <br/>";
+    $valido = false;
+} else {
+    $descripcion = test_input($_POST["descripcion"]);
+    if (!preg_match("/^[a-zA-Z-' ]*$/", $descripcion)) {
+        $descripcionError = "Se requieren letras y espacios";
+        $valido = false;
+    }
+}
+
+if (empty($_POST["stock_inicial"])) {
+    $stockError = "<br/> Stock inicial es requerido <br/>";
+    $valido = false;
+} else {
+    $stock = test_input($_POST["stock_inicial"]);
+    if (!preg_match("/^[0-9]*(\.?)[0-9]+$/g", $stock)) {
+        $stockError = "<br/> Debe ser un valor numerico <br/>";
+        $valido = false;
+    }
+}
+
+if (empty($_POST["total"])) {
+    $totalError = "<br/> Total es requerido <br/>";
+    $valido = false;
+} else {
+    $total = test_input($_POST["total"]);
+    if (!preg_match("/^\d*\.\d+$/", $total)) {
+        $totalError = "<br/> Total debe incluir numeros decimales <br/>";
+        $valido = false;
+    }
+}
+
+if (empty($_POST["fecha_ingreso"])) {
+    $fechaError = "<br/>Fecha es requerido <br/>";
+    $valido = false;
+} else {
+    $fecha = test_input($_POST["fecha_ingreso"]);
+}
+
+if (empty($_POST["tipo_producto"])) {
+    $tipoError = "<br/> Debe seleccionar un tipo de producto <br/>";
+    $valido = false;
+} else {
+    $tipoP = test_input($_POST["tipo_producto"]);
+}
+
+if (empty($_POST["nombre_proveedor"])) {
+    $proveedorError = "<br/> Debe seleccionar un proveedor <br/>";
+    $valido = false;
+} else {
+    $proveedor = test_input($_POST["nombre_proveedor"]);
+    $valido = true;
+}
+
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+?>
+
+
 
 <div class="container">
     <div class="card card-body">
