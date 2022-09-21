@@ -78,6 +78,11 @@ $link = "index.php?c=Login&f=index";
 			height: 25px;
 		}
 
+		.logo{
+			width: 330px;
+			height: 110px;
+		}
+
 		#form .componente {
 			position: relative;
 		}
@@ -103,6 +108,7 @@ $link = "index.php?c=Login&f=index";
 			<div class="elemento">
 				<div class="elemento2">
 					<p class="texto">Inicio de Sesión</p>
+					<img src="assets/imagenes/logo3.png" class="logo" />
 				</div>
 
 
@@ -130,7 +136,6 @@ $link = "index.php?c=Login&f=index";
 		</div>
 	</div>
 
-	//validacion lado del cliente
 	<script>
     var form = document.getElementById("formLogin");
     form.addEventListener('submit', validar);
