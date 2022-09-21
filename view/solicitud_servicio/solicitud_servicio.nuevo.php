@@ -64,84 +64,100 @@ require_once HEADER; ?>
 
 <script type="text/javascript">
     var form = document.getElementById("formSoliNuevo");
-    form.addEventListener("submit", validar);
+    const id = document.getElementById("id");
+    const nombre = document.getElementById("nombre");
+    const correo = document.getElementById("correo");
+    const telefono = document.getElementById("telefono");
+    const direccion = document.getElementById("direccion");
+    const descripcion = document.getElementById("descripcion");
+    const fecha = document.getElementById("fecha_solicitud");
+    const tipo = document.getElementById("tipo_servicio");
 
-    function validar(event) {
+    form.addEventListener("submit", validarCampos);
+
+    function validarCampos(event) {
         var valido = true;
-        var txtId = document.getElementById("id");
-        var txtNombre = document.getElementById("nombre");
-        var txtCorreo = document.getElementById("correo");
-        var txtTelefono = document.getElementById("telefono");
-        var txtDireccion = document.getElementById("direccion");
-        var txtDescripcion = document.getElementById("descripcion");
-        var txtFechaSolicitud = document.getElementById("fecha_solicitud");
-        var selectTipo = document.getElementById("tipo_servicio");
+        const idValor = id.value.trim();
+        const nombreValor = nombre.value.trim();
+        const correoValor = correo.value.trim();
+        const telefonoValor = telefono.value.trim();
+        const direccionValor = direccion.value.trim();
+        const descripcionValor = descripcion.value.trim();
+        const fechaSolicitudValor = fecha.value.trim();
+        const tipoValor = tipo.value.trim();
 
         var letra = /^[a-z ,.'-]+$/i; // letrasyespacio   ///^[A-Z]+$
-        var correo = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        var correoreg = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
         var telefonoreg = /^[0-9]{10}$/g; // para validar datos que deban tener 10 numeros
-        var idreg = /^[0-9]$/g; // para validar datos que deben tener 4 numeros
+        var idreg = /^[0-9]{2}$/g; // para validar datos que deben tener 4 numeros
 
-        limpiarMensajes();
-
-        if (txtId.value === "") {
+        if (!idValor) {
             valido = false;
-            mensaje("Debe ingresar un id", txtId);
-        } else if (!idreg.test(txtId.value) >= 4) {
+            validaFalla(id, 'Campo vacio');
+        } else if (!idreg.test(idValor)) {
             valido = false;
-            mensaje("Id solo puede contener 4 digitos", txtId);
+            validaFalla(id, 'Id debe contener 2 dígitos');
+        } else {
+            valido = true;
+            validaOk(id);
         }
 
-        if (txtNombre.value === "") {
+        if (!nombreValor) {
             valido = false;
-            mensaje("Debe ingresar un nombre", txtNombre);
-        } else if (!letra.test(txtNombre.value)) {
+            validaFalla(nombre, 'Campo vacio');
+        } else if (!letra.test(nombreValor)) {
             valido = false;
-            mensaje("El nombre solo debe contener letras", txtNombre);
-        } else if (txtNombre.value.length > 20) {
-            valido = false;
-            mensaje("Nombre maximo 20 caracteres", txtNombre);
+            validaFalla(nombre, 'Nombre debe contener solo letras');
+        } else {
+            valido = true;
+            validaOk(nombre);
         }
 
-        if (txtCorreo.value === "") {
+        if (!correoValor) {
             valido = false;
-            mensaje("Debe ingresar un correo", txtCorreo);
-        } else if (!correo.test(txtCorreo.value)) {
+            validaFalla(correo, 'Campo vacio');
+        } else if (!correoreg.test(correoValor)) {
             valido = false;
-            mensaje("Correo no es correcto", txtCorreo);
+            validaFalla(correo, 'Ingrese el correo de manera correcta');
+        } else {
+            valido = true;
+            validaOk(correo);
         }
 
-        if (txtTelefono.value === "") {
+        if (!telefonoValor) {
             valido = false;
-            mensaje("Debe ingresar un telefono", txtTelefono);
-        } else if (!telefonoreg.test(txtTelefono.value)) {
+            validaFalla(telefono, 'Campo vacio');
+        } else if (!telefonoreg.test(telefonoValor)) {
             valido = false;
-            mensaje("Telefono debe contener 10 digitos", txtTelefono);
+            validaFalla(telefono, 'Telefono debe contener 10 digitos')
+        } else {
+            valido = true;
+            validaOk(telefono);
         }
 
-        if (txtDireccion.value === "") {
+        if (!direccionValor) {
             valido = false;
-            mensaje("Debe ingresar un direccion", txtDireccion);
-        } else if (!letra.test(txtDireccion.value)) {
+            validaFalla(direccion, 'Campo vacio');
+        } else if (!letra.test(direccionValor)) {
             valido = false;
-            mensaje("Direccion solo debe contener letras", txtDireccion);
-        } else if (txtDireccion.value.length > 50) {
-            valido = false;
-            mensaje("Direccion maxima de 50 caracteres", txtDireccion);
+            validaFalla(direccion, 'La direccion debe contener letras');
+        } else {
+            valido = true;
+            validaOk(direccion);
         }
 
-        if (txtDireccion.value === "") {
+        if (!descripcionValor) {
             valido = false;
-            mensaje("Debe ingresar una descripccion", txtDescripcion);
-        } else if (!letra.test(txtDescripcion.value)) {
+            validaFalla(descripcion, 'Campo vacio');
+        } else if (!letra.test(descripcionValor)) {
             valido = false;
-            mensaje("Descripcion solo debe contener letras", txtDescripcion);
-        } else if (txtDescripcion.value.length > 70) {
-            valido = false;
-            mensaje("Descripcion maxima de 70 caracteres", txtDescripcion);
+            validaFalla(descripcion, 'La descripcion debe contener letras');
+        } else {
+            valido = true;
+            validaOk(descripcion);
         }
 
-        var dato = txtFechaSolicitud.value;
+        var dato = fecha.value;
         var fechaN = new Date(dato);
         var anioN = fechaN.getFullYear();
 
@@ -149,45 +165,33 @@ require_once HEADER; ?>
         var anioA = fechaActual.getFullYear();
         if (fechaN > fechaActual) {
             valido = false;
-            mensaje("Fecha no puede ser superior a la actual", txtfecha);
+            validaFalla(fecha, 'Fecha no puede ser superior a la actual');
         } else if (anioN < 2022) {
             valido = false;
-            mensaje("Anio no puede ser menor a 2022", txtfecha);
-        } else if (dato === "") {
+            validaFalla(fecha, 'Anio de la solicitud no puede ser menor a 2022');
+        } else if (!fechaSolicitudValor) {
             valido = false;
-            mensaje("Debe ingresar una fecha", txtfecha);
+            validaFalla(fecha, 'Campo vacio');
+        } else {
+            valido = true;
+            validaOk(fecha);
         }
 
         if (!valido) {
             event.preventDefault();
         }
-
-        if (selectTipo.value === "" || selectTipo.value === '0') {
-            valido = false;
-            mensaje("Debe seleccionar un tipo de servicio", txtdecha);
-        }
-
     }
 
-    function mensaje(cadenaMensaje, elemento) {
-        elemento.focus();
+    const validaFalla = (input, msje) => {
+        const formControl = input.parentElement
+        const aviso = formControl.querySelector('span')
+        aviso.innerText = msje
 
-        var nodoMensaje = document.createElement("span");
-        nodoMensaje.textContent = cadenaMensaje;
-        nodoMensaje.setAttribute("class", "alert alert-danger d-flex align-items-center");
-
-
-        var nodoPadre = elemento.parentNode;
-        nodoPadre.appendChild(nodoMensaje);
-
+        formControl.className = 'form-group col-sm-6 form-cont falla'
     }
-
-    function limpiarMensajes() {
-        var mensajes = document.querySelectorAll("span");
-        for (let i = 0; i < mensajes.length; i++) {
-            mensajes[i].remove();
-
-        }
+    const validaOk = (input, msje) => {
+        const formControl = input.parentElement
+        formControl.className = 'form-group col-sm-6 form-cont ok'
     }
 </script>
 
