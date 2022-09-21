@@ -29,7 +29,6 @@ class CotizacionController
         }
         else
         {
-            echo $_SESSION['rol'];
             //comunica con el modelo (enviar datos o obtener datos)
             $resultados = $this->model->selectAll("");
             // comunicarnos a la vista

@@ -5,6 +5,78 @@ $imagen = "assets/imagenes/salir.png";
 $opcion ="Salir";
 $titulo = "Ingresar Solicitud para un tecnico";
 require_once HEADER; ?>
+<!---------------------INICIO VALIDACIONES POST---------------------->
+<?php
+// define variables establece valores vacios
+$nombreError = $apellidoError = $correoError =  $fechaError = $tipoProblemaError = ""; // variables para errores
+$nombre = $apellido = $correo = $fecha = $problemas_select = ""; // variables para datos
+$id = 0;
+$telefono = 0; // variable para datos entero
+$valido = true;
+
+
+// validaciones de nombre
+if (empty($_POST["nombre"])) {
+    $nombreError = "<br/> nombre es requerido <br/>";
+    $valido = false;
+} else {
+    $nombre = test_input($_POST["nombre"]);
+    if (!preg_match("/^[a-zA-Z-' ]*$/", $nombre)) {
+        $nombreError = "Solo letras y espacio en blanco";
+        $valido = false;
+    }
+}
+
+// validaciones de apellido
+if (empty($_POST["apellido"])) {
+    $$apellidoError = "<br/> Apellido es requerido <br/>";
+    $valido = false;
+} else {
+    $apellido = test_input($_POST["apellido"]);
+    if (!preg_match("/^[a-zA-Z-' ]*$/", $apellido)) {
+        $$apellidoError = "Solo letras y espacio en blanco";
+        $valido = false;
+    }
+}
+
+// validaciones de correo
+if(empty($_POST["correo"])) {
+	$correoError = "<br/> correo electronico es requerio <br/>";
+	$valido = false;
+} else {
+	$correo = test_input($_POST["correo"]);
+	if (!preg_match("/^[A-z0-9\\._-]+@[A-z0-9][A-z0-9-]*(\\.[A-z0-9_-]+)*\\.([A-z]{2,6})$/", $correo)) {
+		$correoError = "<br/>Correo electronico invalido<br/>";
+		$valido = false;
+	}
+}
+
+// validaciones de fecha
+if (empty($_POST["fecha"])) {
+    $fechaError = "<br>Debe seleccionar una fecha <br/>";
+    $valido = false;
+} else {
+    $fecha = test_input($_POST["fecha"]);
+}
+
+// validaciones de tipo de problema
+if (empty($_POST["problemas"])) {
+    $tipoProblemaError = "<br>Debe seleccionar un problema en su automovil <br/>";
+    $valido = false;
+} else {
+    $problemas_select  = test_input($_POST["problemas"]);
+    $valido = true;
+}
+
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+?>
+<!------------------FIN VALIDACIONES POST----------------------->
 
 <div class="container">
     <div class="card card-body">
@@ -22,7 +94,7 @@ require_once HEADER; ?>
                 </div>
 
                 <div class="form-group col-sm-6">
-                    <label for="nombre">Correo</label>
+                    <label for="correo">Correo</label>
                     <input type="text" name="correo" id="correo" class="form-control" placeholder="Ej: isabel@gmail.com">
                 </div>
 
