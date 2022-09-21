@@ -1,5 +1,9 @@
 <!--autor: Huayamave Cedeño Luis-->
-<?php $titulo = "Editar Producto";
+<?php 
+$link ="index.php?c=Login&f=index";
+$imagen = "assets/imagenes/salir.png";
+$opcion ="Salir";
+$titulo = "Editar Producto";
 require_once HEADER; ?>
 
 <div class="container">

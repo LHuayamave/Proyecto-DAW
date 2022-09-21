@@ -1,5 +1,8 @@
 <!--autor: Palacios Avila Ariel-->
 <?php
+$link ="index.php?c=Login&f=index";
+$imagen = "assets/imagenes/salir.png";
+$opcion ="Salir";
 $titulo = "Lista de Solicitudes de Servicios";
 require_once HEADER; ?>
 

@@ -1,6 +1,10 @@
 <!--autor: Aguirre Aguirre Ronaldo-->
-<?php $titulo = "Editar Cotizacion";
-require_once HEADER; ?>
+<?php 
+$link ="index.php?c=Login&f=index";
+$imagen = "assets/imagenes/salir.png";
+$opcion ="Salir";
+$titulo = "Editar Cotizacion";
+require_once HEADER;?>
 
 <div class="container">
     <div class="card card-body">
