@@ -1,8 +1,8 @@
 <!--autor: Huayamave Cedeño Luis-->
 <?php
-$link ="index.php?c=Login&f=index";
+$link = "index.php?c=Login&f=index";
 $imagen = "assets/imagenes/salir.png";
-$opcion ="Salir";
+$opcion = "Salir";
 $titulo = "Lista de productos";
 require_once HEADER; ?>
 
@@ -105,13 +105,17 @@ require_once HEADER; ?>
             resultados += '<td>' + producto[i].total + '</td>';
             resultados += '<td>' + producto[i].tipo_producto + '</td>';
             resultados += '<td>' + producto[i].nombre_proveedor + '</td>';
-            resultados += '<td>' +
-                "<a href='index.php?c=productos&f=view_edit&id=" + producto[i].id_producto +
-                "' " + "class='btn btn-primary'><i class='fas fa-marker'></i></a>" +
-                "<a href='index.php?c=productos&f=delete&id=" + producto[i].id_producto + "'" +
-                "class='btn btn-danger' onclick = 'if (!confirm(\'Desea eliminar el prodcuto: '" + producto[i].nombre_producto +
-                " \')) return false; " + " ><i class='far fa-trash-alt'></i> </a>" + '</td>';
-            resultados += '</tr>';
+            <?php if ($_SESSION['rol'] == null || $_SESSION['rol'] == 1 || $_SESSION['rol'] == 3) { ?>
+                resultados += '<td>' +
+                    "<a href='index.php?c=productos&f=view_edit&id=" + producto[i].id_producto +
+                    "' " + "class='btn btn-primary'><i class='fas fa-marker'></i></a>" +
+                <?php } ?>
+                <?php if ($_SESSION['rol'] == 3) { ?>
+                        "<a href='index.php?c=productos&f=delete&id=" + producto[i].id_producto + "'" +
+                        "class='btn btn-danger' onclick = 'if (!confirm(\'Desea eliminar el prodcuto: '" + producto[i].nombre_producto +
+                        " \')) return false; " + " ><i class='far fa-trash-alt'></i> </a>" + '</td>';
+                    resultados += '</tr>';
+                <?php } ?>
         }
         tbody.innerHTML = resultados;
     }

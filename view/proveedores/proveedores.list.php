@@ -1,7 +1,7 @@
 <!--autor: Nieves Pincay Kenia-->
-<?php $link ="index.php?c=Login&f=index";
+<?php $link = "index.php?c=Login&f=index";
 $imagen = "assets/imagenes/salir.png";
-$opcion ="Salir";
+$opcion = "Salir";
 $titulo = "Lista de Proveedores";
 require_once HEADER; ?>
 
@@ -97,13 +97,19 @@ require_once HEADER; ?>
             resultados += '<td>' + proveedor[i].telefono + '</td>';
             resultados += '<td>' + proveedor[i].fecha_contrato + '</td>';
             resultados += '<td>' + proveedor[i].nombre_medio + '</td>';
-            resultados += '<td>' +
-                "<a href='index.php?c=videojuegos&a=editar&id=" + proveedor[i].id +
-                "' " + "class='btn btn-primary'><i class='fas fa-marker'></i></a>" +
-                "<a href='index.php?c=videojuego&a=eliminar&id=" + proveedor[i].id + "'" +
-                "class='btn btn-danger' onclick = 'if (!confirm(\'Desea eliminar la actividad: '" + proveedor[i].nombre_proveedor +
-                " \')) return false; " + " ><i class='far fa-trash-alt'></i> </a>" + '</td>';
-            resultados += '</tr>';
+            <?php if ($_SESSION['rol'] == null || $_SESSION['rol'] == 1 || $_SESSION['rol'] == 3) { ?>
+
+                resultados += '<td>' +
+                    "<a href='index.php?c=videojuegos&a=editar&id=" + proveedor[i].id +
+                    "' " + "class='btn btn-primary'><i class='fas fa-marker'></i></a>" +
+                <?php } ?>
+                <?php if ($_SESSION['rol'] == 3) { ?>
+                        "<a href='index.php?c=videojuego&a=eliminar&id=" + proveedor[i].id + "'" +
+                        "class='btn btn-danger' onclick = 'if (!confirm(\'Desea eliminar la actividad: '" + proveedor[i].nombre_proveedor +
+                        " \')) return false; " + " ><i class='far fa-trash-alt'></i> </a>" + '</td>';
+                    resultados += '</tr>';
+                <?php } ?>
+
         }
         tdbody.innerHTML = resultados;
     }

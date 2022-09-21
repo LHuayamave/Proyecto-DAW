@@ -1,8 +1,8 @@
 <!--autor: Palacios Avila Ariel-->
 <?php
-$link ="index.php?c=Login&f=index";
+$link = "index.php?c=Login&f=index";
 $imagen = "assets/imagenes/salir.png";
-$opcion ="Salir";
+$opcion = "Salir";
 $titulo = "Lista de Solicitudes de Servicios";
 require_once HEADER; ?>
 
@@ -100,13 +100,18 @@ require_once HEADER; ?>
             resultados += '<td>' + solicitud[i].fecha_solicitud + '</td>';
             resultados += '<td>' + solicitud[i].descripcion + '</td>';
             resultados += '<td>' + solicitud[i].tipo_servicio + '</td>';
-            resultados += '<td>' +
-                "<a href='index.php?c=SolicitudServicio&f=view_edit&id=" + solicitud[i].id_solicitud +
-                "' " + "class='btn btn-primary'><i class='fas fa-marker'></i></a>" +
-                "<a href='index.php?c=SolicitudServicio&f=delete&id=" + solicitud[i].id_solicitud + "'" +
-                "class='btn btn-danger' onclick = 'if (!confirm(\'Desea eliminar la solicitud de: '" + solicitud[i].nombre +
-                " \')) return false; " + " ><i class='far fa-trash-alt'></i> </a>" + '</td>';
-            resultados += '</tr>';
+            <?php if ($_SESSION['rol'] == null || $_SESSION['rol'] == 1 || $_SESSION['rol'] == 3) { ?>
+
+                resultados += '<td>' +
+                    "<a href='index.php?c=SolicitudServicio&f=view_edit&id=" + solicitud[i].id_solicitud +
+                    "' " + "class='btn btn-primary'><i class='fas fa-marker'></i></a>" +
+                <?php } ?>
+                <?php if ($_SESSION['rol'] == 3) { ?>
+                        "<a href='index.php?c=SolicitudServicio&f=delete&id=" + solicitud[i].id_solicitud + "'" +
+                        "class='btn btn-danger' onclick = 'if (!confirm(\'Desea eliminar la solicitud de: '" + solicitud[i].nombre +
+                        " \')) return false; " + " ><i class='far fa-trash-alt'></i> </a>" + '</td>';
+                    resultados += '</tr>';
+                <?php } ?>
         }
         tbody.innerHTML = resultados;
     }
