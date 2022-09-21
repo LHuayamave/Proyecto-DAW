@@ -6,33 +6,108 @@ $opcion ="&nbsp;Salir";
 $titulo = "Editar Proveedor";
 require_once HEADER; ?>
 
+<!---------------------INICIO PRUEBA POST VALIDACIONES---------------------->
+<?php
+// define variables establece valores vacios
+$nombreError = $direccionError = $telefonoError = $fechaError = $medioPagoError = ""; // variables para errores
+$nombre = $direccion = $fecha = $medioPago = ""; // variables para datos
+$telefono = 0; // variable para datos entero
+$valido = true;
+
+// validaciones de nombre
+if (empty($_POST["nombre"])) {
+    $nombreError = "<br/> nombre es requerido <br/>";
+    $valido = false;
+} else {
+    $nombre = test_input($_POST["nombre"]);
+    if (!preg_match("/^[a-zA-Z-' ]*$/", $nombre)) {
+        $nombreError = "Solo letras y espacio en blanco";
+        $valido = false;
+    }
+}
+
+// validaciones de direccion
+if (empty($_POST["direccion"])) {
+    $direccionError = "<br/> direccion es requerida <br/>";
+    $valido = false;
+} else {
+    $direccion = test_input($_POST["direccion"]);
+    if (!preg_match("/^[a-zA-Z-' ]*$/", $direccion)) {
+        $direccionError = "Solo letras y espacio en blanco";
+        $valido = false;
+    }
+}
+
+// validaciones de telefono
+if (empty($_POST["telefono"])) {
+    $telefonoError = "<br/> telefono es requerido <br/>";
+    $valido = false;
+} else {
+    $telefono = test_input($_POST["telefono"]);
+    if (!preg_match("/^[0-9]{10}$/g", $telefono)) {
+        $telefonoError = "Solo números de 10 dígitos";
+        $valido = false;
+    }
+}
+
+// validaciones de fecha
+if (empty($_POST["fecha"])) {
+    $fechaError = "<br>Debe seleccionar una fecha <br/>";
+    $valido = false;
+} else {
+    $fecha = test_input($_POST["fecha"]);
+}
+
+// validaciones de medio de pago
+if (empty($_POST["medioPago"])) {
+    $medioPagoError = "<br>Debe seleccionar un método de Pago <br/>";
+    $valido = false;
+} else {
+    $medioPago  = test_input($_POST["medioPago"]);
+    $valido = true;
+}
+
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+?>
+<!------------------FIN VALIDACIONES POST----------------------->
+
 <div class="container">
     <div class="card card-body">
         <form action="index.php?c=proveedores&f=edit" method="POST" name="formProvNuevo" id="formProvNuevo">  
         <div class="form-row">
                 <div class="form-group col-sm-6" class="form-cont">
-                    <label for="nombre">Id</label>
+                    <label for="id">Id</label>
                     <input type="text" name="id" id="id" class="form-control" value="<?php echo $prov['id_proveedor']; ?>"readonly/>
                 </div>  
                 <div class="form-group col-sm-6" class="form-cont">
                     <label for="nombre">Nombre</label>
                     <input type="text" name="nombre" id="nombre" value="<?php echo $prov['nombre_proveedor']; ?>" class="form-control" placeholder="nombre proveedor">
                     <span></span>
+                    <span class="error"><?php echo $nombreError; ?></span>
                 </div>
                 <div class="form-group col-sm-6" class="form-cont">
                     <label for="direccion">Direcci&oacute;n</label>
                     <input type="text" name="direccion" id="direccion" value="<?php echo $prov['direccion']; ?>" class="form-control" placeholder="direccion proveedor">
                     <span></span>
+                    <span class="error"><?php echo $direccionError; ?></span>
                 </div>
                 <div class="form-group col-sm-6" class="form-cont">
                     <label for="telefono">Tel&eacute;fono</label>
                     <input type="text" name="telefono" id="telefono" value="<?php echo $prov['telefono']; ?>" class="form-control" placeholder="telefono proveedor">
                     <span></span>
+                    <span class="error"><?php echo $telefonoError; ?></span>
                 </div>
                 <div class="form-group col-sm-6" class="form-cont">
                     <label for="fecha">Fecha Contrato</label>
                     <input type="date" name="fecha" id="fecha" value="<?php echo $prov['fecha_contrato']; ?>" class="form-control" placeholder="fecha contrato proveedor">
                     <span></span>
+                    <span class="error"><?php echo $fechaError; ?></span>
                 </div>
                 <div class="form-group col-sm-6" class="form-cont">
                     <label for="medioPago">Medio de Pago</label>
@@ -51,6 +126,8 @@ require_once HEADER; ?>
                         ?>   
 
                     </select>
+                    <span></span>
+                    <span class="error"><?php echo $medioPagoError; ?></span>
                 </div>
                 <div class="form-group mx-auto">
                     <button type="submit" class="btn btn-primary"
